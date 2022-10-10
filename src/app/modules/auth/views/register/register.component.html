@@ -1,0 +1,56 @@
+<div class="register">
+  <form class="register__form" (ngSubmit)="onSubmit()">
+    <h2 class="register__form__title">Sign up</h2>
+    <mat-form-field appearance="outline" class="register__form__field">
+      <mat-label class="register__form__field__label">Email</mat-label>
+      <input
+        matInput
+        placeholder="Enter email"
+        type="email"
+        autocomplete="on"
+        class="register__form__field__input"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="register__form__field">
+      <mat-label class="register__form__field__label">Password</mat-label>
+      <input
+        matInput
+        [type]="hide ? 'password' : 'text'"
+        placeholder="Password"
+        autocomplete="on"
+        class="register__form__field__input"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="register__form__field">
+      <mat-label class="register__form__field__label"
+        >Repeat password</mat-label
+      >
+      <input
+        matInput
+        [type]="passRepeat ? 'password' : 'text'"
+        placeholder="Repeat password"
+        autocomplete="on"
+        class="register__form__field__input"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="passRepeat = !passRepeat"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="passRepeat"
+      >
+        <mat-icon>{{passRepeat ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+    <button type="submit">Sign in</button>
+  </form>
+</div>

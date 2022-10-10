@@ -1,0 +1,29 @@
+@use '@angular/material' as mat;
+@import './colors.scss';
+// @include mat.core();
+@import './typography.scss';
+
+@include mat.core($custom-typography);
+$web-shop-primary: mat-palette($custom-primary);
+// $web-shop-accent: mat.define-palette(mat.$custom-accent);
+$web-shop-accent: mat-palette($custom-accent);
+
+$web-shop-warn: mat-palette($custom-warning);
+
+$web-shop-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $web-shop-primary,
+      accent: $web-shop-accent,
+      warn: $web-shop-warn
+    ),
+    typography: $custom-typography
+  )
+);
+$web-shop-theme-dark: mat-dark-theme(
+  $web-shop-primary,
+  $web-shop-accent,
+  $web-shop-warn
+);
+
+@include mat.all-component-themes($web-shop-theme);

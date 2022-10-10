@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "angular-akademija-app": {
+      "hosting": {
+        "web-shop": [
+          "angular-akademija-app"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "angular-akademija-app"
+  }
+}
