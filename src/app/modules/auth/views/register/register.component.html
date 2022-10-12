@@ -1,25 +1,36 @@
 <div class="register">
-  <form class="register__form" (ngSubmit)="onSubmit()">
+  <form
+    [formGroup]="registerForm"
+    class="register__form"
+    (ngSubmit)="onSubmit()"
+  >
     <h2 class="register__form__title">Sign up</h2>
     <mat-form-field appearance="outline" class="register__form__field">
       <mat-label class="register__form__field__label">Email</mat-label>
       <input
         matInput
+        required
         placeholder="Enter email"
         type="email"
         autocomplete="on"
+        formControlName="email"
         class="register__form__field__input"
       />
+      <mat-error *ngIf="registerForm.value.email">Invalid</mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline" class="register__form__field">
       <mat-label class="register__form__field__label">Password</mat-label>
       <input
         matInput
+        required
         [type]="hide ? 'password' : 'text'"
-        placeholder="Password"
+        placeholder="Enter password"
         autocomplete="on"
         class="register__form__field__input"
+        formControlName="password"
+        name="password"
       />
+      <mat-error *ngIf="registerForm.value.password">Pass invalid</mat-error>
       <button
         mat-icon-button
         matSuffix
@@ -36,11 +47,17 @@
       >
       <input
         matInput
+        required
         [type]="passRepeat ? 'password' : 'text'"
         placeholder="Repeat password"
         autocomplete="on"
         class="register__form__field__input"
+        formControlName="repeatPassword"
+        name="repeatPassword"
       />
+      <mat-error *ngIf="registerForm.value.repeatPassword"
+        >Invalid repeat</mat-error
+      >
       <button
         mat-icon-button
         matSuffix
@@ -51,6 +68,10 @@
         <mat-icon>{{passRepeat ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
     </mat-form-field>
-    <button type="submit">Sign in</button>
+    <!-- <button type="submit" [disabled]="!registerForm.valid"> -->
+    <button type="submit">
+      Sign in
+    </button>
+    <a routerLink="/login">Already have an account? Sign in</a>
   </form>
 </div>

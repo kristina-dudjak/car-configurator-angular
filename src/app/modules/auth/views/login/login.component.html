@@ -1,1 +1,45 @@
-<p>login works!</p>
+<div class="login">
+  <form [formGroup]="loginForm" class="login__form" (ngSubmit)="onSubmit()">
+    <h2 class="login__form__title">Login</h2>
+    <mat-form-field appearance="outline" class="login__form__field">
+      <mat-label class="login__form__field__label">Email</mat-label>
+      <input
+        matInput
+        required
+        placeholder="Enter email"
+        type="email"
+        autocomplete="on"
+        formControlName="email"
+        class="login__form__field__input"
+      />
+      <mat-error *ngIf="loginForm.value.email">Invalid email</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="login__form__field">
+      <mat-label class="login__form__field__label">Password</mat-label>
+      <input
+        matInput
+        required
+        [type]="hide ? 'password' : 'text'"
+        placeholder="Enter password"
+        autocomplete="on"
+        class="login__form__field__input"
+        formControlName="password"
+        name="password"
+      />
+      <mat-error *ngIf="loginForm.value.password">Pass invalid</mat-error>
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+    <button type="submit" [disabled]="!loginForm.valid">
+      Login
+    </button>
+    <a routerLink="/register">Create new account</a>
+  </form>
+</div>

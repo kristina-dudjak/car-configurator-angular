@@ -10,6 +10,7 @@ import { MatInputModule } from '@angular/material/input'
 import { MatIconModule } from '@angular/material/icon'
 import { MatAutocompleteModule } from '@angular/material/autocomplete'
 import { MatButtonModule } from '@angular/material/button'
+import { AuthService } from './services/auth/auth.service'
 
 @NgModule({
   declarations: [RegisterComponent, LoginComponent],
@@ -23,6 +24,7 @@ import { MatButtonModule } from '@angular/material/button'
     MatIconModule,
     MatAutocompleteModule,
     MatButtonModule
-  ]
+  ],
+  providers: [AuthService]
 })
 export class AuthModule {}
