@@ -93,7 +93,12 @@
     <span class="register__form__errors" *ngIf="firebaseError"
       >{{firebaseError}}</span
     >
-    <mat-icon class="register__form__google" svgIcon="google"></mat-icon>
+    <button class="register__form__google" (click)="onGoogleLogin()">
+      <mat-icon
+        class="register__form__google__icon"
+        svgIcon="google"
+      ></mat-icon>
+    </button>
   </form>
   <a class="register__redirect" routerLink="/login"
     >Already have an account? Sign in</a

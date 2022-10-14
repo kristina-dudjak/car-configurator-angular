@@ -36,4 +36,11 @@ export class LoginComponent {
         this.router.navigateByUrl('configurator')
       })
   }
+
+  onGoogleLogin () {
+    this.authService.googleSignIn().then(() => {
+      this.firebaseError = this.authService.errorMessage
+      this.router.navigateByUrl('configurator')
+    })
+  }
 }

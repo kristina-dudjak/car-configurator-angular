@@ -55,7 +55,9 @@
     <span class="login__form__errors" *ngIf="firebaseError"
       >{{firebaseError}}</span
     >
-    <mat-icon class="login__form__google" svgIcon="google"></mat-icon>
+    <button class="login__form__google" (click)="onGoogleLogin()">
+      <mat-icon class="login__form__google__icon" svgIcon="google"></mat-icon>
+    </button>
   </form>
   <a class="login__redirect" routerLink="/register">Create new account</a>
 </div>

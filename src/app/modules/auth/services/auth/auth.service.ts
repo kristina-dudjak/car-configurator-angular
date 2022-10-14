@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
 import { AngularFireAuth } from '@angular/fire/compat/auth'
 import { Router } from '@angular/router'
-
+import firebase from 'firebase/compat/app'
 @Injectable({
   providedIn: 'root'
 })
@@ -29,6 +29,17 @@ export class AuthService {
 
   set errorMessage (message: string | undefined) {
     this._errorMessage = message
+  }
+
+  googleSignIn () {
+    return this.firebaseAuth
+      .signInWithPopup(new firebase.auth.GoogleAuthProvider())
+      .then(result => {
+        this._user = result.user
+      })
+      .catch(error => {
+        this._errorMessage = error.message
+      })
   }
 
   signIn (email: string, password: string) {
