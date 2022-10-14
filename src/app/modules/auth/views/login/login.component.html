@@ -1,45 +1,61 @@
 <div class="login">
-  <form [formGroup]="loginForm" class="login__form" (ngSubmit)="onSubmit()">
+  <form class="login__form" [formGroup]="loginForm" (ngSubmit)="onLogin()">
     <h2 class="login__form__title">Login</h2>
-    <mat-form-field appearance="outline" class="login__form__field">
+    <mat-form-field class="login__form__field" appearance="outline">
       <mat-label class="login__form__field__label">Email</mat-label>
       <input
+        class="login__form__field__input"
         matInput
         required
-        placeholder="Enter email"
+        placeholder="example@gmail.com"
         type="email"
         autocomplete="on"
         formControlName="email"
-        class="login__form__field__input"
       />
-      <mat-error *ngIf="loginForm.value.email">Invalid email</mat-error>
+      <mat-error class="login__form__field__error" *ngIf="loginForm.value.email"
+        >Please enter a valid email address</mat-error
+      >
     </mat-form-field>
-    <mat-form-field appearance="outline" class="login__form__field">
+    <mat-form-field class="login__form__field" appearance="outline">
       <mat-label class="login__form__field__label">Password</mat-label>
       <input
+        class="login__form__field__input"
         matInput
         required
-        [type]="hide ? 'password' : 'text'"
-        placeholder="Enter password"
+        [type]="isPasswordVisible ? 'password' : 'text'"
+        placeholder="Must have min 8 characters"
         autocomplete="on"
-        class="login__form__field__input"
         formControlName="password"
         name="password"
       />
-      <mat-error *ngIf="loginForm.value.password">Pass invalid</mat-error>
+      <mat-error
+        class="login__form__field__error"
+        *ngIf="loginForm.value.password"
+        >Min 8 characters, 1 number, 1 symbol</mat-error
+      >
       <button
+        class="login__form__field__toggle"
         mat-icon-button
         matSuffix
-        (click)="hide = !hide"
-        [attr.aria-label]="'Hide password'"
-        [attr.aria-pressed]="hide"
+        (click)="isPasswordVisible = !isPasswordVisible"
+        [attr.aria-pressed]="isPasswordVisible"
       >
-        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        <mat-icon class="login__form__field__toggle__icon"
+          >{{isPasswordVisible? 'visibility_off' : 'visibility'}}</mat-icon
+        >
       </button>
     </mat-form-field>
-    <button type="submit" [disabled]="!loginForm.valid">
+    <button
+      class="login__form__submit"
+      type="submit"
+      [disabled]="!loginForm.valid"
+    >
       Login
     </button>
-    <a routerLink="/register">Create new account</a>
+    <span class="login__form__errors" *ngIf="firebaseError"
+      >{{firebaseError}}</span
+    >
+    <mat-icon class="login__form__google" svgIcon="google"></mat-icon>
   </form>
+  <a class="login__redirect" routerLink="/register">Create new account</a>
 </div>

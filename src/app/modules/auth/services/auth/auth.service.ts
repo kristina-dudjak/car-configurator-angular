@@ -6,24 +6,39 @@ import { Router } from '@angular/router'
   providedIn: 'root'
 })
 export class AuthService {
-  constructor (public firebaseAuth: AngularFireAuth, private router: Router) {}
-  user: any | undefined
-  isLoggedIn = false
+  private _user: any
+  private _errorMessage: string | undefined
+  constructor (private firebaseAuth: AngularFireAuth, private router: Router) {
+    firebaseAuth.onAuthStateChanged(user => {
+      this._user = user
+    })
+  }
   redirectUrl: string | null = null
 
+  get user () {
+    return this._user
+  }
+
+  set user (user: any) {
+    this._user = user
+  }
+
+  get errorMessage () {
+    return this._errorMessage
+  }
+
+  set errorMessage (message: string | undefined) {
+    this._errorMessage = message
+  }
+
   signIn (email: string, password: string) {
-    console.log('prvo logiram')
     return this.firebaseAuth
       .signInWithEmailAndPassword(email, password)
       .then(result => {
-        console.log(result)
-        this.user = result
-        this.isLoggedIn = true
-        console.log(this.isLoggedIn)
-        this.router.navigateByUrl('configurator')
+        this._user = result.user
       })
       .catch(error => {
-        console.log(error)
+        this._errorMessage = error.message
       })
   }
 
@@ -31,11 +46,10 @@ export class AuthService {
     return this.firebaseAuth
       .createUserWithEmailAndPassword(email, password)
       .then(result => {
-        console.log(result)
-        this.isLoggedIn = true
+        this._user = result.user
       })
       .catch(error => {
-        console.log(error)
+        this._errorMessage = error.message
       })
   }
 
@@ -43,11 +57,11 @@ export class AuthService {
     return this.firebaseAuth
       .signOut()
       .then(() => {
-        console.log('logged out')
-        this.isLoggedIn = false
+        this._user = null
+        this.router.navigateByUrl('login')
       })
       .catch(error => {
-        console.log(error)
+        this._errorMessage = error.message
       })
   }
 }

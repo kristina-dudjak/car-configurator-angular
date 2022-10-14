@@ -1,7 +1,8 @@
 import { Component } from '@angular/core'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
-import { ValidationService } from '../../services/validation.service'
 import { AuthService } from '../../services/auth/auth.service'
+import { Router } from '@angular/router'
+import { ValidationService } from '../../services/validation/validation.service'
 
 @Component({
   selector: 'app-register',
@@ -9,7 +10,7 @@ import { AuthService } from '../../services/auth/auth.service'
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
-  constructor (public authService: AuthService) {}
+  constructor (private authService: AuthService, private router: Router) {}
   registerForm = new FormGroup(
     {
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -17,6 +18,7 @@ export class RegisterComponent {
         Validators.required,
         Validators.minLength(8),
         Validators.pattern(
+          // 8 characters, min 1 number, min 1 special char
           '^(?=.*?[A-Za-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$'
         )
       ]),
@@ -24,22 +26,28 @@ export class RegisterComponent {
         Validators.required,
         Validators.minLength(8),
         Validators.pattern(
+          // 8 characters, min 1 number, min 1 special char
           '^(?=.*?[A-Za-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$'
         )
       ])
     },
     { validators: ValidationService.passwordValidator }
   )
-  hide = true
-  passRepeat = true
-
-  onSubmit () {
-    console.log(this.registerForm.value)
-    if (this.registerForm.value.email && this.registerForm.value.password) {
-      this.authService.signUp(
-        this.registerForm.value.email,
-        this.registerForm.value.password
-      )
+  isPasswordVisible = true
+  isPasswordRepeatVisible = true
+  firebaseError: string | undefined = ''
+  onRegister () {
+    if (!this.registerForm.valid) {
+      return
     }
+    this.authService
+      .signUp(
+        this.registerForm.value.email as string,
+        this.registerForm.value.password as string
+      )
+      .then(() => {
+        this.firebaseError = this.authService.errorMessage
+        this.router.navigateByUrl('configurator')
+      })
   }
 }

@@ -8,6 +8,8 @@ import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { AuthService } from './modules/auth/services/auth/auth.service'
+import { MatMenuModule } from '@angular/material/menu'
+import { MatIconModule } from '@angular/material/icon'
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,7 +18,9 @@ import { AuthService } from './modules/auth/services/auth/auth.service'
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     BrowserAnimationsModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    MatMenuModule,
+    MatIconModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

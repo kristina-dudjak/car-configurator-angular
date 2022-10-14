@@ -28,20 +28,8 @@ export class AuthGuard implements CanActivate {
   }
 
   checkLogin (url: string): true | UrlTree {
-    // this.authService.user.subscribe(user => {
-    //   if (user?.uid) {
-    //     console.log(user)
-    //     return true
-    //   }
-    //   console.log(user)
-    //   return false
-    // })
-    console.log('checking isLoggedIn')
-    console.log(this.authService.isLoggedIn)
-    if (this.authService.isLoggedIn) {
-      console.log('logged in')
-      return true
-    }
+    if (this.authService.user) return true
+
     this.authService.redirectUrl = url
     return this.router.parseUrl('/login')
   }

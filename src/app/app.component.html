@@ -1,5 +1,27 @@
 <header class="header">
-  <h1>Car configurator</h1>
+  <mat-icon class="header__logo" svgIcon="logo"></mat-icon>
+  <div class="header__menu">
+    <button
+      class="header__menu__button"
+      mat-icon-button
+      [matMenuTriggerFor]="menu"
+    >
+      <mat-icon class="header__menu__button__icon">short_text</mat-icon>
+    </button>
+    <mat-menu class="header__menu__items" #menu="matMenu">
+      <button class="header__menu__items__item" mat-menu-item>
+        <span class="header__menu__items__item__text"
+          >My saved configurations</span
+        >
+      </button>
+      <button
+        class="header__menu__items__item"
+        mat-menu-item
+        (click)="signOut()"
+      >
+        <span class="header__menu__items__item__text">Log out</span>
+      </button>
+    </mat-menu>
+  </div>
 </header>
-<a routerLink="/logout">Log out</a>
 <router-outlet></router-outlet>

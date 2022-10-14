@@ -9,29 +9,31 @@ import { AuthService } from '../../services/auth/auth.service'
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  constructor (public authService: AuthService, public router: Router) {}
+  constructor (private authService: AuthService, private router: Router) {}
 
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [
       Validators.required,
       Validators.minLength(8),
-      // 8 characters, 1 number min, 1 special char min
       Validators.pattern(
+        // 8 characters, min 1 number, min 1 special char
         '^(?=.*?[A-Za-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$'
       )
     ])
   })
-  hide = true
-
-  onSubmit () {
-    console.log(this.loginForm.value)
-    if (!this.loginForm.valid) {
-      return
-    }
-    this.authService.signIn(
-      this.loginForm.value.email as string,
-      this.loginForm.value.password as string
-    )
+  isPasswordVisible = true
+  firebaseError: string | undefined = ''
+  onLogin () {
+    if (!this.loginForm.valid) return
+    this.authService
+      .signIn(
+        this.loginForm.value.email as string,
+        this.loginForm.value.password as string
+      )
+      .then(() => {
+        this.firebaseError = this.authService.errorMessage
+        this.router.navigateByUrl('configurator')
+      })
   }
 }

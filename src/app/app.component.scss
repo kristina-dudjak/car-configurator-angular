@@ -1,3 +1,17 @@
 .header {
-  background-color: aquamarine;
+  background-color: #2e2e38;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+
+  &__logo {
+    color: #ffffff;
+  }
+
+  &__menu__button {
+    background-color: #2e2e38;
+    border: 0;
+    color: #ffffff;
+  }
 }
