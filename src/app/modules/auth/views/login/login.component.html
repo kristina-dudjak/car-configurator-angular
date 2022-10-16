@@ -12,8 +12,10 @@
         autocomplete="on"
         formControlName="email"
       />
-      <mat-error class="login__form__field__error" *ngIf="loginForm.value.email"
-        >Please enter a valid email address</mat-error
+      <mat-error
+        class="login__form__field__error"
+        *ngIf="loginForm.hasError('email')"
+        >{{loginForm.getError('email')}}</mat-error
       >
     </mat-form-field>
     <mat-form-field class="login__form__field" appearance="outline">
@@ -30,8 +32,8 @@
       />
       <mat-error
         class="login__form__field__error"
-        *ngIf="loginForm.value.password"
-        >Min 8 characters, 1 number, 1 symbol</mat-error
+        *ngIf="loginForm.hasError('password')"
+        >{{loginForm.getError('password')}}</mat-error
       >
       <button
         class="login__form__field__toggle"

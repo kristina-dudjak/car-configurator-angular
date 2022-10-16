@@ -18,8 +18,8 @@
       />
       <mat-error
         class="register__form__field__error"
-        *ngIf="registerForm.value.email"
-        >Please enter a valid email address</mat-error
+        *ngIf="registerForm.hasError('email')"
+        >{{registerForm.getError('email')}}</mat-error
       >
     </mat-form-field>
     <mat-form-field class="register__form__field" appearance="outline">
@@ -36,8 +36,8 @@
       />
       <mat-error
         class="register__form__field__error"
-        *ngIf="registerForm.value.password"
-        >Min 8 characters, 1 number, 1 symbol</mat-error
+        *ngIf="registerForm.hasError('password')"
+        >{{registerForm.getError('password')}}</mat-error
       >
       <button
         class="register__form__field__toggle"
@@ -67,8 +67,8 @@
       />
       <mat-error
         class="register__form__field__error"
-        *ngIf="registerForm.value.repeatPassword"
-        >Min 8 characters, 1 number, 1 symbol</mat-error
+        *ngIf="registerForm.hasError('repeatPassword')"
+        >{{registerForm.getError('repeatPassword')}}</mat-error
       >
       <button
         class="register__form__field__toggle"

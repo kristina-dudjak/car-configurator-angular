@@ -1,7 +1,10 @@
 import { Component } from '@angular/core'
-import { FormControl, FormGroup, Validators } from '@angular/forms'
+import { Validators } from '@angular/forms'
 import { Router } from '@angular/router'
 import { AuthService } from '../../services/auth/auth.service'
+import { FormBuilder } from '@angular/forms'
+import { ValidationService } from '../../services/validation/validation.service'
+import { PasswordRegex } from 'src/app/shared/const/PasswordRegex'
 
 @Component({
   selector: 'app-login',
@@ -9,19 +12,33 @@ import { AuthService } from '../../services/auth/auth.service'
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  constructor (private authService: AuthService, private router: Router) {}
+  constructor (
+    private authService: AuthService,
+    private router: Router,
+    private fb: FormBuilder
+  ) {}
 
-  loginForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [
-      Validators.required,
-      Validators.minLength(8),
-      Validators.pattern(
-        // 8 characters, min 1 number, min 1 special char
-        '^(?=.*?[A-Za-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$'
-      )
-    ])
-  })
+  loginForm = this.fb.group(
+    {
+      email: ['', [Validators.required, Validators.email]],
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.pattern(PasswordRegex)
+        ]
+      ]
+    },
+    {
+      validators: [
+        ValidationService.validator('email'),
+        ValidationService.validator('password')
+      ],
+      updateOn: 'blur'
+    }
+  )
+
   isPasswordVisible = true
   firebaseError: string | undefined = ''
   onLogin () {
