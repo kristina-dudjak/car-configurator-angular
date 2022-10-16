@@ -10,10 +10,12 @@ import { MatInputModule } from '@angular/material/input'
 import { MatIconModule } from '@angular/material/icon'
 import { MatAutocompleteModule } from '@angular/material/autocomplete'
 import { MatButtonModule } from '@angular/material/button'
+import { MatDialogModule } from '@angular/material/dialog'
 import { AuthService } from './services/auth/auth.service'
+import { PasswordResetComponent } from './components/password-reset/password-reset.component'
 
 @NgModule({
-  declarations: [RegisterComponent, LoginComponent],
+  declarations: [RegisterComponent, LoginComponent, PasswordResetComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -23,7 +25,8 @@ import { AuthService } from './services/auth/auth.service'
     MatInputModule,
     MatIconModule,
     MatAutocompleteModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule
   ],
   providers: [AuthService]
 })

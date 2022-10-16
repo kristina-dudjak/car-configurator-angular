@@ -75,4 +75,10 @@ export class AuthService {
         this._errorMessage = error.message
       })
   }
+
+  sendPasswordResetEmail (email: string) {
+    return this.firebaseAuth.sendPasswordResetEmail(email).catch(error => {
+      this._errorMessage = error.message
+    })
+  }
 }

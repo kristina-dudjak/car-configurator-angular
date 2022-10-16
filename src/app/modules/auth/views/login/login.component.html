@@ -49,10 +49,18 @@
     </mat-form-field>
     <button
       class="login__form__submit"
+      mat-raised-button
       type="submit"
       [disabled]="!loginForm.valid"
     >
       Login
+    </button>
+    <button
+      class="login__form__forgotPassword"
+      mat-stroked-button
+      (click)="openEmailDialog()"
+    >
+      Forgot password?
     </button>
     <span class="login__form__errors" *ngIf="firebaseError"
       >{{firebaseError}}</span

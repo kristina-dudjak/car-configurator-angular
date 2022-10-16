@@ -5,6 +5,8 @@ import { AuthService } from '../../services/auth/auth.service'
 import { FormBuilder } from '@angular/forms'
 import { ValidationService } from '../../services/validation/validation.service'
 import { PasswordRegex } from 'src/app/shared/const/PasswordRegex'
+import { MatDialog } from '@angular/material/dialog'
+import { PasswordResetComponent } from '../../components/password-reset/password-reset.component'
 
 @Component({
   selector: 'app-login',
@@ -15,7 +17,8 @@ export class LoginComponent {
   constructor (
     private authService: AuthService,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    public dialog: MatDialog
   ) {}
 
   loginForm = this.fb.group(
@@ -59,5 +62,9 @@ export class LoginComponent {
       this.firebaseError = this.authService.errorMessage
       this.router.navigateByUrl('configurator')
     })
+  }
+
+  openEmailDialog () {
+    this.dialog.open(PasswordResetComponent)
   }
 }

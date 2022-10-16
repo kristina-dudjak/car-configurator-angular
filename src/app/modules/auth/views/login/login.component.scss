@@ -17,6 +17,10 @@
       margin-bottom: 20px;
     }
 
+    &__forgotPassword {
+      margin: 20px 0;
+    }
+
     &__errors {
       margin: 20px 0;
       color: red;
@@ -24,6 +28,7 @@
 
     &__google {
       margin-top: 20px;
+      width: 100%;
       align-self: center;
       padding: 4px 16px;
       border: 2px solid gray;
