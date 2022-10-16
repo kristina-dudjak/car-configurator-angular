@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 import { AuthGuard } from './modules/auth/guards/auth.guard'
+import { PagenotfoundComponent } from './views/pagenotfound/pagenotfound.component'
 
 const routes: Routes = [
   {
@@ -20,6 +21,11 @@ const routes: Routes = [
         m => m.ConfiguratorModule
       ),
     canActivate: [AuthGuard]
+  },
+  {
+    path: '**',
+    pathMatch: 'full',
+    component: PagenotfoundComponent
   }
 ]
 

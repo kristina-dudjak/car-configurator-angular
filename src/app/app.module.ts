@@ -10,9 +10,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { AuthService } from './modules/auth/services/auth/auth.service'
 import { MatMenuModule } from '@angular/material/menu'
 import { MatIconModule } from '@angular/material/icon'
+import { MatButtonModule } from '@angular/material/button'
+import { PagenotfoundComponent } from './views/pagenotfound/pagenotfound.component'
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, PagenotfoundComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -20,7 +22,8 @@ import { MatIconModule } from '@angular/material/icon'
     BrowserAnimationsModule,
     AngularFireAuthModule,
     MatMenuModule,
-    MatIconModule
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
