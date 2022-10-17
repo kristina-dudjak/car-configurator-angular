@@ -2,30 +2,22 @@ import { Injectable } from '@angular/core'
 import { AngularFireAuth } from '@angular/fire/compat/auth'
 import { Router } from '@angular/router'
 import firebase from 'firebase/compat/app'
-import { Observable, of } from 'rxjs'
+import { BehaviorSubject } from 'rxjs'
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private _user: any
+  private user$ = new BehaviorSubject<firebase.User | null>(null)
   private _errorMessage: string | undefined
   constructor (private firebaseAuth: AngularFireAuth, private router: Router) {
     this.firebaseAuth.onAuthStateChanged(user => {
-      this._user = user
+      this.user$.next(user)
     })
   }
   redirectUrl: string | null = null
 
-  getUser$ (): Observable<any> {
-    return of(this._user)
-  }
-
   get user () {
-    return this._user
-  }
-
-  set user (user: any) {
-    this._user = user
+    return this.user$.asObservable()
   }
 
   get errorMessage () {
@@ -43,7 +35,7 @@ export class AuthService {
         this.firebaseAuth
           .signInWithPopup(new firebase.auth.GoogleAuthProvider())
           .then(result => {
-            this._user = result.user
+            this.user$.next(result.user)
           })
           .catch(error => {
             this._errorMessage = error.message
@@ -58,7 +50,7 @@ export class AuthService {
         this.firebaseAuth
           .signInWithEmailAndPassword(email, password)
           .then(result => {
-            this._user = result.user
+            this.user$.next(result.user)
           })
           .catch(error => {
             this._errorMessage = error.message
@@ -73,7 +65,7 @@ export class AuthService {
         this.firebaseAuth
           .createUserWithEmailAndPassword(email, password)
           .then(result => {
-            this._user = result.user
+            this.user$.next(result.user)
           })
           .catch(error => {
             this._errorMessage = error.message
@@ -85,7 +77,7 @@ export class AuthService {
     return this.firebaseAuth
       .signOut()
       .then(() => {
-        this._user = null
+        this.user$.next(null)
         this.router.navigateByUrl('login')
       })
       .catch(error => {

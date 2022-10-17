@@ -1,6 +1,6 @@
 <header class="header">
   <mat-icon class="header__logo" svgIcon="logo"></mat-icon>
-  <div class="header__menu">
+  <div class="header__menu" *ngIf="user$ | async">
     <button
       class="header__menu__button"
       mat-icon-button
