@@ -11,6 +11,7 @@ import { MatIconModule } from '@angular/material/icon'
 import { MatAutocompleteModule } from '@angular/material/autocomplete'
 import { MatButtonModule } from '@angular/material/button'
 import { MatDialogModule } from '@angular/material/dialog'
+import { MatCheckboxModule } from '@angular/material/checkbox'
 import { AuthService } from './services/auth/auth.service'
 import { PasswordResetComponent } from './components/password-reset/password-reset.component'
 
@@ -26,7 +27,8 @@ import { PasswordResetComponent } from './components/password-reset/password-res
     MatIconModule,
     MatAutocompleteModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    MatCheckboxModule
   ],
   providers: [AuthService]
 })

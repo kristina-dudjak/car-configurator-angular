@@ -44,12 +44,14 @@ export class LoginComponent {
 
   isPasswordVisible = true
   firebaseError: string | undefined = ''
+  rememberMe = true
   onLogin () {
     if (!this.loginForm.valid) return
     this.authService
       .signIn(
         this.loginForm.value.email as string,
-        this.loginForm.value.password as string
+        this.loginForm.value.password as string,
+        this.rememberMe
       )
       .then(() => {
         this.firebaseError = this.authService.errorMessage
@@ -58,7 +60,7 @@ export class LoginComponent {
   }
 
   onGoogleLogin () {
-    this.authService.googleSignIn().then(() => {
+    this.authService.googleSignIn(this.rememberMe).then(() => {
       this.firebaseError = this.authService.errorMessage
       this.router.navigateByUrl('configurator')
     })

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core'
 import { AngularFireAuth } from '@angular/fire/compat/auth'
 import { Router } from '@angular/router'
 import firebase from 'firebase/compat/app'
+import { Observable, of } from 'rxjs'
 @Injectable({
   providedIn: 'root'
 })
@@ -9,11 +10,15 @@ export class AuthService {
   private _user: any
   private _errorMessage: string | undefined
   constructor (private firebaseAuth: AngularFireAuth, private router: Router) {
-    firebaseAuth.onAuthStateChanged(user => {
+    this.firebaseAuth.onAuthStateChanged(user => {
       this._user = user
     })
   }
   redirectUrl: string | null = null
+
+  getUser$ (): Observable<any> {
+    return of(this._user)
+  }
 
   get user () {
     return this._user
@@ -31,36 +36,48 @@ export class AuthService {
     this._errorMessage = message
   }
 
-  googleSignIn () {
+  googleSignIn (rememberMe: boolean) {
     return this.firebaseAuth
-      .signInWithPopup(new firebase.auth.GoogleAuthProvider())
-      .then(result => {
-        this._user = result.user
-      })
-      .catch(error => {
-        this._errorMessage = error.message
+      .setPersistence(rememberMe ? 'local' : 'session')
+      .then(() => {
+        this.firebaseAuth
+          .signInWithPopup(new firebase.auth.GoogleAuthProvider())
+          .then(result => {
+            this._user = result.user
+          })
+          .catch(error => {
+            this._errorMessage = error.message
+          })
       })
   }
 
-  signIn (email: string, password: string) {
+  signIn (email: string, password: string, rememberMe: boolean) {
     return this.firebaseAuth
-      .signInWithEmailAndPassword(email, password)
-      .then(result => {
-        this._user = result.user
-      })
-      .catch(error => {
-        this._errorMessage = error.message
+      .setPersistence(rememberMe ? 'local' : 'session')
+      .then(() => {
+        this.firebaseAuth
+          .signInWithEmailAndPassword(email, password)
+          .then(result => {
+            this._user = result.user
+          })
+          .catch(error => {
+            this._errorMessage = error.message
+          })
       })
   }
 
-  signUp (email: string, password: string) {
+  signUp (email: string, password: string, rememberMe: boolean) {
     return this.firebaseAuth
-      .createUserWithEmailAndPassword(email, password)
-      .then(result => {
-        this._user = result.user
-      })
-      .catch(error => {
-        this._errorMessage = error.message
+      .setPersistence(rememberMe ? 'local' : 'session')
+      .then(() => {
+        this.firebaseAuth
+          .createUserWithEmailAndPassword(email, password)
+          .then(result => {
+            this._user = result.user
+          })
+          .catch(error => {
+            this._errorMessage = error.message
+          })
       })
   }
 

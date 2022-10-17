@@ -6,7 +6,7 @@ import {
   RouterStateSnapshot,
   UrlTree
 } from '@angular/router'
-import { Observable } from 'rxjs'
+import { map, Observable } from 'rxjs'
 import { AuthService } from '../services/auth/auth.service'
 
 @Injectable({
@@ -23,13 +23,8 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    return this.checkLogin(state.url)
-  }
-
-  checkLogin (url: string): true | UrlTree {
-    if (this.authService.user) return true
-
-    this.authService.redirectUrl = url
-    return this.router.parseUrl('/login')
+    return this.authService
+      .getUser$()
+      .pipe(map(user => true || this.router.createUrlTree(['login'])))
   }
 }

@@ -50,6 +50,7 @@ export class RegisterComponent {
   isPasswordVisible = true
   isPasswordRepeatVisible = true
   firebaseError: string | undefined = ''
+  rememberMe = true
   onRegister () {
     if (!this.registerForm.valid) {
       return
@@ -57,7 +58,8 @@ export class RegisterComponent {
     this.authService
       .signUp(
         this.registerForm.value.email as string,
-        this.registerForm.value.password as string
+        this.registerForm.value.password as string,
+        this.rememberMe
       )
       .then(() => {
         this.firebaseError = this.authService.errorMessage
@@ -66,7 +68,7 @@ export class RegisterComponent {
   }
 
   onGoogleLogin () {
-    this.authService.googleSignIn().then(() => {
+    this.authService.googleSignIn(this.rememberMe).then(() => {
       this.firebaseError = this.authService.errorMessage
       this.router.navigateByUrl('configurator')
     })
