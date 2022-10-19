@@ -21,14 +21,10 @@ export class PasswordResetComponent {
     }
   )
 
-  firebaseError: string | undefined = ''
-
   sendEmail () {
     if (!this.emailForm.valid) return
-    this.authService
-      .sendPasswordResetEmail(this.emailForm.value.emailReset as string)
-      .then(() => {
-        this.firebaseError = this.authService.errorMessage
-      })
+    this.authService.sendPasswordResetEmail(
+      this.emailForm.value.emailReset as string
+    )
   }
 }

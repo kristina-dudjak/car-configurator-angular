@@ -1,7 +1,16 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
-import { AuthGuard } from './modules/auth/guards/auth.guard'
 import { PagenotfoundComponent } from './views/pagenotfound/pagenotfound.component'
+import {
+  redirectLoggedInTo,
+  redirectUnauthorizedTo,
+  canActivate
+} from '@angular/fire/compat/auth-guard'
+
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login'])
+
+const redirectLoggedInToConfigurator = () =>
+  redirectLoggedInTo(['configurator'])
 
 const routes: Routes = [
   {
@@ -12,7 +21,8 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./modules/auth/auth.module').then(m => m.AuthModule)
+      import('./modules/auth/auth.module').then(m => m.AuthModule),
+    ...canActivate(redirectLoggedInToConfigurator)
   },
   {
     path: 'configurator',
@@ -20,7 +30,7 @@ const routes: Routes = [
       import('./modules/configurator/configurator.module').then(
         m => m.ConfiguratorModule
       ),
-    canActivate: [AuthGuard]
+    ...canActivate(redirectUnauthorizedToLogin)
   },
   {
     path: '**',

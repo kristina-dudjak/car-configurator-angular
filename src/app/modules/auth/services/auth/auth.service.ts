@@ -8,24 +8,19 @@ import { BehaviorSubject } from 'rxjs'
 })
 export class AuthService {
   private user$ = new BehaviorSubject<firebase.User | null>(null)
-  private _errorMessage: string | undefined
+  private errorMessage$ = new BehaviorSubject<string | null>(null)
   constructor (private firebaseAuth: AngularFireAuth, private router: Router) {
     this.firebaseAuth.onAuthStateChanged(user => {
       this.user$.next(user)
     })
   }
-  redirectUrl: string | null = null
 
   get user () {
     return this.user$.asObservable()
   }
 
   get errorMessage () {
-    return this._errorMessage
-  }
-
-  set errorMessage (message: string | undefined) {
-    this._errorMessage = message
+    return this.errorMessage$.asObservable()
   }
 
   googleSignIn (rememberMe: boolean) {
@@ -36,9 +31,10 @@ export class AuthService {
           .signInWithPopup(new firebase.auth.GoogleAuthProvider())
           .then(result => {
             this.user$.next(result.user)
+            this.router.navigateByUrl('configurator')
           })
           .catch(error => {
-            this._errorMessage = error.message
+            this.errorMessage$.next(error.message)
           })
       })
   }
@@ -51,9 +47,10 @@ export class AuthService {
           .signInWithEmailAndPassword(email, password)
           .then(result => {
             this.user$.next(result.user)
+            this.router.navigateByUrl('configurator')
           })
           .catch(error => {
-            this._errorMessage = error.message
+            this.errorMessage$.next(error.message)
           })
       })
   }
@@ -66,9 +63,10 @@ export class AuthService {
           .createUserWithEmailAndPassword(email, password)
           .then(result => {
             this.user$.next(result.user)
+            this.router.navigateByUrl('configurator')
           })
           .catch(error => {
-            this._errorMessage = error.message
+            this.errorMessage$.next(error.message)
           })
       })
   }
@@ -81,13 +79,13 @@ export class AuthService {
         this.router.navigateByUrl('login')
       })
       .catch(error => {
-        this._errorMessage = error.message
+        this.errorMessage$.next(error.message)
       })
   }
 
   sendPasswordResetEmail (email: string) {
     return this.firebaseAuth.sendPasswordResetEmail(email).catch(error => {
-      this._errorMessage = error.message
+      this.errorMessage$.next(error.message)
     })
   }
 }

@@ -4,7 +4,7 @@
     [formGroup]="registerForm"
     (ngSubmit)="onRegister()"
   >
-    <h2 class="register__form__title">Sign up</h2>
+    <h3 class="register__form__title">Sign up</h3>
     <mat-form-field class="register__form__field" appearance="outline">
       <mat-label class="register__form__field__label">Email</mat-label>
       <input
@@ -94,8 +94,8 @@
     >
       Sign up
     </button>
-    <span class="register__form__errors" *ngIf="firebaseError"
-      >{{firebaseError}}</span
+    <span class="register__form__errors" *ngIf="firebaseError$ | async"
+      >{{firebaseError$.value}}</span
     >
     <button class="register__form__google" (click)="onGoogleLogin()">
       <mat-icon

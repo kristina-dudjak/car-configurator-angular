@@ -16,15 +16,20 @@ export class AppComponent implements OnInit {
     this.iconsService.addIcons()
   }
   user$ = new BehaviorSubject<firebase.User | null>(null)
+  firebaseError$ = new BehaviorSubject<string | null>(null)
 
   ngOnInit () {
     this.authService.user.subscribe((user: any) => {
       this.user$.next(user)
     })
+    this.authService.errorMessage.subscribe((message: any) => {
+      this.firebaseError$.next(message)
+    })
   }
 
   ngOnDestroy () {
     this.user$.unsubscribe()
+    this.firebaseError$.unsubscribe()
   }
 
   signOut () {
