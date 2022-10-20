@@ -37,7 +37,8 @@ export class RegisterComponent {
       validators: [
         ValidationService.validator('email'),
         ValidationService.validator('password'),
-        ValidationService.validator('repeatPassword')
+        ValidationService.validator('repeatPassword'),
+        ValidationService.passwordMatchValidator('repeatPassword')
       ],
       updateOn: 'blur'
     }
