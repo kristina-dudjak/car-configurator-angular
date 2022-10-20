@@ -1,20 +1,21 @@
 @import '@angular/material/theming';
 
-$custom-primary: (
-  50: #e1e4e9,
-  100: #b4bcc8,
-  200: #828fa4,
-  300: #50627f,
-  400: #2b4063,
-  500: #051e48,
-  600: #041a41,
-  700: #041638,
-  800: #031230,
-  900: #010a21,
-  A100: #5d76ff,
-  A200: #2a4aff,
-  A400: #0025f6,
-  A700: #0021dd,
+/* For use in src/lib/core/theming/_palette.scss */
+$primary: (
+  50: #e4e4fa,
+  100: #bcbcf2,
+  200: #8f8fe9,
+  300: #6262e0,
+  400: #4040d9,
+  500: #1e1ed2,
+  600: #1a1acd,
+  700: #1616c7,
+  800: #1212c1,
+  900: #0a0ab6,
+  A100: #e1e1ff,
+  A200: #aeaeff,
+  A400: #7b7bff,
+  A700: #6262ff,
   contrast: (
     50: #000000,
     100: #000000,
@@ -26,28 +27,61 @@ $custom-primary: (
     700: #ffffff,
     800: #ffffff,
     900: #ffffff,
-    A100: #ffffff,
-    A200: #ffffff,
-    A400: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
     A700: #ffffff
   )
 );
 
-$custom-accent: (
-  50: #fdf1e6,
-  100: #f9dcc1,
-  200: #f6c598,
-  300: #f2ad6e,
-  400: #ef9c4f,
-  500: #ec8a30,
-  600: #ea822b,
-  700: #e77724,
-  800: #e46d1e,
-  900: #df5a13,
+$secondary: (
+  50: #fce8f1,
+  100: #f8c6db,
+  200: #f4a0c3,
+  300: #f07aab,
+  400: #ec5e99,
+  500: #e94187,
+  600: #e63b7f,
+  700: #e33274,
+  800: #df2a6a,
+  900: #d91c57,
   A100: #ffffff,
-  A200: #ffe6da,
-  A400: #ffc3a7,
-  A700: #ffb18e,
+  A200: #ffdbe5,
+  A400: #ffa8c1,
+  A700: #ff8fae,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000
+  )
+);
+
+$accent: (
+  50: #fef8fb,
+  100: #fdeff5,
+  200: #fce4ee,
+  300: #fbd9e7,
+  400: #fad0e2,
+  500: #f9c8dd,
+  600: #f8c2d9,
+  700: #f7bbd4,
+  800: #f6b4cf,
+  900: #f5a7c7,
+  A100: #ffffff,
+  A200: #ffffff,
+  A400: #ffffff,
+  A700: #ffffff,
   contrast: (
     50: #000000,
     100: #000000,
@@ -58,7 +92,7 @@ $custom-accent: (
     600: #000000,
     700: #000000,
     800: #000000,
-    900: #ffffff,
+    900: #000000,
     A100: #000000,
     A200: #000000,
     A400: #000000,
@@ -66,35 +100,36 @@ $custom-accent: (
   )
 );
 
-$custom-warning: (
-  50: #f7e1e1,
-  100: #ecb3b3,
-  200: #df8080,
-  300: #d24d4d,
-  400: #c92727,
-  500: #bf0101,
-  600: #b90101,
-  700: #b10101,
-  800: #a90101,
-  900: #9b0000,
-  A100: #ffc6c6,
-  A200: #ff9393,
-  A400: #ff6060,
-  A700: #ff4747,
-  contrast: (
-    50: #000000,
-    100: #000000,
-    200: #000000,
-    300: #ffffff,
-    400: #ffffff,
-    500: #ffffff,
-    600: #ffffff,
-    700: #ffffff,
-    800: #ffffff,
-    900: #ffffff,
-    A100: #000000,
-    A200: #000000,
-    A400: #000000,
-    A700: #ffffff
-  )
+$success: (
+  normal: #1ed286,
+  light: #6ceab5,
+  lighter: #c5f7e2
+);
+
+$error: (
+  normal: #d2341e,
+  light: #ea7b6c,
+  lighter: #f7cbc5
+);
+
+$warning: (
+  normal: #fdae37,
+  light: #fed69a,
+  lighter: #ffebcc
+);
+
+$info: (
+  normal: #4da2f0,
+  light: #aad3f8,
+  lighter: #d9ebfc
+);
+
+$ux-colors: (
+  A100: #fcfcfd,
+  A200: #f1f1f4,
+  A300: #c7c7d1,
+  A400: #9d9daf,
+  A500: #73738c,
+  A600: #505062,
+  A700: #2e2e38
 );

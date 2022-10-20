@@ -1,3 +1,6 @@
+@use '@angular/material' as mat;
+@import '../../../../../scss/colors.scss';
+
 .register {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -15,16 +18,28 @@
 
     &__field {
       margin-bottom: 20px;
+
+      &__error {
+        color: mat.get-color-from-palette($error, normal);
+      }
+
+      &__toggle__icon {
+        color: mat.get-color-from-palette($ux-colors, A600);
+      }
     }
 
     &__checkbox {
-      margin-bottom: 12px;
+      margin-bottom: 8px;
       align-self: center;
     }
 
     &__errors {
       margin: 20px 0;
-      color: red;
+      color: mat.get-color-from-palette($error, normal);
+    }
+
+    &__submit {
+      background-color: mat.get-color-from-palette($primary, 500);
     }
 
     &__google {
@@ -32,8 +47,9 @@
       width: 100%;
       align-self: center;
       padding: 4px 16px;
-      border: 2px solid gray;
+      border: 2px solid mat.get-color-from-palette($ux-colors, A200);
       border-radius: 12px;
+      background-color: mat.get-color-from-palette($primary, 100);
     }
   }
 
