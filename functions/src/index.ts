@@ -1,14 +1,17 @@
 import * as functions from 'firebase-functions'
-
 // // Start writing Firebase Functions
 // // https://firebase.google.com/docs/functions/typescript
+const admin = require('firebase-admin')
+admin.initializeApp()
 
-export const helloWorld = functions.auth.user().onCreate(user => {
+export const addUserToDb = functions.auth.user().onCreate(user => {
   console.log('hello')
   console.log(user)
+  return admin
+    .database()
+    .ref('users/' + user.uid)
+    .set({
+      email: user.email,
+      configurations: []
+    })
 })
-//
-// export const helloWorld = functions.https.onRequest((request, response) => {
-//   functions.logger.info("Hello logs!", {structuredData: true});
-//   response.send("Hello from Firebase!");
-// });

@@ -3,20 +3,25 @@ import { AngularFireAuth } from '@angular/fire/compat/auth'
 import { Router } from '@angular/router'
 import firebase from 'firebase/compat/app'
 import { BehaviorSubject } from 'rxjs'
+import { DataService } from 'src/app/services/dataService/data.service'
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private user$ = new BehaviorSubject<firebase.User | null>(null)
+  private _user$ = new BehaviorSubject<firebase.User | null>(null)
   private errorMessage$ = new BehaviorSubject<string | null>(null)
-  constructor (private firebaseAuth: AngularFireAuth, private router: Router) {
+  constructor (
+    private firebaseAuth: AngularFireAuth,
+    private router: Router,
+    private dataService: DataService
+  ) {
     this.firebaseAuth.onAuthStateChanged(user => {
-      this.user$.next(user)
+      this._user$.next(user)
     })
   }
 
-  get user () {
-    return this.user$.asObservable()
+  get user$ () {
+    return this._user$.asObservable()
   }
 
   get errorMessage () {
@@ -30,7 +35,7 @@ export class AuthService {
         this.firebaseAuth
           .signInWithPopup(new firebase.auth.GoogleAuthProvider())
           .then(result => {
-            this.user$.next(result.user)
+            this._user$.next(result.user)
             this.router.navigateByUrl('configurator')
           })
           .catch(error => {
@@ -46,7 +51,7 @@ export class AuthService {
         this.firebaseAuth
           .signInWithEmailAndPassword(email, password)
           .then(result => {
-            this.user$.next(result.user)
+            this._user$.next(result.user)
             this.router.navigateByUrl('configurator')
           })
           .catch(error => {
@@ -62,7 +67,20 @@ export class AuthService {
         this.firebaseAuth
           .createUserWithEmailAndPassword(email, password)
           .then(result => {
-            this.user$.next(result.user)
+            this._user$.next(result.user)
+            console.log(result.user)
+            // if ((result.user?.uid, result.user?.email))
+            //   this.dataService
+            //     .addUser({
+            //       id: result.user?.uid,
+            //       email: result.user?.email
+            //     })
+            //     .subscribe(resp => {
+            //       console.log(resp)
+            //       this.dataService.getUsers().subscribe(users => {
+            //         console.log(users)
+            //       })
+            //     })
             this.router.navigateByUrl('configurator')
           })
           .catch(error => {
@@ -75,7 +93,7 @@ export class AuthService {
     return this.firebaseAuth
       .signOut()
       .then(() => {
-        this.user$.next(null)
+        this._user$.next(null)
         this.router.navigateByUrl('login')
       })
       .catch(error => {

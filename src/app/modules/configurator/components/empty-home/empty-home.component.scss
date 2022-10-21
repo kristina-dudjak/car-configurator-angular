@@ -1,0 +1,16 @@
+@use '@angular/material' as mat;
+@import '../../../../../scss/colors.scss';
+
+.empty__img {
+  opacity: 0.1;
+}
+
+.empty__description {
+  text-align: center;
+
+  &__link {
+    color: mat.get-color-from-palette($primary, 500);
+    font-weight: bold;
+    cursor: pointer;
+  }
+}
