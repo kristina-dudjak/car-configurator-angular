@@ -1,0 +1,25 @@
+@use '@angular/material' as mat;
+@import '../scss/colors.scss';
+
+.header {
+  background-color: mat.get-color-from-palette($ux-colors, A700);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+
+  &__logo {
+    color: mat.get-color-from-palette($ux-colors, A100);
+  }
+
+  &__menu {
+    &__items__item {
+      background-color: mat.get-color-from-palette($ux-colors, A100);
+      border: 1px solid mat.get-color-from-palette($ux-colors, A200);
+
+      &__text {
+        color: mat.get-color-from-palette($primary, 400);
+      }
+    }
+  }
+}

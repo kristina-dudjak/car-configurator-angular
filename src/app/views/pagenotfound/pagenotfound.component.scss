@@ -1,0 +1,26 @@
+@use '@angular/material' as mat;
+@import '../../../scss/colors.scss';
+
+.page404 {
+  height: calc(100vh - 80px);
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 2fr 1fr 2fr;
+  justify-items: center;
+
+  &__title {
+    grid-column: 5 / 9;
+    align-self: end;
+  }
+
+  &__description {
+    grid-column: 5 / 9;
+    text-align: center;
+  }
+
+  &__redirect {
+    grid-column: 5 / 9;
+    align-self: start;
+    background-color: mat.get-color-from-palette($primary, 300);
+  }
+}

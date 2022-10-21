@@ -1,0 +1,135 @@
+@import '@angular/material/theming';
+
+/* For use in src/lib/core/theming/_palette.scss */
+$primary: (
+  50: #e4e4fa,
+  100: #bcbcf2,
+  200: #8f8fe9,
+  300: #6262e0,
+  400: #4040d9,
+  500: #1e1ed2,
+  600: #1a1acd,
+  700: #1616c7,
+  800: #1212c1,
+  900: #0a0ab6,
+  A100: #e1e1ff,
+  A200: #aeaeff,
+  A400: #7b7bff,
+  A700: #6262ff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #ffffff,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #ffffff
+  )
+);
+
+$secondary: (
+  50: #fce8f1,
+  100: #f8c6db,
+  200: #f4a0c3,
+  300: #f07aab,
+  400: #ec5e99,
+  500: #e94187,
+  600: #e63b7f,
+  700: #e33274,
+  800: #df2a6a,
+  900: #d91c57,
+  A100: #ffffff,
+  A200: #ffdbe5,
+  A400: #ffa8c1,
+  A700: #ff8fae,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000
+  )
+);
+
+$accent: (
+  50: #fef8fb,
+  100: #fdeff5,
+  200: #fce4ee,
+  300: #fbd9e7,
+  400: #fad0e2,
+  500: #f9c8dd,
+  600: #f8c2d9,
+  700: #f7bbd4,
+  800: #f6b4cf,
+  900: #f5a7c7,
+  A100: #ffffff,
+  A200: #ffffff,
+  A400: #ffffff,
+  A700: #ffffff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #000000,
+    800: #000000,
+    900: #000000,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000
+  )
+);
+
+$success: (
+  normal: #1ed286,
+  light: #6ceab5,
+  lighter: #c5f7e2
+);
+
+$error: (
+  normal: #d2341e,
+  light: #ea7b6c,
+  lighter: #f7cbc5
+);
+
+$warning: (
+  normal: #fdae37,
+  light: #fed69a,
+  lighter: #ffebcc
+);
+
+$info: (
+  normal: #4da2f0,
+  light: #aad3f8,
+  lighter: #d9ebfc
+);
+
+$ux-colors: (
+  A100: #fcfcfd,
+  A200: #f1f1f4,
+  A300: #c7c7d1,
+  A400: #9d9daf,
+  A500: #73738c,
+  A600: #505062,
+  A700: #2e2e38
+);
