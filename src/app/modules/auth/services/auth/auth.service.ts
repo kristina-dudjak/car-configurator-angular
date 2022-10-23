@@ -10,11 +10,7 @@ import { DataService } from 'src/app/services/dataService/data.service'
 export class AuthService {
   private _user$ = new BehaviorSubject<firebase.User | null>(null)
   private errorMessage$ = new BehaviorSubject<string | null>(null)
-  constructor (
-    private firebaseAuth: AngularFireAuth,
-    private router: Router,
-    private dataService: DataService
-  ) {
+  constructor (private firebaseAuth: AngularFireAuth, private router: Router) {
     this.firebaseAuth.onAuthStateChanged(user => {
       this._user$.next(user)
     })
@@ -68,19 +64,6 @@ export class AuthService {
           .createUserWithEmailAndPassword(email, password)
           .then(result => {
             this._user$.next(result.user)
-            console.log(result.user)
-            // if ((result.user?.uid, result.user?.email))
-            //   this.dataService
-            //     .addUser({
-            //       id: result.user?.uid,
-            //       email: result.user?.email
-            //     })
-            //     .subscribe(resp => {
-            //       console.log(resp)
-            //       this.dataService.getUsers().subscribe(users => {
-            //         console.log(users)
-            //       })
-            //     })
             this.router.navigateByUrl('configurator')
           })
           .catch(error => {
