@@ -1,11 +1,10 @@
 import { CarElement } from './CarElement'
 
 export interface Car {
-  id: string
-  // name: string
+  name: string
   price: number
   year: number
-  imageUrl: string
+  url: string
   colors: CarElement[]
   interiors: CarElement[]
   wheels: CarElement[]

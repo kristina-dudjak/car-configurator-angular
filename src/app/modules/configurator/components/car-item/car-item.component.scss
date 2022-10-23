@@ -1,0 +1,27 @@
+@use '@angular/material' as mat;
+@import '../../../../../scss/colors.scss';
+
+.car {
+  overflow-x: hidden;
+  &__img {
+    min-width: 150%;
+    margin-left: -70%;
+  }
+
+  &__year {
+    color: mat.get-color-from-palette($ux-colors, A500);
+    margin-left: 24px;
+  }
+
+  &__name {
+    margin-left: 24px;
+  }
+
+  &__actions {
+    margin-left: 24px;
+
+    &__configure {
+      background-color: mat.get-color-from-palette($primary, 500);
+    }
+  }
+}
