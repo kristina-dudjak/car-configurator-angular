@@ -1,0 +1,21 @@
+<div class="configuration" *ngIf="(car$ | async) && (car$ | async) as car">
+  <div class="configuration__nav">
+    <div class="configuration__nav__content">
+      <mat-icon
+        class="configuration__nav__content__back"
+        svgIcon="back"
+      ></mat-icon>
+      <h3 class="configuration__nav__content__year">
+        {{car.year}}
+      </h3>
+      <h3 class="configuration__nav__content__name">
+        {{car.name}}
+      </h3>
+    </div>
+    <div class="configuration__nav__links">
+      <a class="configuration__nav__links__edit">Edit configuration</a>
+      <a class="configuration__nav__links__delete">Delete</a>
+    </div>
+  </div>
+  <app-car-slider class="configuration__slider" [car]="car"></app-car-slider>
+</div>

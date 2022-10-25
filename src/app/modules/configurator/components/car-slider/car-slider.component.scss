@@ -1,0 +1,18 @@
+@use '@angular/material' as mat;
+@import '../../../../../scss/colors.scss';
+
+.slider {
+  &__img {
+    width: 100%;
+  }
+
+  &__views {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+
+    &__currentNumber {
+      color: mat.get-color-from-palette($ux-colors, A700);
+    }
+  }
+}
