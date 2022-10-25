@@ -4,7 +4,7 @@
     Pick you favorite model and start configuring.
   </p>
   <ul class="cars__list">
-    <li class="cars__list__item" *ngFor="let car of cars | async">
+    <li class="cars__list__item" *ngFor="let car of cars$ | async">
       <app-car-item [car]="car"></app-car-item>
     </li>
   </ul>
