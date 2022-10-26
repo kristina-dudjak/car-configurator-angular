@@ -1,11 +1,11 @@
 <div class="slider">
-  <img class="slider__img" src="{{car.url}}" />
+  <img class="slider__img" src="{{carImage$ | async}}" />
   <div class="slider__views">
     <button class="slider__views__button" mat-icon-button (click)="decrement()">
       <mat-icon class="slider__views__button__back" svgIcon="back"></mat-icon>
     </button>
     <h4 class="slider__views__currentNumber">
-      {{currentNumber}}
+      {{currentNumber$ | async}}
     </h4>
     <h4 class="slider__views__slash">/</h4>
     <h4 class="slider__views__lastNumber">5</h4>
@@ -14,3 +14,5 @@
     </button>
   </div>
 </div>
+
+<ng-container *ngIf="currentNumberChanged$ | async"></ng-container>
