@@ -7,7 +7,7 @@ import {
   switchMap,
   tap
 } from 'rxjs'
-import { Car } from 'src/app/shared/models/Car'
+import { Configuration } from 'src/app/shared/models/Configuration'
 
 @Component({
   selector: 'app-car-slider',
@@ -15,7 +15,7 @@ import { Car } from 'src/app/shared/models/Car'
   styleUrls: ['./car-slider.component.scss']
 })
 export class CarSliderComponent {
-  @Input() car: Car
+  @Input() configuration: Configuration
   currentNumber$ = new BehaviorSubject<number>(1)
   carImage$ = new BehaviorSubject<string | null>(null)
 
@@ -41,7 +41,7 @@ export class CarSliderComponent {
   getCarImage$ (page: number) {
     return this.storage
       .ref(
-        `images/${this.car.name}/exteriors/${this.car.colors[0].id}${this.car.wheels[0].id}/${page}.png`
+        `images/${this.configuration.carName}/exteriors/${this.configuration.color.id}${this.configuration.wheel.id}/${page}.png`
       )
       .getDownloadURL()
   }

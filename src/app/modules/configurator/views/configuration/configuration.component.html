@@ -1,4 +1,7 @@
-<div class="configuration" *ngIf="(car$ | async) && (car$ | async) as car">
+<div
+  class="configuration"
+  *ngIf="(configuration$ | async) && (configuration$ | async) as configuration"
+>
   <div class="configuration__nav">
     <div class="configuration__nav__content">
       <mat-icon
@@ -6,10 +9,10 @@
         svgIcon="back"
       ></mat-icon>
       <h3 class="configuration__nav__content__year">
-        {{car.year}}
+        {{configuration.year}}
       </h3>
       <h3 class="configuration__nav__content__name">
-        {{car.name}}
+        {{configuration.carName}}
       </h3>
     </div>
     <div class="configuration__nav__links">
@@ -17,5 +20,8 @@
       <a class="configuration__nav__links__delete">Delete</a>
     </div>
   </div>
-  <app-car-slider class="configuration__slider" [car]="car"></app-car-slider>
+  <app-car-slider
+    class="configuration__slider"
+    [configuration]="configuration"
+  ></app-car-slider>
 </div>

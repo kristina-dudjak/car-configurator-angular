@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
 import { Observable } from 'rxjs'
-import { Car } from 'src/app/shared/models/Car'
-import { CarService } from '../../services/car-service/car.service'
+import { Configuration } from 'src/app/shared/models/Configuration'
+import { StoreService } from 'src/app/shared/services/store/store.service'
 
 @Component({
   selector: 'app-configuration',
@@ -11,15 +11,16 @@ import { CarService } from '../../services/car-service/car.service'
 })
 export class ConfigurationComponent implements OnInit {
   name: string
-  car$: Observable<Car | undefined>
+  configuration$: Observable<Configuration | null>
 
-  constructor (private route: ActivatedRoute, private carService: CarService) {
+  constructor (private route: ActivatedRoute, private store: StoreService) {
     this.route.params.subscribe(params => {
       this.name = params['name']
     })
   }
 
   ngOnInit () {
-    this.car$ = this.carService.getCarByName(this.name)
+    this.store.initialConfigurationLoad(this.name)
+    this.configuration$ = this.store.configuration$
   }
 }

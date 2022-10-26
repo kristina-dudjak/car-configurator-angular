@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { Observable } from 'rxjs'
 import { Car } from 'src/app/shared/models/Car'
-import { CarService } from '../../services/car-service/car.service'
+import { StoreService } from 'src/app/shared/services/store/store.service'
 
 @Component({
   selector: 'app-cars',
@@ -10,9 +10,10 @@ import { CarService } from '../../services/car-service/car.service'
 })
 export class CarsComponent implements OnInit {
   cars$: Observable<Car[] | null>
-  constructor (private carService: CarService) {}
+  constructor (private store: StoreService) {}
 
   ngOnInit () {
-    this.cars$ = this.carService.cars$
+    this.store.initialCarLoad()
+    this.cars$ = this.store.cars$
   }
 }
