@@ -16,5 +16,9 @@ export const icons: IconItem[] = [
   {
     name: 'next',
     svg: `<svg width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M.646.146a.5.5 0 0 0 0 .708L7.793 8 .646 15.146a.5.5 0 0 0 .708.708l7.5-7.5a.5.5 0 0 0 0-.708l-7.5-7.5a.5.5 0 0 0-.708 0Z" fill="currentColor"/></svg>`
+  },
+  {
+    name: 'info',
+    svg: `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8Zm1 12H7V7h2v5ZM8 6c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1Z" fill="currentColor"/></svg>`
   }
 ]

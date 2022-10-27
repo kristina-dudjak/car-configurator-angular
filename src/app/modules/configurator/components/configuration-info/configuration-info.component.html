@@ -1,0 +1,82 @@
+<div class="info">
+  <div class="info__car">
+    <div class="info__car__properties">
+      <h2 class="info__car__properties__name mat-text-lg">
+        {{configuration.carName | uppercase}}
+      </h2>
+      <h3 class="info__car__properties__year">{{configuration.year}}</h3>
+    </div>
+    <div class="info__car__price">
+      <div class="info__car__price__total">
+        <p class="info__car__price__total__text text-button-default">
+          {{'total' | uppercase}}
+        </p>
+        <mat-icon
+          class="info__car__price__total__icon"
+          svgIcon="info"
+        ></mat-icon>
+      </div>
+      <h3 class="info__car__price__value">{{configuration.price}} €</h3>
+    </div>
+  </div>
+  <mat-divider class="info__divider"></mat-divider>
+  <div class="info__configuration">
+    <h3 class="info__configuration__text">Your configuration details</h3>
+    <div class="info__configuration__values">
+      <h3 class="info__configuration__values__exterior">Exterior</h3>
+      <mat-divider class="info__configuration__values__divider"></mat-divider>
+      <div class="info__configuration__values__property">
+        <div class="info__configuration__values__property__values">
+          <img
+            class="info__configuration__values__property__values__img"
+            src="{{configuration.color.thumbnail}}"
+          />
+          <h4 class="info__configuration__values__property__values__name">
+            {{configuration.color.name}}
+          </h4>
+        </div>
+        <h4 class="info__configuration__values__property__price">
+          {{configuration.color.price}} €
+        </h4>
+      </div>
+      <div class="info__configuration__values__property">
+        <div class="info__configuration__values__property__values">
+          <img
+            class="info__configuration__values__property__values__img"
+            src="{{configuration.wheel.thumbnail}}"
+          />
+          <h4 class="info__configuration__values__property__values__name">
+            {{configuration.wheel.name}}
+          </h4>
+        </div>
+        <h4 class="info__configuration__values__property__price">
+          {{configuration.wheel.price}} €
+        </h4>
+      </div>
+      <h3 class="info__configuration__values__interior">Interior</h3>
+      <mat-divider class="info__configuration__values__divider"></mat-divider>
+      <div class="info__configuration__values__property">
+        <div class="info__configuration__values__property__values">
+          <img
+            class="info__configuration__values__property__values__img"
+            src="{{configuration.interior.thumbnail}}"
+          />
+          <h4 class="info__configuration__values__property__values__name">
+            {{configuration.interior.name}}
+          </h4>
+        </div>
+        <h4 class="info__configuration__values__property__price">
+          {{configuration.interior.price}} €
+        </h4>
+      </div>
+      <div class="info__configuration__values__price">
+        <h3 class="info__configuration__values__price__text">
+          {{'total' | uppercase}}
+        </h3>
+        <h3 class="info__configuration__values__price__value">
+          {{configuration.price}} €
+        </h3>
+      </div>
+    </div>
+  </div>
+</div>
