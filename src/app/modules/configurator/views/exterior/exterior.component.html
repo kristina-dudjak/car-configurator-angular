@@ -18,4 +18,14 @@
     </div>
   </div>
   <app-car-slider class="exterior__slider"></app-car-slider>
+  <app-exterior-sidebar
+    class="exterior__sidebar"
+    [configuration]="configuration"
+    *ngIf="(editing$ | async) === editedEnum.none"
+  ></app-exterior-sidebar>
+  <app-element-picker
+    *ngIf="(editing$ | async) !== editedEnum.none && (editing$ | async) as editing"
+    [configuration]="configuration"
+    [editing]="editing"
+  ></app-element-picker>
 </div>

@@ -1,0 +1,14 @@
+<div
+  class="sidebar"
+  *ngIf="(carElements$ | async) && (carElements$ | async) as carElements"
+>
+  <ul>
+    <li *ngFor="let element of carElements">
+      <app-element-item
+        [element]="element"
+        [configuration]="configuration"
+        [editing]="editing"
+      ></app-element-item>
+    </li>
+  </ul>
+</div>
