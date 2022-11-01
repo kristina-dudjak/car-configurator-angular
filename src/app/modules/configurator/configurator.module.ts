@@ -15,7 +15,10 @@ import { ConfigurationInfoComponent } from './components/configuration-info/conf
 import { ExteriorComponent } from './views/exterior/exterior.component';
 import { ExteriorSidebarComponent } from './components/exterior-sidebar/exterior-sidebar.component';
 import { ElementPickerComponent } from './components/element-picker/element-picker.component';
-import { ElementItemComponent } from './components/element-item/element-item.component'
+import { ElementItemComponent } from './components/element-item/element-item.component';
+import { InteriorComponent } from './views/interior/interior.component';
+import { InteriorSliderComponent } from './components/interior-slider/interior-slider.component';
+import { InteriorSidebarComponent } from './components/interior-sidebar/interior-sidebar.component'
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import { ElementItemComponent } from './components/element-item/element-item.com
     ExteriorComponent,
     ExteriorSidebarComponent,
     ElementPickerComponent,
-    ElementItemComponent
+    ElementItemComponent,
+    InteriorComponent,
+    InteriorSliderComponent,
+    InteriorSidebarComponent
   ],
   imports: [
     CommonModule,

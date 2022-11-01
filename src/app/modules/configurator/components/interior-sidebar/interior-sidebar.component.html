@@ -1,0 +1,31 @@
+<div class="sidebar">
+  <div class="sidebar__items">
+    <div class="sidebar__items__item" (click)="showInteriors()">
+      <img
+        class="sidebar__items__item__img"
+        src="{{configuration.interior.thumbnail}}"
+      />
+      <div class="sidebar__items__item__text">
+        <h3 class="sidebar__items__item__text__name">
+          {{configuration.interior.name}}
+        </h3>
+        <h4 class="sidebar__items__item__text__description">
+          {{"color" | uppercase}}
+        </h4>
+      </div>
+    </div>
+  </div>
+  <div class="sidebar__final">
+    <div class="sidebar__final__price">
+      <div class="sidebar__final__price__total">
+        <h3 class="sidebar__final__price__total__text">total</h3>
+        <mat-icon
+          class="sidebar__final__price__total__icon"
+          svgIcon="info"
+        ></mat-icon>
+      </div>
+      <h2 class="sidebar__final__price__value">{{configuration.price}}</h2>
+    </div>
+    <button class="sidebar__final__button" mat-button>interior</button>
+  </div>
+</div>

@@ -4,6 +4,7 @@ import { CarsComponent } from './views/cars/cars.component'
 import { ConfigurationComponent } from './views/configuration/configuration.component'
 import { ExteriorComponent } from './views/exterior/exterior.component'
 import { HomeComponent } from './views/home/home.component'
+import { InteriorComponent } from './views/interior/interior.component'
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'cars/:name/exterior',
     component: ExteriorComponent
+  },
+  {
+    path: 'cars/:name/interior',
+    component: InteriorComponent
   }
 ]
 
