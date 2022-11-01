@@ -1,0 +1,21 @@
+<div
+  class="exterior"
+  *ngIf="(configuration$ | async) && (configuration$ | async) as configuration"
+>
+  <div class="exterior__nav">
+    <div class="exterior__nav__content">
+      <mat-icon class="exterior__nav__content__back" svgIcon="back"></mat-icon>
+      <h3 class="exterior__nav__content__year">
+        {{configuration.year}}
+      </h3>
+      <h3 class="exterior__nav__content__name">
+        {{configuration.carName}}
+      </h3>
+    </div>
+    <div class="exterior__nav__links">
+      <a class="exterior__nav__links__exterior">Exterior</a>
+      <a class="exterior__nav__links__interior">Interior</a>
+    </div>
+  </div>
+  <app-car-slider class="exterior__slider"></app-car-slider>
+</div>

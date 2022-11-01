@@ -4,7 +4,9 @@ import {
   AngularFirestoreCollection
 } from '@angular/fire/compat/firestore'
 import { BehaviorSubject, firstValueFrom, map, tap } from 'rxjs'
+import { EditedEnum } from '../../enums/EditedEnum'
 import { Car } from '../../models/Car'
+import { CarElement } from '../../models/CarElement'
 import { Configuration } from '../../models/Configuration'
 
 @Injectable({
@@ -13,6 +15,8 @@ import { Configuration } from '../../models/Configuration'
 export class StoreService {
   private _cars$ = new BehaviorSubject<Car[] | null>(null)
   private _configuration$ = new BehaviorSubject<Configuration | null>(null)
+  private _carElements$ = new BehaviorSubject<CarElement[] | null>(null)
+  private _editingEnums$ = new BehaviorSubject<EditedEnum>(EditedEnum.none)
   private carsCollection: AngularFirestoreCollection<Car> = this.db.collection<
     Car
   >('models')
@@ -25,6 +29,42 @@ export class StoreService {
 
   get configuration$ () {
     return this._configuration$.asObservable()
+  }
+
+  get carElements$ () {
+    return this._carElements$.asObservable()
+  }
+
+  get editingElements$ () {
+    return this._editingEnums$.asObservable()
+  }
+
+  updateConfiguration (conf: Configuration | null) {
+    this._configuration$.next(conf)
+  }
+
+  updateEditingEnums (elements: EditedEnum) {
+    this._editingEnums$.next(elements)
+  }
+
+  getCarElements () {
+    firstValueFrom(
+      this.carsCollection.valueChanges().pipe(
+        map(cars => {
+          cars
+            .filter(
+              car => car.name === this._configuration$.getValue()?.carName
+            )
+            .map(car => {
+              this._carElements$.next(
+                car[
+                  EditedEnum[this._editingEnums$.value] as keyof Car
+                ] as CarElement[]
+              )
+            })
+        })
+      )
+    )
   }
 
   initialCarLoad () {

@@ -1,7 +1,7 @@
 @use '@angular/material' as mat;
 @import '../../../../../scss/colors.scss';
 
-.configuration {
+.exterior {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   height: calc(100vh - 80px);
@@ -42,10 +42,13 @@
   }
 
   &__slider {
-    grid-column: 2 / 12;
+    grid-column: 1 / 10;
   }
 
-  &__info {
-    grid-column: 2 / 12;
+  &__sidebar {
+    grid-column: 10 / 15;
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
   }
 }

@@ -1,34 +1,30 @@
 import { Component, OnInit } from '@angular/core'
-import { ActivatedRoute, Router } from '@angular/router'
+import { ActivatedRoute } from '@angular/router'
 import { Observable } from 'rxjs'
+import { EditedEnum } from 'src/app/shared/enums/EditedEnum'
 import { Configuration } from 'src/app/shared/models/Configuration'
 import { StoreService } from 'src/app/shared/services/store/store.service'
 
 @Component({
-  selector: 'app-configuration',
-  templateUrl: './configuration.component.html',
-  styleUrls: ['./configuration.component.scss']
+  selector: 'app-exterior',
+  templateUrl: './exterior.component.html',
+  styleUrls: ['./exterior.component.scss']
 })
-export class ConfigurationComponent implements OnInit {
+export class ExteriorComponent implements OnInit {
   name: string
   configuration$: Observable<Configuration | null>
+  editing$: Observable<EditedEnum>
+  editedEnum = EditedEnum
 
-  constructor (
-    private route: ActivatedRoute,
-    private store: StoreService,
-    private router: Router
-  ) {
+  constructor (private store: StoreService, private route: ActivatedRoute) {
     this.route.params.subscribe(params => {
       this.name = params['name']
     })
   }
 
-  ngOnInit () {
+  ngOnInit (): void {
     this.store.initialConfigurationLoad(this.name)
     this.configuration$ = this.store.configuration$
-  }
-
-  goToExterior () {
-    this.router.navigateByUrl(`configurator/cars/${this.name}/exterior`)
+    this.editing$ = this.store.editingElements$
   }
 }

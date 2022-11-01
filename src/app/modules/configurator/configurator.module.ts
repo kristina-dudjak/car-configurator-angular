@@ -11,7 +11,11 @@ import { MatCardModule } from '@angular/material/card'
 import { ConfigurationComponent } from './views/configuration/configuration.component'
 import { CarSliderComponent } from './components/car-slider/car-slider.component'
 import { MatIconModule } from '@angular/material/icon'
-import { ConfigurationInfoComponent } from './components/configuration-info/configuration-info.component'
+import { ConfigurationInfoComponent } from './components/configuration-info/configuration-info.component';
+import { ExteriorComponent } from './views/exterior/exterior.component';
+import { ExteriorSidebarComponent } from './components/exterior-sidebar/exterior-sidebar.component';
+import { ElementPickerComponent } from './components/element-picker/element-picker.component';
+import { ElementItemComponent } from './components/element-item/element-item.component'
 
 @NgModule({
   declarations: [
@@ -21,7 +25,11 @@ import { ConfigurationInfoComponent } from './components/configuration-info/conf
     CarItemComponent,
     ConfigurationComponent,
     CarSliderComponent,
-    ConfigurationInfoComponent
+    ConfigurationInfoComponent,
+    ExteriorComponent,
+    ExteriorSidebarComponent,
+    ElementPickerComponent,
+    ElementItemComponent
   ],
   imports: [
     CommonModule,

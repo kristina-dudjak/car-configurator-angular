@@ -16,14 +16,13 @@
       </h3>
     </div>
     <div class="configuration__nav__links">
-      <a class="configuration__nav__links__edit">Edit configuration</a>
+      <a class="configuration__nav__links__edit" (click)="goToExterior()"
+        >Edit configuration</a
+      >
       <a class="configuration__nav__links__delete">Delete</a>
     </div>
   </div>
-  <app-car-slider
-    class="configuration__slider"
-    [configuration]="configuration"
-  ></app-car-slider>
+  <app-car-slider class="configuration__slider"></app-car-slider>
   <app-configuration-info
     class="configuration__info"
     [configuration]="configuration"
