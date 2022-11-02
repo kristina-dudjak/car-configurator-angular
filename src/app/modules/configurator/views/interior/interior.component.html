@@ -1,29 +1,19 @@
 <div
-  class="exterior"
+  class="interior"
   *ngIf="(configuration$ | async) && (configuration$ | async) as configuration"
 >
-  <div class="exterior__nav">
-    <div class="exterior__nav__content">
-      <mat-icon class="exterior__nav__content__back" svgIcon="back"></mat-icon>
-      <h3 class="exterior__nav__content__year">
-        {{configuration.year}}
-      </h3>
-      <h3 class="exterior__nav__content__name">
-        {{configuration.carName}}
-      </h3>
-    </div>
-    <div class="exterior__nav__links">
-      <a class="exterior__nav__links__exterior">Exterior</a>
-      <a class="exterior__nav__links__interior">Interior</a>
-    </div>
-  </div>
-  <app-interior-slider class="exterior__slider"></app-interior-slider>
+  <app-nav-bar
+    class="interior__nav"
+    [configuration]="configuration"
+  ></app-nav-bar>
+  <app-interior-slider class="interior__slider"></app-interior-slider>
   <app-interior-sidebar
-    class="exterior__sidebar"
+    class="interior__sidebar"
     [configuration]="configuration"
     *ngIf="(editing$ | async) === editedEnum.none"
   ></app-interior-sidebar>
   <app-element-picker
+    class="interior__sidebar"
     *ngIf="(editing$ | async) !== editedEnum.none && (editing$ | async) as editing"
     [configuration]="configuration"
     [editing]="editing"

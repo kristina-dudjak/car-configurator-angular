@@ -2,23 +2,10 @@
   class="exterior"
   *ngIf="(configuration$ | async) && (configuration$ | async) as configuration"
 >
-  <div class="exterior__nav">
-    <div class="exterior__nav__content">
-      <mat-icon class="exterior__nav__content__back" svgIcon="back"></mat-icon>
-      <h3 class="exterior__nav__content__year">
-        {{configuration.year}}
-      </h3>
-      <h3 class="exterior__nav__content__name">
-        {{configuration.carName}}
-      </h3>
-    </div>
-    <div class="exterior__nav__links">
-      <a class="exterior__nav__links__exterior">Exterior</a>
-      <a class="exterior__nav__links__interior" (click)="goToInterior()"
-        >Interior</a
-      >
-    </div>
-  </div>
+  <app-nav-bar
+    class="exterior__nav"
+    [configuration]="configuration"
+  ></app-nav-bar>
   <app-car-slider class="exterior__slider"></app-car-slider>
   <app-exterior-sidebar
     class="exterior__sidebar"
@@ -26,6 +13,7 @@
     *ngIf="(editing$ | async) === editedEnum.none"
   ></app-exterior-sidebar>
   <app-element-picker
+    class="exterior__sidebar"
     *ngIf="(editing$ | async) !== editedEnum.none && (editing$ | async) as editing"
     [configuration]="configuration"
     [editing]="editing"

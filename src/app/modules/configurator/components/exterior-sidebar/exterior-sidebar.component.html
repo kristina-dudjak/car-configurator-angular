@@ -1,45 +1,62 @@
 <div class="sidebar">
   <div class="sidebar__items">
     <div class="sidebar__items__item" (click)="showColors()">
-      <img
-        class="sidebar__items__item__img"
-        src="{{configuration.color.thumbnail}}"
-      />
+      <div class="sidebar__items__item__image">
+        <img
+          class="sidebar__items__item__image__img"
+          src="{{configuration.color.thumbnail}}"
+        />
+        <mat-icon
+          class="sidebar__items__item__image__icon"
+          svgIcon="checkmark"
+        ></mat-icon>
+      </div>
       <div class="sidebar__items__item__text">
-        <h3 class="sidebar__items__item__text__name">
+        <p class="sidebar__items__item__text__name">
           {{configuration.color.name}}
-        </h3>
-        <h4 class="sidebar__items__item__text__description">
+        </p>
+        <p class="sidebar__items__item__text__description mat-caption">
           {{"paint color" | uppercase}}
-        </h4>
+        </p>
       </div>
     </div>
     <div class="sidebar__items__item" (click)="showWheels()">
-      <img
-        class="sidebar__items__item__img"
-        src="{{configuration.wheel.thumbnail}}"
-      />
+      <div class="sidebar__items__item__image">
+        <img
+          class="sidebar__items__item__image__img"
+          src="{{configuration.wheel.thumbnail}}"
+        />
+        <mat-icon
+          class="sidebar__items__item__image__icon"
+          svgIcon="checkmark"
+        ></mat-icon>
+      </div>
       <div class="sidebar__items__item__text">
-        <h3 class="sidebar__items__item__text__name">
+        <p class="sidebar__items__item__text__name">
           {{configuration.wheel.name}}
-        </h3>
-        <h4 class="sidebar__items__item__text__description">
+        </p>
+        <p class="sidebar__items__item__text__description mat-caption">
           {{"wheels" | uppercase}}
-        </h4>
+        </p>
       </div>
     </div>
   </div>
   <div class="sidebar__final">
     <div class="sidebar__final__price">
       <div class="sidebar__final__price__total">
-        <h3 class="sidebar__final__price__total__text">total</h3>
+        <p class="sidebar__final__price__total__text mat-body-2">
+          {{'total' | uppercase}}
+        </p>
         <mat-icon
           class="sidebar__final__price__total__icon"
           svgIcon="info"
         ></mat-icon>
       </div>
-      <h2 class="sidebar__final__price__value">{{configuration.price}}</h2>
+      <h3 class="sidebar__final__price__value">{{configuration.price}} €</h3>
     </div>
-    <button class="sidebar__final__button" mat-button>interior</button>
+    <button class="sidebar__final__button" mat-button (click)="goToInterior()">
+      Interior
+      <mat-icon class="sidebar__final__button__icon" svgIcon="next"></mat-icon>
+    </button>
   </div>
 </div>

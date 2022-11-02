@@ -28,4 +28,8 @@ export class ElementPickerComponent implements OnInit {
     this.store.getCarElements()
     this.carElements$ = this.store.carElements$
   }
+
+  backToSidebar () {
+    this.store.updateEditingEnums(EditedEnum.none)
+  }
 }

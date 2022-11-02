@@ -7,46 +7,81 @@
     justify-content: space-between;
     align-items: center;
 
-    &__properties__year {
-      color: mat.get-color-from-palette($ux-colors, A500);
-    }
-
-    &__price__total {
-      display: flex;
-      gap: 8px;
-
-      &__text {
-        color: mat.get-color-from-palette($ux-colors, A400);
+    &__properties {
+      &__name {
+        margin: 0px;
       }
 
-      &__icon {
-        color: mat.get-color-from-palette($primary, 200);
+      &__year {
+        color: mat.get-color-from-palette($ux-colors, A500);
+      }
+    }
+
+    &__price {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+
+      &__total {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+
+        &__text {
+          color: mat.get-color-from-palette($ux-colors, A400);
+          margin: 0px;
+        }
+
+        &__icon {
+          color: mat.get-color-from-palette($primary, 200);
+        }
       }
     }
   }
 
   &__divider {
     color: mat.get-color-from-palette($ux-colors, A400);
+    margin-bottom: 60px;
   }
 
   &__configuration {
     display: flex;
     justify-content: space-between;
-    align-items: center;
 
     &__values {
+      &__group {
+        color: mat.get-color-from-palette($ux-colors, A600);
+      }
+
+      &__divider {
+        margin-bottom: 20px;
+        color: mat.get-color-from-palette($ux-colors, A300);
+      }
+
       &__property {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        margin-bottom: 40px;
 
         &__values {
           display: flex;
           align-items: center;
+          gap: 20px;
 
           &__img {
+            border-radius: 60px;
             width: 20%;
           }
+
+          &__name {
+            margin: 0px;
+            color: mat.get-color-from-palette($ux-colors, A700);
+          }
+        }
+
+        &__price {
+          margin: 0;
         }
       }
 
@@ -54,6 +89,10 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+
+        &__text {
+          color: mat.get-color-from-palette($ux-colors, A600);
+        }
       }
     }
   }

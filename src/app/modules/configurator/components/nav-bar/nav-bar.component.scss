@@ -1,0 +1,42 @@
+@use '@angular/material' as mat;
+@import '../../../../../scss/colors.scss';
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    margin-left: 44px;
+    gap: 12px;
+
+    &__year {
+      color: mat.get-color-from-palette($ux-colors, A400);
+      margin: 0;
+    }
+
+    &__name {
+      margin: 0;
+    }
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+
+    &__item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 24px 20px;
+      cursor: pointer;
+
+      &__number {
+        color: mat.get-color-from-palette($ux-colors, A400);
+        margin: 0;
+      }
+    }
+  }
+}

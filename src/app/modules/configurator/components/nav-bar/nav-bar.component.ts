@@ -1,38 +1,41 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
 import { ActivatedRoute, Router } from '@angular/router'
-import { EditedEnum } from 'src/app/shared/enums/EditedEnum'
 import { Configuration } from 'src/app/shared/models/Configuration'
-import { StoreService } from 'src/app/shared/services/store/store.service'
+import { Location } from '@angular/common'
 
 @Component({
-  selector: 'app-exterior-sidebar',
+  selector: 'app-nav-bar',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './exterior-sidebar.component.html',
-  styleUrls: ['./exterior-sidebar.component.scss']
+  templateUrl: './nav-bar.component.html',
+  styleUrls: ['./nav-bar.component.scss']
 })
-export class ExteriorSidebarComponent {
+export class NavBarComponent {
   @Input() configuration: Configuration
   name: string
 
   constructor (
-    private store: StoreService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private location: Location
   ) {
     this.route.params.subscribe(params => {
       this.name = params['name']
     })
   }
 
-  showColors () {
-    this.store.updateEditingEnums(EditedEnum.colors)
-  }
-
-  showWheels () {
-    this.store.updateEditingEnums(EditedEnum.wheels)
+  goToExterior () {
+    this.router.navigateByUrl(`configurator/cars/${this.name}/exterior`)
   }
 
   goToInterior () {
     this.router.navigateByUrl(`configurator/cars/${this.name}/interior`)
+  }
+
+  goToSummary () {
+    console.log('summary')
+  }
+
+  goBack () {
+    this.location.back()
   }
 }

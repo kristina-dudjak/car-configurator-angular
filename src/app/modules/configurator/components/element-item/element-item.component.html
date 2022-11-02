@@ -1,6 +1,10 @@
 <div class="element" (click)="changeElement()">
-  <img src="{{element.thumbnail}}" />
-  <div>
-    <h3>{{element.name}}</h3>
+  <div class="element__image">
+    <img class="element__image__img" src="{{element.thumbnail}}" />
+    <mat-icon class="element__image__icon" svgIcon="checkmark"></mat-icon>
+  </div>
+  <div class="element__text">
+    <p class="element__text__name">{{element.name}}</p>
+    <p class="element__text__price mat-body-2">{{element.price}} €</p>
   </div>
 </div>

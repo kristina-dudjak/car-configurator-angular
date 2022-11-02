@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router'
 import { Observable } from 'rxjs'
 import { Configuration } from 'src/app/shared/models/Configuration'
 import { StoreService } from 'src/app/shared/services/store/store.service'
-
+import { Location } from '@angular/common'
 @Component({
   selector: 'app-configuration',
   templateUrl: './configuration.component.html',
@@ -16,7 +16,8 @@ export class ConfigurationComponent implements OnInit {
   constructor (
     private route: ActivatedRoute,
     private store: StoreService,
-    private router: Router
+    private router: Router,
+    private location: Location
   ) {
     this.route.params.subscribe(params => {
       this.name = params['name']
@@ -30,5 +31,9 @@ export class ConfigurationComponent implements OnInit {
 
   goToExterior () {
     this.router.navigateByUrl(`configurator/cars/${this.name}/exterior`)
+  }
+
+  goBack () {
+    this.location.back()
   }
 }

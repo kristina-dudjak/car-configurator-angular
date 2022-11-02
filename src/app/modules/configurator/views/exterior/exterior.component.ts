@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { ActivatedRoute, Router } from '@angular/router'
+import { ActivatedRoute } from '@angular/router'
 import { Observable } from 'rxjs'
 import { EditedEnum } from 'src/app/shared/enums/EditedEnum'
 import { Configuration } from 'src/app/shared/models/Configuration'
@@ -16,11 +16,7 @@ export class ExteriorComponent implements OnInit {
   editing$: Observable<EditedEnum>
   editedEnum = EditedEnum
 
-  constructor (
-    private store: StoreService,
-    private route: ActivatedRoute,
-    private router: Router
-  ) {
+  constructor (private store: StoreService, private route: ActivatedRoute) {
     this.route.params.subscribe(params => {
       this.name = params['name']
     })
@@ -30,9 +26,5 @@ export class ExteriorComponent implements OnInit {
     this.store.initialConfigurationLoad(this.name)
     this.configuration$ = this.store.configuration$
     this.editing$ = this.store.editingElements$
-  }
-
-  goToInterior () {
-    this.router.navigateByUrl(`configurator/cars/${this.name}/interior`)
   }
 }

@@ -1,0 +1,29 @@
+<div class="nav">
+  <div class="nav__content">
+    <mat-icon
+      class="nav__content__back"
+      svgIcon="back"
+      (click)="goBack()"
+    ></mat-icon>
+    <h3 class="nav__content__year">
+      {{configuration.year}}
+    </h3>
+    <h3 class="nav__content__name">
+      {{configuration.carName | uppercase}}
+    </h3>
+  </div>
+  <div class="nav__links">
+    <div class="nav__links__item" (click)="goToExterior()">
+      <p class="nav__links__item__number">01</p>
+      <a class="nav__links__item__link">Exterior</a>
+    </div>
+    <div class="nav__links__item" (click)="goToInterior()">
+      <p class="nav__links__item__number">02</p>
+      <a class="nav__links__item__link">Interior</a>
+    </div>
+    <div class="nav__links__item" (click)="goToSummary()">
+      <p class="nav__links__item__number">03</p>
+      <a class="nav__links__item__link">Summary</a>
+    </div>
+  </div>
+</div>

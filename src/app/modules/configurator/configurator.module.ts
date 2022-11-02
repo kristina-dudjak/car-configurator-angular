@@ -18,7 +18,8 @@ import { ElementPickerComponent } from './components/element-picker/element-pick
 import { ElementItemComponent } from './components/element-item/element-item.component';
 import { InteriorComponent } from './views/interior/interior.component';
 import { InteriorSliderComponent } from './components/interior-slider/interior-slider.component';
-import { InteriorSidebarComponent } from './components/interior-sidebar/interior-sidebar.component'
+import { InteriorSidebarComponent } from './components/interior-sidebar/interior-sidebar.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component'
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { InteriorSidebarComponent } from './components/interior-sidebar/interior
     ElementItemComponent,
     InteriorComponent,
     InteriorSliderComponent,
-    InteriorSidebarComponent
+    InteriorSidebarComponent,
+    NavBarComponent
   ],
   imports: [
     CommonModule,

@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core'
+import { Component, Input } from '@angular/core'
+import { ActivatedRoute, Router } from '@angular/router'
 import { EditedEnum } from 'src/app/shared/enums/EditedEnum'
 import { Configuration } from 'src/app/shared/models/Configuration'
 import { StoreService } from 'src/app/shared/services/store/store.service'
@@ -10,10 +11,22 @@ import { StoreService } from 'src/app/shared/services/store/store.service'
 })
 export class InteriorSidebarComponent {
   @Input() configuration: Configuration
-
-  constructor (private store: StoreService) {}
+  name: string
+  constructor (
+    private store: StoreService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
+    this.route.params.subscribe(params => {
+      this.name = params['name']
+    })
+  }
 
   showInteriors () {
     this.store.updateEditingEnums(EditedEnum.interiors)
+  }
+
+  goToSummary () {
+    this.router.navigateByUrl(`configurator/cars/${this.name}/interior`)
   }
 }

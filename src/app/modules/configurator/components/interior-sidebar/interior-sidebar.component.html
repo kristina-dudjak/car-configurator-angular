@@ -1,31 +1,42 @@
 <div class="sidebar">
   <div class="sidebar__items">
     <div class="sidebar__items__item" (click)="showInteriors()">
-      <img
-        class="sidebar__items__item__img"
-        src="{{configuration.interior.thumbnail}}"
-      />
+      <div class="sidebar__items__item__image">
+        <img
+          class="sidebar__items__item__image__img"
+          src="{{configuration.interior.thumbnail}}"
+        />
+        <mat-icon
+          class="sidebar__items__item__image__icon"
+          svgIcon="checkmark"
+        ></mat-icon>
+      </div>
       <div class="sidebar__items__item__text">
-        <h3 class="sidebar__items__item__text__name">
+        <p class="sidebar__items__item__text__name">
           {{configuration.interior.name}}
-        </h3>
-        <h4 class="sidebar__items__item__text__description">
-          {{"color" | uppercase}}
-        </h4>
+        </p>
+        <p class="sidebar__items__item__text__description mat-caption">
+          {{"paint color" | uppercase}}
+        </p>
       </div>
     </div>
   </div>
   <div class="sidebar__final">
     <div class="sidebar__final__price">
       <div class="sidebar__final__price__total">
-        <h3 class="sidebar__final__price__total__text">total</h3>
+        <h3 class="sidebar__final__price__total__text mat-body-2">
+          {{'total' | uppercase}}
+        </h3>
         <mat-icon
           class="sidebar__final__price__total__icon"
           svgIcon="info"
         ></mat-icon>
       </div>
-      <h2 class="sidebar__final__price__value">{{configuration.price}}</h2>
+      <h3 class="sidebar__final__price__value">{{configuration.price}} €</h3>
     </div>
-    <button class="sidebar__final__button" mat-button>interior</button>
+    <button class="sidebar__final__button" mat-button (click)="goToSummary()">
+      Summary
+      <mat-icon class="sidebar__final__button__icon" svgIcon="next"></mat-icon>
+    </button>
   </div>
 </div>

@@ -20,5 +20,13 @@ export const icons: IconItem[] = [
   {
     name: 'info',
     svg: `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8Zm1 12H7V7h2v5ZM8 6c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1Z" fill="currentColor"/></svg>`
+  },
+  {
+    name: 'checkmark',
+    svg: `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="20" height="20" rx="10" fill="currentColor"/><path d="M8 15a1 1 0 0 1-.707-.293l-3-3a1 1 0 0 1 1.414-1.414l2.2 2.2 6.303-8.107a1 1 0 1 1 1.58 1.228l-7 9a1 1 0 0 1-.728.386H8Z" fill="#FCFCFD"/></svg>`
+  },
+  {
+    name: 'exit',
+    svg: `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.7 1.3c-.4-.4-1-.4-1.4 0L8 6.6 2.7 1.3c-.4-.4-1-.4-1.4 0-.4.4-.4 1 0 1.4L6.6 8l-5.3 5.3c-.4.4-.4 1 0 1.4.2.2.4.3.7.3.3 0 .5-.1.7-.3L8 9.4l5.3 5.3c.2.2.5.3.7.3.2 0 .5-.1.7-.3.4-.4.4-1 0-1.4L9.4 8l5.3-5.3c.4-.4.4-1 0-1.4Z" fill="currentColor"/></svg>`
   }
 ]

@@ -25,7 +25,6 @@ export class ElementItemComponent {
         key as keyof Configuration
       ] as CarElement) = this.element
       this.store.updateConfiguration(this.configuration)
-      this.store.updateEditingEnums(EditedEnum.none)
     }
   }
 }

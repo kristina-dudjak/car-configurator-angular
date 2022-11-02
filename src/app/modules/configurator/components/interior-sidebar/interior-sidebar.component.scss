@@ -3,39 +3,77 @@
 
 .sidebar {
   display: flex;
+  width: 100%;
   flex-direction: column;
-  align-items: center;
   justify-content: space-between;
 
   &__items {
     &__item {
       display: flex;
-      justify-content: center;
       align-items: center;
-      align-content: stretch;
+      margin: 40px;
       cursor: pointer;
       gap: 20px;
 
-      &__img {
-        width: 15%;
+      &__image {
+        flex: 1 1 0;
+        &__img {
+          width: 80%;
+          border-radius: 60px;
+        }
+
+        &__icon {
+          margin: 0 0 0 -20%;
+          color: mat.get-color-from-palette($success, normal);
+        }
       }
+
       &__text {
+        flex: 2 1 0;
       }
     }
   }
 
   &__final {
+    display: flex;
+    flex-direction: column;
+
     &__price {
       display: flex;
       justify-content: space-between;
+      margin: 24px 40px;
 
       &__total {
         display: flex;
+        gap: 8px;
+        align-items: center;
+
+        &__text {
+          color: mat.get-color-from-palette($ux-colors, A400);
+          margin: 0px;
+        }
+
+        &__icon {
+          color: mat.get-color-from-palette($primary, 200);
+        }
+      }
+
+      &__value {
+        margin: 0px;
       }
     }
 
     &__button {
+      display: flex;
       background-color: mat.get-color-from-palette($primary, 500);
+      justify-content: center;
+      align-items: center;
+      color: mat.get-color-from-palette($ux-colors, A100);
+      padding: 22px;
+
+      &__icon {
+        color: mat.get-color-from-palette($ux-colors, A100);
+      }
     }
   }
 }

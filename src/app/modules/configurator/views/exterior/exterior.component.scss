@@ -4,51 +4,26 @@
 .exterior {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 1fr 12fr;
   height: calc(100vh - 80px);
   column-gap: 12px;
   background-color: mat.get-color-from-palette($ux-colors, A200);
 
   &__nav {
-    grid-column: 1 / 15;
+    grid-column: 1 / 13;
     background-color: mat.get-color-from-palette($ux-colors, A100);
-    display: flex;
-    justify-content: space-between;
-
-    &__content {
-      display: flex;
-      align-items: baseline;
-      margin-left: 44px;
-      margin-top: 24px;
-      gap: 12px;
-
-      &__year {
-        color: mat.get-color-from-palette($ux-colors, A400);
-      }
-    }
-
-    &__links {
-      margin-top: 28px;
-      &__edit {
-        padding: 28px 20px;
-        color: mat.get-color-from-palette($primary, 500);
-        cursor: pointer;
-      }
-
-      &__delete {
-        padding: 28px 20px;
-        color: mat.get-color-from-palette($error, normal);
-      }
-    }
+    border-bottom: 1px solid mat.get-color-from-palette($ux-colors, A300);
   }
 
   &__slider {
     grid-column: 1 / 10;
+    align-self: center;
   }
 
   &__sidebar {
-    grid-column: 10 / 15;
+    grid-column: 10 / 13;
+    background-color: mat.get-color-from-palette($ux-colors, A100);
+    border-left: 1px solid mat.get-color-from-palette($ux-colors, A300);
     display: flex;
-    align-content: center;
-    justify-content: space-between;
   }
 }
