@@ -11,7 +11,7 @@ import { Location } from '@angular/common'
 })
 export class ConfigurationComponent implements OnInit {
   name: string
-  configuration$: Observable<Configuration | null>
+  configuration$: Observable<Configuration | undefined>
 
   constructor (
     private route: ActivatedRoute,

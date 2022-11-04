@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnInit
+} from '@angular/core'
 import { ActivatedRoute, Router } from '@angular/router'
 import { Configuration } from 'src/app/shared/models/Configuration'
 import { Location } from '@angular/common'
@@ -9,18 +14,22 @@ import { Location } from '@angular/common'
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.scss']
 })
-export class NavBarComponent {
+export class NavBarComponent implements OnInit {
   @Input() configuration: Configuration
   name: string
+  isActive: boolean
 
   constructor (
     private router: Router,
     private route: ActivatedRoute,
     private location: Location
-  ) {
+  ) {}
+
+  ngOnInit (): void {
     this.route.params.subscribe(params => {
       this.name = params['name']
     })
+    // if(this.router.url.includes)
   }
 
   goToExterior () {

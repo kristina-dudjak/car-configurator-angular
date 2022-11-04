@@ -18,18 +18,30 @@ import { StoreService } from 'src/app/shared/services/store/store.service'
 })
 export class ElementPickerComponent implements OnInit {
   @Input() configuration: Configuration
+  // configuration$: Observable<Configuration | null>
   @Input() editing: EditedEnum
 
-  carElements$: Observable<CarElement[] | null>
+  carElements$: Observable<CarElement[] | undefined>
 
   constructor (private store: StoreService) {}
 
   ngOnInit (): void {
-    this.store.getCarElements()
+    // this.configuration$ = this.store.configuration$
+    this.store.initialCarElements(this.configuration.carName, this.editing)
     this.carElements$ = this.store.carElements$
   }
 
+  changeElement (element: CarElement) {
+    const key = Object.keys(this.configuration).find(
+      key => key === EditedEnum[this.editing].slice(0, -1)
+    )
+    if (key) {
+      ;(this.configuration[key as keyof Configuration] as CarElement) = element
+      this.store.updateConfigurationState(this.configuration)
+    }
+  }
+
   backToSidebar () {
-    this.store.updateEditingEnums(EditedEnum.none)
+    this.store.updateEditingEnumsState(EditedEnum.none)
   }
 }

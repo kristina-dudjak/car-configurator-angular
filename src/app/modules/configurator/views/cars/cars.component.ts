@@ -9,7 +9,7 @@ import { StoreService } from 'src/app/shared/services/store/store.service'
   styleUrls: ['./cars.component.scss']
 })
 export class CarsComponent implements OnInit {
-  cars$: Observable<Car[] | null>
+  cars$: Observable<Car[] | undefined>
   constructor (private store: StoreService) {}
 
   ngOnInit () {

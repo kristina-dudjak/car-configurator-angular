@@ -3,7 +3,6 @@ import { AngularFireAuth } from '@angular/fire/compat/auth'
 import { Router } from '@angular/router'
 import firebase from 'firebase/compat/app'
 import { BehaviorSubject } from 'rxjs'
-import { DataService } from 'src/app/services/dataService/data.service'
 @Injectable({
   providedIn: 'root'
 })

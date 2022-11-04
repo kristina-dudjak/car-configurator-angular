@@ -12,9 +12,6 @@ import { MatMenuModule } from '@angular/material/menu'
 import { MatIconModule } from '@angular/material/icon'
 import { MatButtonModule } from '@angular/material/button'
 import { PagenotfoundComponent } from './views/pagenotfound/pagenotfound.component'
-import { HttpClientModule } from '@angular/common/http'
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api'
-import { InMemoryDataService } from './services/inMemoryDataService/in-memory-data.service'
 import { AngularFireStorageModule } from '@angular/fire/compat/storage'
 import { AngularFireFunctionsModule } from '@angular/fire/compat/functions'
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore'
@@ -32,9 +29,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore'
     AngularFirestoreModule,
     MatMenuModule,
     MatIconModule,
-    MatButtonModule,
-    HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService)
+    MatButtonModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

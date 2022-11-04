@@ -23,7 +23,7 @@ export class InteriorSidebarComponent {
   }
 
   showInteriors () {
-    this.store.updateEditingEnums(EditedEnum.interiors)
+    this.store.updateEditingEnumsState(EditedEnum.interiors)
   }
 
   goToSummary () {

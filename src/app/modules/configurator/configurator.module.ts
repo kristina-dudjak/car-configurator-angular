@@ -19,7 +19,8 @@ import { ElementItemComponent } from './components/element-item/element-item.com
 import { InteriorComponent } from './views/interior/interior.component';
 import { InteriorSliderComponent } from './components/interior-slider/interior-slider.component';
 import { InteriorSidebarComponent } from './components/interior-sidebar/interior-sidebar.component';
-import { NavBarComponent } from './components/nav-bar/nav-bar.component'
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { IsElementCheckedPipe } from './pipes/is-element-checked.pipe'
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component'
     InteriorComponent,
     InteriorSliderComponent,
     InteriorSidebarComponent,
-    NavBarComponent
+    NavBarComponent,
+    IsElementCheckedPipe
   ],
   imports: [
     CommonModule,

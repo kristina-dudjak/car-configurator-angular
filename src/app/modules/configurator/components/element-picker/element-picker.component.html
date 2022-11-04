@@ -16,8 +16,8 @@
         <app-element-item
           class="picker__main__list__item__element"
           [element]="element"
-          [configuration]="configuration"
           [editing]="editing"
+          (changeElementEvent)="changeElement($event)"
         ></app-element-item>
       </li>
     </ul>

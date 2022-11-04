@@ -25,11 +25,11 @@ export class ExteriorSidebarComponent {
   }
 
   showColors () {
-    this.store.updateEditingEnums(EditedEnum.colors)
+    this.store.updateEditingEnumsState(EditedEnum.colors)
   }
 
   showWheels () {
-    this.store.updateEditingEnums(EditedEnum.wheels)
+    this.store.updateEditingEnumsState(EditedEnum.wheels)
   }
 
   goToInterior () {

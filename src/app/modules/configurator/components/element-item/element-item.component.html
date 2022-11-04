@@ -1,10 +1,22 @@
-<div class="element" (click)="changeElement()">
+<div
+  class="element"
+  (click)="changeElement(element)"
+  *ngIf="(configuration$ | async) && (configuration$ | async) as configuration"
+>
+  <p>{{configuration.color.id}}</p>
   <div class="element__image">
     <img class="element__image__img" src="{{element.thumbnail}}" />
-    <mat-icon class="element__image__icon" svgIcon="checkmark"></mat-icon>
+    <!-- <p>{{(element | isElementChecked: configuration) | async}}</p> -->
+    <mat-icon
+      class="element__image__icon"
+      svgIcon="checkmark"
+      *ngIf="(configuration | isElementChecked: element: editing) | async"
+    ></mat-icon>
   </div>
   <div class="element__text">
     <p class="element__text__name">{{element.name}}</p>
     <p class="element__text__price mat-body-2">{{element.price}} €</p>
   </div>
 </div>
+
+<!-- <ng-container *ngIf="configuration$ | async"></ng-container> -->

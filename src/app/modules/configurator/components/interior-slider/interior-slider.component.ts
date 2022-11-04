@@ -17,7 +17,7 @@ import { StoreService } from 'src/app/shared/services/store/store.service'
   styleUrls: ['./interior-slider.component.scss']
 })
 export class InteriorSliderComponent implements OnInit {
-  configuration$: Observable<Configuration | null>
+  configuration$: Observable<Configuration | undefined>
   currentNumber$ = new BehaviorSubject<number>(1)
   interiorImage$: Observable<string>
 
@@ -48,7 +48,7 @@ export class InteriorSliderComponent implements OnInit {
       this.currentNumber$.next(this.currentNumber$.getValue() + 1)
   }
 
-  setInteriorImage$ (conf: Configuration | null, page: number) {
+  setInteriorImage$ (conf: Configuration | undefined, page: number) {
     this.interiorImage$ = this.storage
       .ref(`images/${conf?.carName}/interiors/${conf?.interior.id}/${page}.png`)
       .getDownloadURL()
