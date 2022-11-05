@@ -12,8 +12,8 @@ import { StoreService } from 'src/app/shared/services/store/store.service'
 })
 export class ExteriorComponent implements OnInit {
   name: string
-  configuration$: Observable<Configuration | undefined>
-  editing$: Observable<EditedEnum | undefined>
+  configuration$: Observable<Configuration>
+  editing$: Observable<EditedEnum>
   editedEnum = EditedEnum
 
   constructor (private store: StoreService, private route: ActivatedRoute) {
@@ -25,6 +25,6 @@ export class ExteriorComponent implements OnInit {
   ngOnInit (): void {
     this.store.initialConfigurationLoad(this.name)
     this.configuration$ = this.store.configuration$
-    this.editing$ = this.store.editingEnums$
+    this.editing$ = this.store.editingEnum$
   }
 }

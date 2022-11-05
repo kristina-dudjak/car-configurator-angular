@@ -17,7 +17,7 @@ import { StoreService } from 'src/app/shared/services/store/store.service'
   styleUrls: ['./car-slider.component.scss']
 })
 export class CarSliderComponent implements OnInit {
-  configuration$: Observable<Configuration | undefined>
+  configuration$: Observable<Configuration>
   currentNumber$ = new BehaviorSubject<number>(1)
   exteriorImage$: Observable<string>
 
@@ -48,8 +48,7 @@ export class CarSliderComponent implements OnInit {
       this.currentNumber$.next(this.currentNumber$.getValue() + 1)
   }
 
-  setCarImage$ (conf: Configuration | undefined, page: number) {
-    if (!conf) return
+  setCarImage$ (conf: Configuration, page: number) {
     this.exteriorImage$ = this.storage
       .ref(
         `images/${conf.carName}/exteriors/${conf.color.id}${conf.wheel.id}/${page}.png`

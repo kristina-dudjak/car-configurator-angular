@@ -11,17 +11,17 @@ import { CarElement } from '../../models/CarElement'
 import { Configuration } from '../../models/Configuration'
 
 interface StoreInterface {
-  cars: Car[] | undefined
-  configuration: Configuration | undefined
-  carElements: CarElement[] | undefined
-  editingEnums: EditedEnum | undefined
+  cars: Car[]
+  configuration: Configuration
+  carElements: CarElement[]
+  editingEnum: EditedEnum
 }
 
 const initialState: StoreInterface = {
   cars: undefined,
   configuration: undefined,
   carElements: undefined,
-  editingEnums: EditedEnum.none
+  editingEnum: EditedEnum.none
 }
 
 @Injectable({
@@ -39,7 +39,7 @@ export class StoreService extends Store<StoreInterface> {
   cars$ = this.select(({ cars }) => cars)
   configuration$ = this.select(({ configuration }) => configuration)
   carElements$ = this.select(({ carElements }) => carElements)
-  editingEnums$ = this.select(({ editingEnums }) => editingEnums)
+  editingEnum$ = this.select(({ editingEnum }) => editingEnum)
 
   updateCarsState (cars: Car[]) {
     this.setState({ cars })
@@ -49,12 +49,32 @@ export class StoreService extends Store<StoreInterface> {
     this.setState({ configuration })
   }
 
+  updateElementInConfiguration (element: CarElement) {
+    switch (this.state.editingEnum) {
+      case EditedEnum.colors: {
+        const { color, ...rest } = this.state.configuration
+        this.setState({ configuration: { color: element, ...rest } })
+        break
+      }
+      case EditedEnum.wheels: {
+        const { wheel, ...rest } = this.state.configuration
+        this.setState({ configuration: { wheel: element, ...rest } })
+        break
+      }
+      case EditedEnum.interiors: {
+        const { interior, ...rest } = this.state.configuration
+        this.setState({ configuration: { interior: element, ...rest } })
+        break
+      }
+    }
+  }
+
   updateCarElementsState (carElements: CarElement[]) {
     this.setState({ carElements })
   }
 
-  updateEditingEnumsState (editingEnums: EditedEnum) {
-    this.setState({ editingEnums })
+  updateEditingEnumState (editingEnum: EditedEnum) {
+    this.setState({ editingEnum })
   }
 
   initialCarElements (carName: string, editing: EditedEnum) {
@@ -64,9 +84,7 @@ export class StoreService extends Store<StoreInterface> {
           cars
             .filter(car => car.name === carName)
             .map(car => {
-              this.updateCarElementsState(
-                car[EditedEnum[editing] as keyof Car] as CarElement[]
-              )
+              this.updateCarElementsState(car[EditedEnum[editing]])
             })
         })
       )

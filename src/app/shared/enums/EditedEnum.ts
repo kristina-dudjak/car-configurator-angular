@@ -1,6 +1,6 @@
 export enum EditedEnum {
   none,
   colors,
-  interiors,
-  wheels
+  wheels,
+  interiors
 }

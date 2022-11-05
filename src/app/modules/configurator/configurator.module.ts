@@ -20,7 +20,12 @@ import { InteriorComponent } from './views/interior/interior.component';
 import { InteriorSliderComponent } from './components/interior-slider/interior-slider.component';
 import { InteriorSidebarComponent } from './components/interior-sidebar/interior-sidebar.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
-import { IsElementCheckedPipe } from './pipes/is-element-checked.pipe'
+import { IsElementCheckedPipe } from './pipes/is-element-checked.pipe';
+import { CarListComponent } from './components/car-list/car-list.component';
+import { CarConfigurationComponent } from './components/car-configuration/car-configuration.component';
+import { ColorPickerComponent } from './components/color-picker/color-picker.component';
+import { WheelPickerComponent } from './components/wheel-picker/wheel-picker.component';
+import { InteriorPickerComponent } from './components/interior-picker/interior-picker.component'
 
 @NgModule({
   declarations: [
@@ -39,7 +44,12 @@ import { IsElementCheckedPipe } from './pipes/is-element-checked.pipe'
     InteriorSliderComponent,
     InteriorSidebarComponent,
     NavBarComponent,
-    IsElementCheckedPipe
+    IsElementCheckedPipe,
+    CarListComponent,
+    CarConfigurationComponent,
+    ColorPickerComponent,
+    WheelPickerComponent,
+    InteriorPickerComponent
   ],
   imports: [
     CommonModule,

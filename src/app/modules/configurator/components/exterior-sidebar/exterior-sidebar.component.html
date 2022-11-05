@@ -1,6 +1,9 @@
 <div class="sidebar">
   <div class="sidebar__items">
-    <div class="sidebar__items__item" (click)="showColors()">
+    <div
+      class="sidebar__items__item"
+      (click)="updateEditingEnum(editedEnum.colors)"
+    >
       <div class="sidebar__items__item__image">
         <img
           class="sidebar__items__item__image__img"
@@ -16,11 +19,14 @@
           {{configuration.color.name}}
         </p>
         <p class="sidebar__items__item__text__description mat-caption">
-          {{"paint color" | uppercase}}
+          PAINT COLOR
         </p>
       </div>
     </div>
-    <div class="sidebar__items__item" (click)="showWheels()">
+    <div
+      class="sidebar__items__item"
+      (click)="updateEditingEnum(editedEnum.wheels)"
+    >
       <div class="sidebar__items__item__image">
         <img
           class="sidebar__items__item__image__img"
@@ -36,7 +42,7 @@
           {{configuration.wheel.name}}
         </p>
         <p class="sidebar__items__item__text__description mat-caption">
-          {{"wheels" | uppercase}}
+          WHEELS
         </p>
       </div>
     </div>
@@ -45,7 +51,7 @@
     <div class="sidebar__final__price">
       <div class="sidebar__final__price__total">
         <p class="sidebar__final__price__total__text mat-body-2">
-          {{'total' | uppercase}}
+          TOTAL
         </p>
         <mat-icon
           class="sidebar__final__price__total__icon"

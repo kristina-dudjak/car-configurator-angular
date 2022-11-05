@@ -13,6 +13,7 @@ import { StoreService } from 'src/app/shared/services/store/store.service'
 export class ExteriorSidebarComponent {
   @Input() configuration: Configuration
   name: string
+  editedEnum = EditedEnum
 
   constructor (
     private store: StoreService,
@@ -24,12 +25,8 @@ export class ExteriorSidebarComponent {
     })
   }
 
-  showColors () {
-    this.store.updateEditingEnumsState(EditedEnum.colors)
-  }
-
-  showWheels () {
-    this.store.updateEditingEnumsState(EditedEnum.wheels)
+  updateEditingEnum (editing: EditedEnum) {
+    this.store.updateEditingEnumState(editing)
   }
 
   goToInterior () {

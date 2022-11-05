@@ -1,16 +1,7 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  OnInit,
-  SimpleChanges
-} from '@angular/core'
-import { Observable } from 'rxjs'
-import { EditedEnum } from 'src/app/shared/enums/EditedEnum'
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
 import { CarElement } from 'src/app/shared/models/CarElement'
 import { Configuration } from 'src/app/shared/models/Configuration'
 import { Output, EventEmitter } from '@angular/core'
-import { StoreService } from 'src/app/shared/services/store/store.service'
 
 @Component({
   selector: 'app-element-item',
@@ -18,27 +9,17 @@ import { StoreService } from 'src/app/shared/services/store/store.service'
   templateUrl: './element-item.component.html',
   styleUrls: ['./element-item.component.scss']
 })
-export class ElementItemComponent implements OnInit {
+export class ElementItemComponent {
   @Input() element: CarElement
-  // @Input() configuration: Configuration
-  configuration$: Observable<Configuration | undefined>
-  @Input() editing: EditedEnum
-  // isPicked: Observable<boolean>
+  @Input() configuration: Configuration
+  @Input() editingProperty: string
   @Output() changeElementEvent = new EventEmitter<CarElement>()
-
-  constructor (private store: StoreService) {}
-
-  ngOnChanges (changes: SimpleChanges) {
-    console.log('changes', changes)
-  }
-
-  ngOnInit (): void {
-    this.configuration$ = this.store.configuration$
-    // this.carElementService.checkIfChosen(this.configuration, this.element)
-    // this.isPicked = this.carElementService.isChosen$
-  }
 
   changeElement (value: CarElement) {
     this.changeElementEvent.emit(value)
+  }
+
+  isChecked (): boolean {
+    return this.configuration[this.editingProperty].id === this.element.id
   }
 }

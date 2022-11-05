@@ -1,0 +1,11 @@
+<div class="cars">
+  <h3 class="cars__subtitle">Configure a car</h3>
+  <p class="cars__description text-button-default">
+    Pick you favorite model and start configuring.
+  </p>
+  <ul class="cars__list">
+    <li class="cars__list__item" *ngFor="let car of cars$ | async">
+      <app-car-item [car]="car"></app-car-item>
+    </li>
+  </ul>
+</div>

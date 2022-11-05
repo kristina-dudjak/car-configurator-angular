@@ -29,19 +29,10 @@ export class NavBarComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.name = params['name']
     })
-    // if(this.router.url.includes)
   }
 
-  goToExterior () {
-    this.router.navigateByUrl(`configurator/cars/${this.name}/exterior`)
-  }
-
-  goToInterior () {
-    this.router.navigateByUrl(`configurator/cars/${this.name}/interior`)
-  }
-
-  goToSummary () {
-    console.log('summary')
+  navigateTo (path: string) {
+    this.router.navigateByUrl(`configurator/cars/${this.name}/${path}`)
   }
 
   goBack () {
