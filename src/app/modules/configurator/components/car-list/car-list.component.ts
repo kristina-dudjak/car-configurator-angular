@@ -13,7 +13,6 @@ export class CarListComponent implements OnInit {
   constructor (private store: StoreService) {}
 
   ngOnInit () {
-    this.store.initialCarLoad()
     this.cars$ = this.store.cars$
   }
 }

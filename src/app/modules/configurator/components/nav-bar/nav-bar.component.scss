@@ -37,6 +37,15 @@
         color: mat.get-color-from-palette($ux-colors, A400);
         margin: 0;
       }
+
+      &__link {
+        text-decoration: none;
+        color: mat.get-color-from-palette($ux-colors, A700);
+      }
     }
   }
+}
+
+.active-link {
+  font-weight: 700;
 }

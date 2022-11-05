@@ -17,7 +17,6 @@ export class WheelPickerComponent implements OnInit {
   constructor (private store: StoreService) {}
 
   ngOnInit (): void {
-    this.store.initialCarElements(this.configuration.carName, EditedEnum.wheels)
     this.wheels$ = this.store.carElements$
   }
 

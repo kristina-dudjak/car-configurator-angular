@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core'
-import { Router } from '@angular/router'
 import { Car } from 'src/app/shared/models/Car'
 
 @Component({
@@ -9,10 +8,4 @@ import { Car } from 'src/app/shared/models/Car'
 })
 export class CarItemComponent {
   @Input() car: Car
-
-  constructor (private router: Router) {}
-
-  showCarConfiguration () {
-    this.router.navigate(['configurator/cars/' + this.car.name])
-  }
 }

@@ -17,7 +17,6 @@ export class ColorPickerComponent implements OnInit {
   constructor (private store: StoreService) {}
 
   ngOnInit (): void {
-    this.store.initialCarElements(this.configuration.carName, EditedEnum.colors)
     this.colors$ = this.store.carElements$
   }
 

@@ -17,10 +17,6 @@ export class InteriorPickerComponent implements OnInit {
   constructor (private store: StoreService) {}
 
   ngOnInit (): void {
-    this.store.initialCarElements(
-      this.configuration.carName,
-      EditedEnum.interiors
-    )
     this.interiors$ = this.store.carElements$
   }
 
