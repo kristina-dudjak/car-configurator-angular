@@ -11,21 +11,22 @@ import { MatCardModule } from '@angular/material/card'
 import { ConfigurationComponent } from './views/configuration/configuration.component'
 import { CarSliderComponent } from './components/car-slider/car-slider.component'
 import { MatIconModule } from '@angular/material/icon'
-import { ConfigurationInfoComponent } from './components/configuration-info/configuration-info.component';
-import { ExteriorComponent } from './views/exterior/exterior.component';
-import { ExteriorSidebarComponent } from './components/exterior-sidebar/exterior-sidebar.component';
-import { ElementPickerComponent } from './components/element-picker/element-picker.component';
-import { ElementItemComponent } from './components/element-item/element-item.component';
-import { InteriorComponent } from './views/interior/interior.component';
-import { InteriorSliderComponent } from './components/interior-slider/interior-slider.component';
-import { InteriorSidebarComponent } from './components/interior-sidebar/interior-sidebar.component';
-import { NavBarComponent } from './components/nav-bar/nav-bar.component';
-import { IsElementCheckedPipe } from './pipes/is-element-checked.pipe';
-import { CarListComponent } from './components/car-list/car-list.component';
-import { CarConfigurationComponent } from './components/car-configuration/car-configuration.component';
-import { ColorPickerComponent } from './components/color-picker/color-picker.component';
-import { WheelPickerComponent } from './components/wheel-picker/wheel-picker.component';
+import { ConfigurationInfoComponent } from './components/configuration-info/configuration-info.component'
+import { ExteriorComponent } from './views/exterior/exterior.component'
+import { ExteriorSidebarComponent } from './components/exterior-sidebar/exterior-sidebar.component'
+import { ElementPickerComponent } from './components/element-picker/element-picker.component'
+import { ElementItemComponent } from './components/element-item/element-item.component'
+import { InteriorComponent } from './views/interior/interior.component'
+import { InteriorSliderComponent } from './components/interior-slider/interior-slider.component'
+import { InteriorSidebarComponent } from './components/interior-sidebar/interior-sidebar.component'
+import { NavBarComponent } from './components/nav-bar/nav-bar.component'
+import { IsElementCheckedPipe } from './pipes/is-element-checked.pipe'
+import { CarListComponent } from './components/car-list/car-list.component'
+import { CarConfigurationComponent } from './components/car-configuration/car-configuration.component'
+import { ColorPickerComponent } from './components/color-picker/color-picker.component'
+import { WheelPickerComponent } from './components/wheel-picker/wheel-picker.component'
 import { InteriorPickerComponent } from './components/interior-picker/interior-picker.component'
+import { FinalConfigurationPricePipe } from './pipes/final-configuration-price.pipe'
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { InteriorPickerComponent } from './components/interior-picker/interior-p
     CarConfigurationComponent,
     ColorPickerComponent,
     WheelPickerComponent,
-    InteriorPickerComponent
+    InteriorPickerComponent,
+    FinalConfigurationPricePipe
   ],
   imports: [
     CommonModule,

@@ -34,7 +34,9 @@
           svgIcon="info"
         ></mat-icon>
       </div>
-      <h3 class="picker__final__price__value">{{configuration.price}} €</h3>
+      <h3 class="picker__final__price__value">
+        {{configuration | finalConfigurationPrice}} €
+      </h3>
     </div>
     <button class="picker__final__button" mat-button (click)="backToSidebar()">
       Done

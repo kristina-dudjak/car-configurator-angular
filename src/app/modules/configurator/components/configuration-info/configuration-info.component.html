@@ -16,7 +16,9 @@
           svgIcon="info"
         ></mat-icon>
       </div>
-      <h3 class="info__car__price__value">{{configuration.price}} €</h3>
+      <h3 class="info__car__price__value">
+        {{configuration | finalConfigurationPrice}} €
+      </h3>
     </div>
   </div>
   <mat-divider class="info__divider"></mat-divider>
@@ -74,7 +76,7 @@
           Total
         </h3>
         <h3 class="info__configuration__values__price__value">
-          {{configuration.price}} €
+          {{configuration | finalConfigurationPrice}} €
         </h3>
       </div>
     </div>
