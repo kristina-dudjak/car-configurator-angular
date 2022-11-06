@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
 import { Configuration } from 'src/app/shared/models/Configuration'
-import { Location } from '@angular/common'
 
 @Component({
   selector: 'app-nav-bar',
@@ -10,10 +9,4 @@ import { Location } from '@angular/common'
 })
 export class NavBarComponent {
   @Input() configuration: Configuration
-
-  constructor (private location: Location) {}
-
-  goBack () {
-    this.location.back()
-  }
 }

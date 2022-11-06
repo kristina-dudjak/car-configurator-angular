@@ -10,9 +10,11 @@ import { StoreService } from 'src/app/shared/services/store/store.service'
 })
 export class InteriorSidebarComponent {
   @Input() configuration: Configuration
+  editedEnum = EditedEnum
+
   constructor (private store: StoreService) {}
 
-  showInteriors () {
-    this.store.updateEditingEnumState(EditedEnum.interiors)
+  updateEditingEnum (editing: EditedEnum) {
+    this.store.updateEditingEnumState(editing)
   }
 }

@@ -1,12 +1,15 @@
 <app-color-picker
+  class="picker"
   *ngIf="editing===editedEnum.colors"
   [configuration]="configuration"
 ></app-color-picker>
 <app-wheel-picker
+  class="picker"
   *ngIf="editing===editedEnum.wheels"
   [configuration]="configuration"
 ></app-wheel-picker>
 <app-interior-picker
+  class="picker"
   *ngIf="editing===editedEnum.interiors"
   [configuration]="configuration"
 ></app-interior-picker>

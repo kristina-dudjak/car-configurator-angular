@@ -9,7 +9,7 @@
     display: flex;
     flex: 1 1 0;
     &__img {
-      width: 60%;
+      width: 60px;
       border-radius: 60px;
     }
 
@@ -21,7 +21,7 @@
   }
 
   &__text {
-    flex: 2 1 0;
+    flex: 3 1 0;
 
     &__name {
       margin: 0;

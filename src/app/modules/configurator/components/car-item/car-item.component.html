@@ -1,16 +1,20 @@
 <mat-card class="car">
   <img class="car__img" mat-card-image src="{{car.url}}" alt="{{car.name}}" />
-  <mat-card-subtitle class="car__year mat-h3">{{car.year}}</mat-card-subtitle>
-  <mat-card-title class="car__name text-lg"
-    >{{car.name | uppercase}}
-  </mat-card-title>
-  <mat-card-actions class="car__actions">
-    <button
-      class="car__actions__configure"
-      mat-button
-      [routerLink]="[car.name]"
+  <div class="car__info">
+    <mat-card-subtitle class="car__info__year text-bold"
+      >{{car.year}}</mat-card-subtitle
     >
-      Configure now
-    </button>
-  </mat-card-actions>
+    <mat-card-title class="car__info__name car-name-large"
+      >{{car.name | uppercase}}
+    </mat-card-title>
+    <mat-card-actions class="car__info__actions">
+      <button
+        class="car__info__actions__configure"
+        mat-button
+        [routerLink]="[car.name]"
+      >
+        Configure now
+      </button>
+    </mat-card-actions>
+  </div>
 </mat-card>

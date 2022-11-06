@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core'
 import { Observable } from 'rxjs'
 import { Configuration } from 'src/app/shared/models/Configuration'
 import { StoreService } from 'src/app/shared/services/store/store.service'
-import { Location } from '@angular/common'
 
 @Component({
   selector: 'app-car-configuration',
@@ -12,13 +11,9 @@ import { Location } from '@angular/common'
 export class CarConfigurationComponent implements OnInit {
   configuration$: Observable<Configuration>
 
-  constructor (private store: StoreService, private location: Location) {}
+  constructor (private store: StoreService) {}
 
   ngOnInit () {
     this.configuration$ = this.store.configuration$
-  }
-
-  goBack () {
-    this.location.back()
   }
 }

@@ -2,7 +2,6 @@
 @import '../../../../../scss/colors.scss';
 
 .slider {
-  margin-left: 40px;
   &__img {
     width: 100%;
   }
@@ -10,10 +9,22 @@
   &__views {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 4px;
 
     &__currentNumber {
       color: mat.get-color-from-palette($ux-colors, A700);
+      margin: 0;
+    }
+
+    &__slash {
+      margin: 0;
+      color: mat.get-color-from-palette($ux-colors, A300);
+    }
+
+    &__lastNumber {
+      margin: 0;
+      color: mat.get-color-from-palette($ux-colors, A300);
     }
   }
 }

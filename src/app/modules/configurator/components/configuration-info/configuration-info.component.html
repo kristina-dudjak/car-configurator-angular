@@ -1,10 +1,12 @@
 <div class="info">
   <div class="info__car">
     <div class="info__car__properties">
-      <h2 class="info__car__properties__name mat-text-lg">
+      <p class="info__car__properties__name car-name-large">
         {{configuration.carName | uppercase}}
-      </h2>
-      <h3 class="info__car__properties__year">{{configuration.year}}</h3>
+      </p>
+      <p class="info__car__properties__year text-bold">
+        {{configuration.year}}
+      </p>
     </div>
     <div class="info__car__price">
       <div class="info__car__price__total">
@@ -28,7 +30,7 @@
       <div class="info__configuration__values__group">
         <h3 class="info__configuration__values__group__name">Exterior</h3>
         <a
-          class="info__configuration__values__group__edit"
+          class="info__configuration__values__group__edit text-button-default"
           *ngIf="isSummaryPage()"
           routerLink="../exterior"
           >Edit</a
@@ -66,7 +68,7 @@
       <div class="info__configuration__values__group">
         <h3 class="info__configuration__values__group__name">Interior</h3>
         <a
-          class="info__configuration__values__group__edit"
+          class="info__configuration__values__group__edit text-button-default"
           *ngIf="isSummaryPage()"
           routerLink="../interior"
           >Edit</a

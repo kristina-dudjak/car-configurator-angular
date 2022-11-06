@@ -76,7 +76,6 @@ span {
   line-height: mat-line-height($typography, body-1);
   font-weight: mat-font-weight($typography, body-1);
   margin: 0;
-  font-feature-settings: 'pnum' on, 'lnum' on, 'case' on, 'zero' on, 'ss01' on;
   color: mat.get-color-from-palette($ux-colors, A700);
 }
 
@@ -93,5 +92,28 @@ span {
   font-size: mat-font-size($typography, body-2);
   line-height: mat-line-height($typography, body-2);
   font-weight: mat-font-weight($typography, body-2);
-  // color: mat.get-color-from-palette($ux-colors, A100);
+}
+
+.text-bold {
+  font-family: 'Optician Sans', sans-serif;
+  font-size: 28px;
+  line-height: 32px;
+  font-weight: 400;
+  letter-spacing: -2px;
+  margin: 0;
+}
+
+.car-name-large {
+  font-family: 'Optician Sans', sans-serif;
+  font-size: 48px;
+  line-height: 44px;
+  font-weight: 400;
+  letter-spacing: -2px;
+}
+
+.final {
+  font-family: 'Aeonik';
+  font-size: 40px;
+  line-height: 48px;
+  font-weight: 700;
 }

@@ -12,5 +12,6 @@
     color: mat.get-color-from-palette($primary, 500);
     font-weight: bold;
     cursor: pointer;
+    text-decoration: none;
   }
 }

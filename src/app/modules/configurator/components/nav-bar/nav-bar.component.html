@@ -3,14 +3,14 @@
     <mat-icon
       class="nav__content__back"
       svgIcon="back"
-      (click)="goBack()"
+      routerLink=".."
     ></mat-icon>
-    <h3 class="nav__content__year">
+    <p class="nav__content__year text-bold">
       {{configuration.year}}
-    </h3>
-    <h3 class="nav__content__name">
+    </p>
+    <p class="nav__content__name text-bold">
       {{configuration.carName | uppercase}}
-    </h3>
+    </p>
   </div>
   <div class="nav__links">
     <div class="nav__links__item">

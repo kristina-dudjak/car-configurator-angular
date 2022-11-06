@@ -4,6 +4,8 @@
 .nav {
   display: flex;
   justify-content: space-between;
+  height: 100%;
+  align-items: center;
 
   &__content {
     display: flex;
@@ -24,7 +26,7 @@
   &__links {
     display: flex;
     align-items: center;
-    gap: 40px;
+    margin-right: 20px;
 
     &__item {
       display: flex;

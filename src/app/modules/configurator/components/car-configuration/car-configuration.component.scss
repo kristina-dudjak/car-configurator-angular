@@ -12,30 +12,38 @@
     background-color: mat.get-color-from-palette($ux-colors, A100);
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
     &__content {
       display: flex;
-      align-items: baseline;
+      align-items: center;
       margin-left: 44px;
-      margin-top: 24px;
       gap: 12px;
 
       &__year {
         color: mat.get-color-from-palette($ux-colors, A400);
+        margin: 0;
+      }
+
+      &__name {
+        margin: 0;
       }
     }
 
     &__links {
-      margin-top: 28px;
+      display: flex;
+      align-items: center;
+
       &__edit {
-        padding: 28px 20px;
+        padding: 28px 20px 28px 40px;
         color: mat.get-color-from-palette($primary, 500);
         cursor: pointer;
         text-decoration: none;
       }
 
       &__delete {
-        padding: 28px 20px;
+        padding: 28px 40px 28px 20px;
+        cursor: pointer;
         color: mat.get-color-from-palette($error, normal);
       }
     }
@@ -43,6 +51,7 @@
 
   &__slider {
     grid-column: 2 / 12;
+    margin-bottom: 92px;
   }
 
   &__info {
