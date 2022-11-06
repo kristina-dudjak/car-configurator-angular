@@ -50,7 +50,19 @@
 
     &__values {
       &__group {
-        color: mat.get-color-from-palette($ux-colors, A600);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &__name {
+          color: mat.get-color-from-palette($ux-colors, A600);
+        }
+
+        &__edit {
+          cursor: pointer;
+          text-decoration: none;
+          color: mat.get-color-from-palette($primary, 500);
+        }
       }
 
       &__divider {

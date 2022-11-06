@@ -25,7 +25,15 @@
   <div class="info__configuration">
     <h3 class="info__configuration__text">Your configuration details</h3>
     <div class="info__configuration__values">
-      <h3 class="info__configuration__values__group">Exterior</h3>
+      <div class="info__configuration__values__group">
+        <h3 class="info__configuration__values__group__name">Exterior</h3>
+        <a
+          class="info__configuration__values__group__edit"
+          *ngIf="isSummaryPage()"
+          routerLink="../exterior"
+          >Edit</a
+        >
+      </div>
       <mat-divider class="info__configuration__values__divider"></mat-divider>
       <div class="info__configuration__values__property">
         <div class="info__configuration__values__property__values">
@@ -55,7 +63,15 @@
           {{configuration.wheel.price}} €
         </h4>
       </div>
-      <h3 class="info__configuration__values__group">Interior</h3>
+      <div class="info__configuration__values__group">
+        <h3 class="info__configuration__values__group__name">Interior</h3>
+        <a
+          class="info__configuration__values__group__edit"
+          *ngIf="isSummaryPage()"
+          routerLink="../interior"
+          >Edit</a
+        >
+      </div>
       <mat-divider class="info__configuration__values__divider"></mat-divider>
       <div class="info__configuration__values__property">
         <div class="info__configuration__values__property__values">

@@ -1,0 +1,22 @@
+<div class="footer">
+  <div class="footer__configuration">
+    <h3 class="footer__configuration__year">{{configuration.year}}</h3>
+    <h3 class="footer__configuration__name">
+      {{configuration.carName | uppercase}}
+    </h3>
+  </div>
+  <div class="footer__final">
+    <div class="footer__final__text">
+      <p class="footer__final__text__total mat-body-2">
+        TOTAL
+      </p>
+      <mat-icon class="footer__final__text__info" svgIcon="info"></mat-icon>
+    </div>
+    <h3 class="footer__final__price">
+      {{configuration | finalConfigurationPrice}} €
+    </h3>
+    <button class="footer__final__button" mat-button>
+      Save your configuration
+    </button>
+  </div>
+</div>

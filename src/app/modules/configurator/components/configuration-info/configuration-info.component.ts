@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
+import { Router } from '@angular/router'
 import { Configuration } from 'src/app/shared/models/Configuration'
 
 @Component({
@@ -9,4 +10,10 @@ import { Configuration } from 'src/app/shared/models/Configuration'
 })
 export class ConfigurationInfoComponent {
   @Input() configuration: Configuration
+
+  constructor (private router: Router) {}
+
+  isSummaryPage () {
+    return this.router.url.includes('summary')
+  }
 }

@@ -7,6 +7,7 @@ import { ConfigurationComponent } from './views/configuration/configuration.comp
 import { ExteriorComponent } from './views/exterior/exterior.component'
 import { HomeComponent } from './views/home/home.component'
 import { InteriorComponent } from './views/interior/interior.component'
+import { SummaryComponent } from './views/summary/summary.component'
 
 const routes: Routes = [
   {
@@ -37,6 +38,10 @@ const routes: Routes = [
           {
             path: 'interior',
             component: InteriorComponent
+          },
+          {
+            path: 'summary',
+            component: SummaryComponent
           }
         ]
       }

@@ -26,7 +26,9 @@ import { CarConfigurationComponent } from './components/car-configuration/car-co
 import { ColorPickerComponent } from './components/color-picker/color-picker.component'
 import { WheelPickerComponent } from './components/wheel-picker/wheel-picker.component'
 import { InteriorPickerComponent } from './components/interior-picker/interior-picker.component'
-import { FinalConfigurationPricePipe } from './pipes/final-configuration-price.pipe'
+import { FinalConfigurationPricePipe } from './pipes/final-configuration-price.pipe';
+import { SummaryComponent } from './views/summary/summary.component';
+import { ConfigurationFooterComponent } from './components/configuration-footer/configuration-footer.component'
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import { FinalConfigurationPricePipe } from './pipes/final-configuration-price.p
     ColorPickerComponent,
     WheelPickerComponent,
     InteriorPickerComponent,
-    FinalConfigurationPricePipe
+    FinalConfigurationPricePipe,
+    SummaryComponent,
+    ConfigurationFooterComponent
   ],
   imports: [
     CommonModule,
