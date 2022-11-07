@@ -4,7 +4,6 @@
 .cars {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  height: calc(100vh - 162px);
   column-gap: 12px;
   background-color: mat.get-color-from-palette($ux-colors, A200);
   padding-top: 82px;
@@ -24,6 +23,7 @@
     list-style-type: none;
     display: flex;
     margin-bottom: 136px;
+    padding: 0;
 
     &__item {
       min-width: 44%;
