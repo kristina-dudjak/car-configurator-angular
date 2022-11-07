@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { BehaviorSubject } from 'rxjs'
+import { Observable } from 'rxjs'
 import { AuthService } from './modules/auth/services/auth/auth.service'
 import { IconsService } from './shared/services/icons/icons.service'
 import firebase from 'firebase/compat/app'
@@ -15,21 +15,10 @@ export class AppComponent implements OnInit {
   ) {
     this.iconsService.addIcons()
   }
-  user$ = new BehaviorSubject<firebase.User | null>(null)
-  firebaseError$ = new BehaviorSubject<string | null>(null)
+  user$: Observable<firebase.User | null>
 
   ngOnInit () {
-    this.authService.user$.subscribe((user: any) => {
-      this.user$.next(user)
-    })
-    this.authService.errorMessage.subscribe((message: any) => {
-      this.firebaseError$.next(message)
-    })
-  }
-
-  ngOnDestroy () {
-    this.user$.unsubscribe()
-    this.firebaseError$.unsubscribe()
+    this.user$ = this.authService.user$
   }
 
   signOut () {

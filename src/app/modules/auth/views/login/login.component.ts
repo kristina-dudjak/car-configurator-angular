@@ -6,7 +6,7 @@ import { ValidationService } from '../../services/validation/validation.service'
 import { PasswordRegex } from 'src/app/shared/const/PasswordRegex'
 import { MatDialog } from '@angular/material/dialog'
 import { PasswordResetComponent } from '../../components/password-reset/password-reset.component'
-import { BehaviorSubject } from 'rxjs'
+import { Observable } from 'rxjs'
 
 @Component({
   selector: 'app-login',
@@ -14,6 +14,8 @@ import { BehaviorSubject } from 'rxjs'
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  errorMessage$: Observable<string | null>
+
   constructor (
     private authService: AuthService,
     private fb: FormBuilder,
@@ -42,17 +44,10 @@ export class LoginComponent implements OnInit {
   )
 
   isPasswordVisible = true
-  firebaseError$ = new BehaviorSubject<string | null>(null)
   rememberMe = true
 
   ngOnInit () {
-    this.authService.errorMessage.subscribe((message: string | null) => {
-      this.firebaseError$.next(message)
-    })
-  }
-
-  ngOnDestroy () {
-    this.firebaseError$.unsubscribe()
+    this.errorMessage$ = this.authService.errorMessage$
   }
 
   onLogin () {
