@@ -20,14 +20,13 @@ import { InteriorComponent } from './views/interior/interior.component'
 import { InteriorSliderComponent } from './components/interior-slider/interior-slider.component'
 import { InteriorSidebarComponent } from './components/interior-sidebar/interior-sidebar.component'
 import { NavBarComponent } from './components/nav-bar/nav-bar.component'
-import { IsElementCheckedPipe } from './pipes/is-element-checked.pipe'
 import { CarListComponent } from './components/car-list/car-list.component'
 import { CarConfigurationComponent } from './components/car-configuration/car-configuration.component'
 import { ColorPickerComponent } from './components/color-picker/color-picker.component'
 import { WheelPickerComponent } from './components/wheel-picker/wheel-picker.component'
 import { InteriorPickerComponent } from './components/interior-picker/interior-picker.component'
-import { FinalConfigurationPricePipe } from './pipes/final-configuration-price.pipe';
-import { SummaryComponent } from './views/summary/summary.component';
+import { FinalConfigurationPricePipe } from './pipes/final-configuration-price.pipe'
+import { SummaryComponent } from './views/summary/summary.component'
 import { ConfigurationFooterComponent } from './components/configuration-footer/configuration-footer.component'
 
 @NgModule({
@@ -47,7 +46,6 @@ import { ConfigurationFooterComponent } from './components/configuration-footer/
     InteriorSliderComponent,
     InteriorSidebarComponent,
     NavBarComponent,
-    IsElementCheckedPipe,
     CarListComponent,
     CarConfigurationComponent,
     ColorPickerComponent,

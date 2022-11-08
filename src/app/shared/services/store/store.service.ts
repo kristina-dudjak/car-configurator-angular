@@ -80,12 +80,9 @@ export class StoreService extends Store<StoreInterface> {
   initialCarElements (carName: string, editing: EditedEnum) {
     firstValueFrom(
       this.carsCollection.valueChanges().pipe(
-        map(cars => {
-          cars
-            .filter(car => car.name === carName)
-            .map(car => {
-              this.updateCarElementsState(car[EditedEnum[editing]])
-            })
+        tap(cars => {
+          let car = cars.find(car => car.name === carName)
+          this.updateCarElementsState(car[EditedEnum[editing]])
         })
       )
     )
@@ -99,25 +96,22 @@ export class StoreService extends Store<StoreInterface> {
     )
   }
 
-  initialConfigurationLoad (name: string) {
+  initialConfigurationLoad (carName: string) {
     firstValueFrom(
       this.carsCollection.valueChanges().pipe(
-        map(cars => {
-          cars
-            .filter(car => car.name === name)
-            .map(car => {
-              const { name, year, price, colors, interiors, wheels } = car
-              this.updateConfigurationState({
-                id: Date.now(),
-                carName: name,
-                year: year,
-                price: price,
-                creationDate: new Date(),
-                color: colors[0],
-                interior: interiors[0],
-                wheel: wheels[0]
-              })
-            })
+        tap(cars => {
+          let car = cars.find(car => car.name === carName)
+          const { name, year, price, colors, interiors, wheels } = car
+          this.updateConfigurationState({
+            id: Date.now(),
+            carName: name,
+            year: year,
+            price: price,
+            creationDate: new Date(),
+            color: colors[0],
+            interior: interiors[0],
+            wheel: wheels[0]
+          })
         })
       )
     )
