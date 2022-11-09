@@ -21,5 +21,11 @@
         color: mat.get-color-from-palette($primary, 400);
       }
     }
+
+    &__button {
+      &__icon {
+        color: mat.get-color-from-palette($ux-colors, A100);
+      }
+    }
   }
 }

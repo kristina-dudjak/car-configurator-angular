@@ -29,7 +29,7 @@
     }
 
     &__checkbox {
-      margin-bottom: 8px;
+      margin-bottom: 12px;
       align-self: center;
     }
 
@@ -56,6 +56,6 @@
 
   &__redirect {
     grid-column: 5 / 9;
-    margin-top: 40px;
+    margin: 40px 0;
   }
 }

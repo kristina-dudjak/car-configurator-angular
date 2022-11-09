@@ -1,0 +1,26 @@
+@use '@angular/material' as mat;
+@import '../colors.scss';
+
+.button-text > .mat-button-wrapper {
+  color: mat.get-color-from-palette($ux-colors, A200);
+  @extend .text-button-default;
+  font-weight: 700;
+}
+
+.lighter-button-text > .mat-button-wrapper {
+  color: mat.get-color-from-palette($ux-colors, A100);
+  font-weight: 700;
+}
+
+.no-padding > .mat-menu-content:not(:empty) {
+  padding: 0;
+}
+
+.checked-color .mat-checkbox-checkmark-path,
+.mat-checkbox-checked {
+  stroke: mat.get-color-from-palette($primary, 500);
+}
+
+.form-field-border .mat-form-field-infix {
+  border-top: 0.5em solid transparent;
+}
