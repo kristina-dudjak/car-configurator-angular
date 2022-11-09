@@ -11,6 +11,10 @@
   &__img {
     min-width: 180%;
     margin-left: -80%;
+    @media screen and (max-width: 768px) {
+      min-width: 240%;
+      margin-left: -110%;
+    }
   }
 
   &__info {
@@ -30,7 +34,7 @@
 
       &__configure {
         background-color: mat.get-color-from-palette($primary, 500);
-        padding: 12px 38px;
+        padding: 12px 20px;
       }
     }
   }

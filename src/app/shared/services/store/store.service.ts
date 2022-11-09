@@ -3,7 +3,7 @@ import {
   AngularFirestore,
   AngularFirestoreCollection
 } from '@angular/fire/compat/firestore'
-import { firstValueFrom, map, tap } from 'rxjs'
+import { firstValueFrom, map } from 'rxjs'
 import { Store } from '../../classes/store.class'
 import { EditedEnum } from '../../enums/EditedEnum'
 import { Car } from '../../models/Car'
@@ -80,7 +80,7 @@ export class StoreService extends Store<StoreInterface> {
   initialCarElements (carName: string, editing: EditedEnum) {
     firstValueFrom(
       this.carsCollection.valueChanges().pipe(
-        tap(cars => {
+        map(cars => {
           let car = cars.find(car => car.name === carName)
           this.updateCarElementsState(car[EditedEnum[editing]])
         })
@@ -92,14 +92,14 @@ export class StoreService extends Store<StoreInterface> {
     firstValueFrom(
       this.carsCollection
         .valueChanges()
-        .pipe(tap(cars => this.updateCarsState(cars)))
+        .pipe(map(cars => this.updateCarsState(cars)))
     )
   }
 
   initialConfigurationLoad (carName: string) {
     firstValueFrom(
       this.carsCollection.valueChanges().pipe(
-        tap(cars => {
+        map(cars => {
           let car = cars.find(car => car.name === carName)
           const { name, year, price, colors, interiors, wheels } = car
           this.updateConfigurationState({

@@ -17,11 +17,18 @@
     grid-column: 5 / 9;
     text-align: center;
     margin: 48px 0 40px 0;
+    @media screen and (max-width: 768px) {
+      grid-column: 2 / 12;
+    }
   }
 
   &__slider {
     grid-column: 2 / 12;
+    margin-bottom: 92px;
     align-self: center;
+    @media screen and (max-width: 768px) {
+      grid-column: 1 / 13;
+    }
   }
 
   &__info {

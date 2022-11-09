@@ -9,12 +9,14 @@
         svgIcon="back"
         routerLink=".."
       ></mat-icon>
-      <p class="configuration__nav__content__year text-bold">
-        {{configuration.year}}
-      </p>
-      <p class="configuration__nav__content__name text-bold">
-        {{configuration.carName}}
-      </p>
+      <div class="configuration__nav__content__text">
+        <p class="configuration__nav__content__text__year text-bold">
+          {{configuration.year}}
+        </p>
+        <p class="configuration__nav__content__text__name text-bold">
+          {{configuration.carName}}
+        </p>
+      </div>
     </div>
     <div class="configuration__nav__links">
       <a class="configuration__nav__links__edit" routerLink="exterior"

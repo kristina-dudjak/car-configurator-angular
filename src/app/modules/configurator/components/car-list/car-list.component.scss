@@ -6,10 +6,13 @@
   grid-template-columns: repeat(12, 1fr);
   column-gap: 12px;
   background-color: mat.get-color-from-palette($ux-colors, A200);
-  padding-top: 82px;
+  padding-top: 80px;
 
   &__text {
     grid-column: 2 / 6;
+    @media screen and (max-width: 768px) {
+      grid-column: 2 / 12;
+    }
 
     &__description {
       color: mat.get-color-from-palette($ux-colors, A500);
@@ -24,11 +27,14 @@
     display: flex;
     margin-bottom: 136px;
     padding: 0;
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+    }
 
     &__item {
       min-width: 44%;
       background-color: mat.get-color-from-palette($ux-colors, A100);
-      margin-right: 32px;
+      margin: 12px 32px 12px 0;
     }
   }
 }

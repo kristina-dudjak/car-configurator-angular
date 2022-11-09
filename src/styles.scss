@@ -1,5 +1,8 @@
 @import './scss/theme.scss';
-@import './scss/components/am-components.scss';
+@import './scss/am-components/mat-button.overrides.scss';
+@import './scss/am-components/mat-checkbox.overrides.scss';
+@import './scss/am-components/mat-form.overrides.scss';
+@import './scss/am-components/mat-menu.overrides.scss';
 
 html,
 body {
