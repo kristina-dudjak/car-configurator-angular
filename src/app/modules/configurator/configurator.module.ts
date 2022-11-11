@@ -11,6 +11,7 @@ import { MatCardModule } from '@angular/material/card'
 import { ConfigurationComponent } from './views/configuration/configuration.component'
 import { CarSliderComponent } from './components/car-slider/car-slider.component'
 import { MatIconModule } from '@angular/material/icon'
+import { MatMenuModule } from '@angular/material/menu'
 import { ConfigurationInfoComponent } from './components/configuration-info/configuration-info.component'
 import { ExteriorComponent } from './views/exterior/exterior.component'
 import { ExteriorSidebarComponent } from './components/exterior-sidebar/exterior-sidebar.component'
@@ -27,8 +28,9 @@ import { WheelPickerComponent } from './components/wheel-picker/wheel-picker.com
 import { InteriorPickerComponent } from './components/interior-picker/interior-picker.component'
 import { FinalConfigurationPricePipe } from './pipes/final-configuration-price.pipe'
 import { SummaryComponent } from './views/summary/summary.component'
-import { ConfigurationFooterComponent } from './components/configuration-footer/configuration-footer.component';
+import { ConfigurationFooterComponent } from './components/configuration-footer/configuration-footer.component'
 import { SavedConfigurationsComponent } from './components/saved-configurations/saved-configurations.component'
+import { SavedConfigurationComponent } from './components/saved-configuration/saved-configuration.component'
 
 @NgModule({
   declarations: [
@@ -55,7 +57,8 @@ import { SavedConfigurationsComponent } from './components/saved-configurations/
     FinalConfigurationPricePipe,
     SummaryComponent,
     ConfigurationFooterComponent,
-    SavedConfigurationsComponent
+    SavedConfigurationsComponent,
+    SavedConfigurationComponent
   ],
   imports: [
     CommonModule,
@@ -63,6 +66,7 @@ import { SavedConfigurationsComponent } from './components/saved-configurations/
     MatButtonModule,
     MatCardModule,
     MatIconModule,
+    MatMenuModule,
     MatDividerModule
   ]
 })

@@ -1,0 +1,18 @@
+@use '@angular/material' as mat;
+@import '../../../../../scss/colors.scss';
+
+.configurations {
+  &__list {
+    padding: 0;
+    list-style-type: none;
+
+    &__item {
+      background-color: mat.get-color-from-palette($ux-colors, A100);
+      margin-bottom: 28px;
+
+      &__configuration {
+        background-color: mat.get-color-from-palette($ux-colors, A100);
+      }
+    }
+  }
+}

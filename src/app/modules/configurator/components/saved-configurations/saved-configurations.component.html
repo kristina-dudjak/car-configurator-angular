@@ -1,3 +1,13 @@
-<div>
-  <p>saved configuration</p>
+<div class="configurations">
+  <ul class="configurations__list">
+    <li
+      class="configurations__list__item"
+      *ngFor="let configuration of user.configurations"
+    >
+      <app-saved-configuration
+        class="configurations__list__item__configuration"
+        [configuration]="configuration"
+      ></app-saved-configuration>
+    </li>
+  </ul>
 </div>

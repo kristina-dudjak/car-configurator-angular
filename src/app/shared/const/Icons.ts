@@ -28,5 +28,9 @@ export const icons: IconItem[] = [
   {
     name: 'exit',
     svg: `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.7 1.3c-.4-.4-1-.4-1.4 0L8 6.6 2.7 1.3c-.4-.4-1-.4-1.4 0-.4.4-.4 1 0 1.4L6.6 8l-5.3 5.3c-.4.4-.4 1 0 1.4.2.2.4.3.7.3.3 0 .5-.1.7-.3L8 9.4l5.3 5.3c.2.2.5.3.7.3.2 0 .5-.1.7-.3.4-.4.4-1 0-1.4L9.4 8l5.3-5.3c.4-.4.4-1 0-1.4Z" fill="currentColor"/></svg>`
+  },
+  {
+    name: 'three-dots',
+    svg: `<svg width="4" height="16" viewBox="0 0 4 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 8a2 2 0 1 0-4 0 2 2 0 0 0 4 0Zm0 6a2 2 0 1 0-4 0 2 2 0 0 0 4 0ZM4 2a2 2 0 1 0-4 0 2 2 0 0 0 4 0Z" fill="currentColor"/></svg>`
   }
 ]

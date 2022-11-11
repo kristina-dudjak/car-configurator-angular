@@ -9,6 +9,7 @@ import { EditedEnum } from '../../enums/EditedEnum'
 import { Car } from '../../models/Car'
 import { CarElement } from '../../models/CarElement'
 import { Configuration } from '../../models/Configuration'
+import { Timestamp } from 'firebase/firestore'
 
 interface StoreInterface {
   cars: Car[]
@@ -107,7 +108,7 @@ export class StoreService extends Store<StoreInterface> {
             carName: name,
             year: year,
             price: price,
-            creationDate: new Date(),
+            creationDate: Timestamp.now(),
             color: colors[0],
             interior: interiors[0],
             wheel: wheels[0]

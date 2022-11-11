@@ -14,6 +14,7 @@
     *ngIf="!user.configurations || user.configurations.length === 0"
   ></app-empty-home>
   <app-saved-configurations
+    class="home__saved"
     *ngIf="user.configurations && user.configurations.length !== 0"
     [user]="user"
   ></app-saved-configurations>
