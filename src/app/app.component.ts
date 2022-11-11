@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { Observable } from 'rxjs'
 import { AuthService } from './modules/auth/services/auth/auth.service'
 import { IconsService } from './shared/services/icons/icons.service'
-import firebase from 'firebase/compat/app'
+import { User } from './shared/models/User'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   ) {
     this.iconsService.addIcons()
   }
-  user$: Observable<firebase.User | null>
+  user$: Observable<User | null>
 
   ngOnInit () {
     this.user$ = this.authService.user$

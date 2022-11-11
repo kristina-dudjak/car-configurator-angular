@@ -15,7 +15,12 @@
     <h3 class="footer__final__price">
       {{configuration | finalConfigurationPrice}} €
     </h3>
-    <button class="footer__final__button lighter-button-text" mat-button>
+    <button
+      class="footer__final__button lighter-button-text"
+      mat-button
+      *ngIf="(user$ | async) && (user$ | async) as user"
+      (click)="saveConfiguration(user)"
+    >
       Save your configuration
     </button>
   </div>

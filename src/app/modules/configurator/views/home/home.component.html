@@ -1,4 +1,4 @@
-<div class="home">
+<div class="home" *ngIf="(user$ | async) && (user$ | async) as user">
   <div class="home__shared">
     <h3 class="home__shared__subtitle">View saved configurations</h3>
     <button
@@ -9,5 +9,12 @@
       Configure a car
     </button>
   </div>
-  <app-empty-home class="home__empty"></app-empty-home>
+  <app-empty-home
+    class="home__empty"
+    *ngIf="!user.configurations || user.configurations.length === 0"
+  ></app-empty-home>
+  <app-saved-configurations
+    *ngIf="user.configurations && user.configurations.length !== 0"
+    [user]="user"
+  ></app-saved-configurations>
 </div>
