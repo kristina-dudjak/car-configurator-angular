@@ -34,25 +34,41 @@ export class AuthService extends Store<AuthInterface> {
   user$ = this.select(({ user }) => user)
   errorMessage$ = this.select(({ errorMessage }) => errorMessage)
 
-  async updateUserState (user: firebase.User) {
+  updateUserState (user: firebase.User) {
     if (!user) return
     this.setState({
       user: {
         id: user.uid,
         email: user.email,
-        configurations: await this.initialSavedConfigurationsLoad(user.uid)
+        configurations: []
       }
     })
+    this.getConfigurations(user.uid)
   }
 
   updateErrorMessageState (errorMessage: string) {
     this.setState({ errorMessage })
   }
 
-  addConfigurationToUserConfigurations (conf: Configuration) {
+  updateUserConfigurations (configs: Configuration[]) {
     const { configurations, ...rest } = this.state.user
     this.setState({
-      user: { configurations: [...configurations, conf], ...rest }
+      user: {
+        configurations: configs,
+        ...rest
+      }
+    })
+  }
+
+  removeConfigurationFromUserConfigurations (configuration: Configuration) {
+    const { configurations, ...rest } = this.state.user
+    this.setState({
+      user: {
+        configurations: configurations.filter(
+          config => config !== configuration
+        ),
+        ...rest
+      }
     })
   }
 
@@ -123,25 +139,48 @@ export class AuthService extends Store<AuthInterface> {
   }
 
   saveUserConfiguration (configuration: Configuration, user: User) {
-    this.db.doc(`users/${user.id}`).set(
-      {
-        configurations: firebase.firestore.FieldValue.arrayUnion(configuration)
-      },
-      { merge: true }
-    )
-    this.addConfigurationToUserConfigurations(configuration)
+    const {
+      id,
+      carName,
+      year,
+      price,
+      color,
+      interior,
+      wheel,
+      creationDate
+    } = configuration
+    this.db
+      .collection(`users/${user.id}/configurations`)
+      .doc(configuration.id.toString())
+      .set(
+        {
+          id: id,
+          carName: carName,
+          year: year,
+          price: price,
+          color: color,
+          interior: interior,
+          wheel: wheel,
+          creationDate: creationDate
+        },
+        { merge: true }
+      )
+      .then(() => this.getConfigurations(user.id))
   }
 
-  initialSavedConfigurationsLoad (uid: string) {
-    return firstValueFrom(
+  deleteUserConfiguration (configuration: Configuration, user: User) {
+    this.db.doc(`users/${user.id}/configurations/${configuration.id}`).delete()
+    this.removeConfigurationFromUserConfigurations(configuration)
+  }
+
+  getConfigurations (uid: string) {
+    firstValueFrom(
       this.db
-        .doc(`users/${uid}`)
-        .snapshotChanges()
+        .collection(`users/${uid}/configurations`)
+        .valueChanges()
         .pipe(
-          map(changes => {
-            const data = changes.payload.get('configurations')
-            if (!data) return []
-            return data
+          map(configurations => {
+            this.updateUserConfigurations(configurations as Configuration[])
           })
         )
     )

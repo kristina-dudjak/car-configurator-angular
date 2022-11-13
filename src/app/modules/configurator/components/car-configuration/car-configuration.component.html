@@ -18,11 +18,18 @@
         </p>
       </div>
     </div>
-    <div class="configuration__nav__links">
+    <div
+      class="configuration__nav__links"
+      *ngIf="(user$ | async) && (user$ | async) as user"
+    >
       <a class="configuration__nav__links__edit" routerLink="exterior"
         >Edit configuration</a
       >
-      <a class="configuration__nav__links__delete">Delete</a>
+      <a
+        class="configuration__nav__links__delete"
+        (click)="deleteConfiguration(configuration, user)"
+        >Delete</a
+      >
     </div>
   </div>
   <app-car-slider class="configuration__slider"></app-car-slider>

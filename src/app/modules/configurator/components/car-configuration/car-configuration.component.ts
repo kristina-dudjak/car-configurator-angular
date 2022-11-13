@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core'
-import { Observable } from 'rxjs'
+import { ActivatedRoute, Router } from '@angular/router'
+import { map, Observable } from 'rxjs'
+import { AuthService } from 'src/app/modules/auth/services/auth/auth.service'
 import { Configuration } from 'src/app/shared/models/Configuration'
+import { User } from 'src/app/shared/models/User'
 import { StoreService } from 'src/app/shared/services/store/store.service'
 
 @Component({
@@ -10,10 +13,30 @@ import { StoreService } from 'src/app/shared/services/store/store.service'
 })
 export class CarConfigurationComponent implements OnInit {
   configuration$: Observable<Configuration>
+  user$: Observable<User>
+  name: string
 
-  constructor (private store: StoreService) {}
+  constructor (
+    private store: StoreService,
+    private authService: AuthService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit () {
-    this.configuration$ = this.store.configuration$
+    this.name = this.route.snapshot.paramMap.get('name')
+    this.configuration$ = this.store.configuration$.pipe(
+      map(configuration => {
+        if (!configuration || configuration.carName !== this.name)
+          this.store.initialConfigurationLoad(this.name)
+        return configuration
+      })
+    )
+    this.user$ = this.authService.user$
+  }
+
+  deleteConfiguration (configuration: Configuration, user: User) {
+    this.authService.deleteUserConfiguration(configuration, user)
+    this.router.navigateByUrl('configurator')
   }
 }

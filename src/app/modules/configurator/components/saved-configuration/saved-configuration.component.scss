@@ -10,19 +10,28 @@
     display: flex;
     &__img {
       width: 50%;
+      margin: 0;
+      @media screen and (max-width: 768px) {
+        width: 100%;
+        padding: 16px 0;
+      }
+    }
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
     }
 
     &__divider {
-      height: 100%;
       color: mat.get-color-from-palette($ux-colors, A300);
-      margin: 30px 28px 30px 40px;
+      margin-right: 28px;
+      @media screen and (max-width: 768px) {
+        display: none;
+      }
     }
 
     &__content {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      margin: 30px 28px 30px 0;
       &__group {
         &__subtitle {
           color: mat.get-color-from-palette($ux-colors, A500);

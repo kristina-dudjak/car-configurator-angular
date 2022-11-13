@@ -4,7 +4,6 @@
 .configuration {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  background-color: mat.get-color-from-palette($ux-colors, A200);
   column-gap: 12px;
 
   &__nav {

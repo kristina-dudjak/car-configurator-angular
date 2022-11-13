@@ -10,8 +10,7 @@ const addUserToDb = functions.auth.user().onCreate((user: any) => {
     .collection('users')
     .doc(user.uid)
     .set({
-      email: user.email,
-      configurations: []
+      email: user.email
     })
 })
 module.exports = { addUserToDb }

@@ -5,10 +5,9 @@
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   align-items: start;
-  height: calc(100vh - 162px);
+  height: 100%;
   column-gap: 12px;
   padding-top: 80px;
-  background-color: mat.get-color-from-palette($ux-colors, A200);
 
   &__shared {
     grid-column: 2 / 12;
