@@ -1,5 +1,9 @@
 <div class="slider">
-  <img class="slider__img" src="{{interiorImage$ | async}}" />
+  <img class="slider__img" [src]="interiorImage$ | async" />
+  <mat-spinner
+    *ngIf="!(interiorImage$ | async)"
+    class="slider__spinner"
+  ></mat-spinner>
   <div class="slider__views">
     <button class="slider__views__button" mat-icon-button (click)="decrement()">
       <mat-icon class="slider__views__button__back" svgIcon="back"></mat-icon>

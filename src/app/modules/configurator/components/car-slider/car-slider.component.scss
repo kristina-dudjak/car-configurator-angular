@@ -4,8 +4,16 @@
 .slider {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  gap: 40px;
+
   &__img {
     width: 100%;
+    margin: 0 12px;
+  }
+
+  &__spinner {
+    stroke: mat.get-color-from-palette($primary, 200);
   }
 
   &__views {

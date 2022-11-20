@@ -16,15 +16,6 @@
   }
 
   &__menu {
-    &__items__item {
-      background-color: mat.get-color-from-palette($ux-colors, A100);
-      border: 1px solid mat.get-color-from-palette($ux-colors, A200);
-
-      &__text {
-        color: mat.get-color-from-palette($primary, 400);
-      }
-    }
-
     &__button {
       &__icon {
         color: mat.get-color-from-palette($ux-colors, A100);

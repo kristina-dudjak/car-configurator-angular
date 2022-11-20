@@ -2,8 +2,17 @@
 @import '../../../../../scss/colors.scss';
 
 .slider {
+  display: flex;
+  flex-direction: column;
+  margin-left: 12px;
+  align-items: center;
+  gap: 40px;
   &__img {
     width: 100%;
+  }
+
+  &__spinner {
+    stroke: mat.get-color-from-palette($primary, 200);
   }
 
   &__views {

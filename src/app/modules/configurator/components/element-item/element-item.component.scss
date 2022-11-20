@@ -4,32 +4,34 @@
 .element {
   display: flex;
   align-items: center;
+  justify-items: flex-start;
+  gap: 24px;
 
   &__image {
     display: flex;
-    flex: 1 1 0;
+    width: 84px;
+    align-items: flex-end;
     &__img {
       width: 60px;
       border-radius: 60px;
     }
 
     &__icon {
-      align-self: flex-end;
       margin: 0 0 0 -20%;
       color: mat.get-color-from-palette($success, normal);
     }
   }
 
   &__text {
-    flex: 3 1 0;
-
     &__name {
       margin: 0;
+      white-space: nowrap;
     }
 
     &__price {
       margin: 0;
       color: mat.get-color-from-palette($ux-colors, A500);
+      white-space: nowrap;
     }
   }
 }

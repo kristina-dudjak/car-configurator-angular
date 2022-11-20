@@ -19,7 +19,7 @@
         ></mat-icon>
       </div>
       <h3 class="info__car__price__value">
-        {{configuration | finalConfigurationPrice}} €
+        {{configuration | finalConfigurationPrice | currency}}
       </h3>
     </div>
   </div>
@@ -41,28 +41,28 @@
         <div class="info__configuration__values__property__values">
           <img
             class="info__configuration__values__property__values__img"
-            src="{{configuration.color.thumbnail}}"
+            [src]="configuration.color.thumbnail"
           />
           <h4 class="info__configuration__values__property__values__name">
             {{configuration.color.name}}
           </h4>
         </div>
         <h4 class="info__configuration__values__property__price">
-          {{configuration.color.price}} €
+          {{configuration.color.price | currency}}
         </h4>
       </div>
       <div class="info__configuration__values__property">
         <div class="info__configuration__values__property__values">
           <img
             class="info__configuration__values__property__values__img"
-            src="{{configuration.wheel.thumbnail}}"
+            [src]="configuration.wheel.thumbnail"
           />
           <h4 class="info__configuration__values__property__values__name">
             {{configuration.wheel.name}}
           </h4>
         </div>
         <h4 class="info__configuration__values__property__price">
-          {{configuration.wheel.price}} €
+          {{configuration.wheel.price | currency}}
         </h4>
       </div>
       <div class="info__configuration__values__group">
@@ -79,14 +79,14 @@
         <div class="info__configuration__values__property__values">
           <img
             class="info__configuration__values__property__values__img"
-            src="{{configuration.interior.thumbnail}}"
+            [src]="configuration.interior.thumbnail"
           />
           <h4 class="info__configuration__values__property__values__name">
             {{configuration.interior.name}}
           </h4>
         </div>
         <h4 class="info__configuration__values__property__price">
-          {{configuration.interior.price}} €
+          {{configuration.interior.price | currency}}
         </h4>
       </div>
       <div class="info__configuration__values__price">
@@ -94,7 +94,7 @@
           Total
         </h3>
         <h3 class="info__configuration__values__price__value">
-          {{configuration | finalConfigurationPrice}} €
+          {{configuration | finalConfigurationPrice | currency}}
         </h3>
       </div>
     </div>

@@ -40,7 +40,7 @@ export class RegisterComponent {
         ValidationService.validator('repeatPassword'),
         ValidationService.passwordMatchValidator('repeatPassword')
       ],
-      updateOn: 'blur'
+      updateOn: 'change'
     }
   )
 

@@ -15,7 +15,7 @@
       &__name {
         margin: 0px;
         @media screen and (max-width: 768px) {
-          font-size: 40px;
+          font-size: 32px;
         }
       }
 
@@ -53,6 +53,9 @@
       &__value {
         margin: 0;
         white-space: nowrap;
+        @media screen and (max-width: 768px) {
+          font-size: 20px;
+        }
       }
     }
   }
@@ -73,6 +76,9 @@
 
     &__text {
       flex: 1 1 0;
+      @media screen and (max-width: 768px) {
+        font-size: 20px;
+      }
     }
 
     &__values {
@@ -84,6 +90,10 @@
 
         &__name {
           color: mat.get-color-from-palette($ux-colors, A600);
+          margin: 0;
+          @media screen and (max-width: 768px) {
+            font-size: 20px;
+          }
         }
 
         &__edit {
@@ -103,6 +113,7 @@
         justify-content: space-between;
         align-items: center;
         margin-bottom: 40px;
+        gap: 8px;
 
         &__values {
           display: flex;
@@ -117,12 +128,18 @@
           &__name {
             margin: 0px;
             color: mat.get-color-from-palette($ux-colors, A700);
+            @media screen and (max-width: 768px) {
+              font-size: 16px;
+            }
           }
         }
 
         &__price {
           margin: 0;
           white-space: nowrap;
+          @media screen and (max-width: 768px) {
+            font-size: 16px;
+          }
         }
       }
 
@@ -135,11 +152,17 @@
         &__text {
           color: mat.get-color-from-palette($ux-colors, A600);
           font-weight: 700;
+          @media screen and (max-width: 768px) {
+            font-size: 20px;
+          }
         }
 
         &__value {
           font-weight: 700;
           white-space: nowrap;
+          @media screen and (max-width: 768px) {
+            font-size: 20px;
+          }
         }
       }
     }

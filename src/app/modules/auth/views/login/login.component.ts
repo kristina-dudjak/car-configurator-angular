@@ -14,7 +14,7 @@ import { Observable } from 'rxjs'
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  errorMessage$: Observable<string | null>
+  errorMessage$: Observable<string>
 
   constructor (
     private authService: AuthService,
@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
         ValidationService.validator('email'),
         ValidationService.validator('password')
       ],
-      updateOn: 'blur'
+      updateOn: 'change'
     }
   )
 

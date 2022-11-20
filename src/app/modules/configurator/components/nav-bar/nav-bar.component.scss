@@ -31,10 +31,16 @@
       &__year {
         color: mat.get-color-from-palette($ux-colors, A400);
         margin: 0;
+        @media screen and (max-width: 768px) {
+          font-size: 20px;
+        }
       }
 
       &__name {
         margin: 0;
+        @media screen and (max-width: 768px) {
+          font-size: 20px;
+        }
       }
     }
   }

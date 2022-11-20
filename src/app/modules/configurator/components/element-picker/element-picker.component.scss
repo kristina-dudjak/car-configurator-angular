@@ -45,8 +45,9 @@
 
     &__price {
       display: flex;
+      align-self: stretch;
       justify-content: space-between;
-      margin: 24px 40px;
+      margin: 24px 12px;
 
       &__total {
         display: flex;
@@ -67,6 +68,9 @@
       &__value {
         margin: 0px;
         white-space: nowrap;
+        @media screen and (max-width: 1024px) {
+          font-size: 20px;
+        }
       }
     }
 

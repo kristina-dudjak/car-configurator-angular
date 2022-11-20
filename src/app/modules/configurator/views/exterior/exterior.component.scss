@@ -17,7 +17,7 @@
   &__slider {
     grid-column: 1 / 10;
     align-self: center;
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 912px) {
       grid-column: 1 / 13;
       margin: 40px 0;
     }
@@ -28,7 +28,7 @@
     background-color: mat.get-color-from-palette($ux-colors, A100);
     border-left: 1px solid mat.get-color-from-palette($ux-colors, A300);
     display: flex;
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 912px) {
       grid-column: 1 / 13;
     }
   }

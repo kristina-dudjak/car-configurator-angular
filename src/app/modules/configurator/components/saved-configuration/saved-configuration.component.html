@@ -3,7 +3,7 @@
     <img
       class="configuration__main__img"
       mat-card-image
-      src="{{configurationImg$ | async}}"
+      [src]="configurationImg$ | async"
     />
     <mat-divider
       class="configuration__main__divider divider"

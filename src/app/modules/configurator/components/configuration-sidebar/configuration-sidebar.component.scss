@@ -11,7 +11,6 @@
     &__item {
       display: flex;
       align-items: center;
-      margin: 40px;
       cursor: pointer;
       gap: 20px;
 
@@ -51,7 +50,7 @@
     &__price {
       display: flex;
       justify-content: space-between;
-      margin: 24px 40px;
+      margin: 24px 12px;
 
       &__total {
         display: flex;
@@ -72,6 +71,9 @@
       &__value {
         margin: 0px;
         white-space: nowrap;
+        @media screen and (max-width: 1024px) {
+          font-size: 20px;
+        }
       }
     }
 
@@ -80,7 +82,7 @@
       background-color: mat.get-color-from-palette($primary, 500);
       justify-content: center;
       align-items: center;
-      padding: 12px;
+      padding: 22px;
 
       &__icon {
         color: mat.get-color-from-palette($ux-colors, A100);

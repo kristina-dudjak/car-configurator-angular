@@ -19,6 +19,18 @@
     @media screen and (max-width: 768px) {
       grid-column: 2 / 12;
     }
+
+    &__headline {
+      @media screen and (max-width: 768px) {
+        font-size: 24px;
+      }
+    }
+
+    &__description {
+      @media screen and (max-width: 768px) {
+        font-size: 16px;
+      }
+    }
   }
 
   &__slider {

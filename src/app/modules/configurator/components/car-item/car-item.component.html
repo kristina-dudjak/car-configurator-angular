@@ -1,5 +1,5 @@
 <mat-card class="car">
-  <img class="car__img" mat-card-image src="{{car.url}}" alt="{{car.name}}" />
+  <img class="car__img" mat-card-image [src]="car.url" [alt]="car.name" />
   <div class="car__info">
     <mat-card-subtitle class="car__info__year text-bold"
       >{{car.year}}</mat-card-subtitle

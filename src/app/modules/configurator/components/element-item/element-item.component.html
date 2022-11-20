@@ -1,6 +1,6 @@
 <div class="element" (click)="changeElement(element)">
   <div class="element__image">
-    <img class="element__image__img" src="{{element.thumbnail}}" />
+    <img class="element__image__img" [src]="element.thumbnail" />
     <mat-icon
       class="element__image__icon"
       svgIcon="checkmark"
@@ -10,7 +10,7 @@
   <div class="element__text">
     <p class="element__text__name">{{element.name}}</p>
     <p class="element__text__price mat-body-2" *ngIf="isChecked()">
-      {{element.price}} €
+      {{element.price | currency}}
     </p>
   </div>
 </div>
