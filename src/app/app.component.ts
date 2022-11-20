@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   ) {
     this.iconsService.addIcons()
   }
-  user$: Observable<User | null>
+  user$: Observable<User>
 
   ngOnInit () {
     this.user$ = this.authService.user$

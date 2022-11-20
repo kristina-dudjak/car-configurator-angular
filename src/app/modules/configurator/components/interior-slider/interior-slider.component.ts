@@ -48,7 +48,7 @@ export class InteriorSliderComponent implements OnInit {
       this.currentNumber$.next(this.currentNumber$.getValue() + 1)
   }
 
-  setInteriorImage$ (conf: Configuration | undefined, page: number) {
+  setInteriorImage$ (conf: Configuration, page: number) {
     this.interiorImage$ = this.storage
       .ref(`images/${conf?.carName}/interiors/${conf?.interior.id}/${page}.png`)
       .getDownloadURL()

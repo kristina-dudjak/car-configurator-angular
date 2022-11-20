@@ -23,8 +23,6 @@ export class PasswordResetComponent {
 
   sendEmail () {
     if (!this.emailForm.valid) return
-    this.authService.sendPasswordResetEmail(
-      this.emailForm.value.emailReset as string
-    )
+    this.authService.sendPasswordResetEmail(this.emailForm.value.emailReset)
   }
 }

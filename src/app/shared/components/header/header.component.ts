@@ -10,7 +10,7 @@ import { User } from '../../models/User'
 })
 export class HeaderComponent {
   constructor (private authService: AuthService) {}
-  @Input() user$: Observable<User | undefined>
+  @Input() user$: Observable<User>
 
   signOut () {
     this.authService.signOut()

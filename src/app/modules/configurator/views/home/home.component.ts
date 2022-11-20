@@ -8,7 +8,7 @@ import { User } from 'src/app/shared/models/User'
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  user$: Observable<User | null>
+  user$: Observable<User>
 
   constructor (private authService: AuthService) {}
 

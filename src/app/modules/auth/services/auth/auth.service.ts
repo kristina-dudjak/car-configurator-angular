@@ -156,7 +156,7 @@ export class AuthService extends Store<AuthInterface> {
     } = configuration
     this.db
       .collection(`users/${user.id}/configurations`)
-      .doc(configuration.id.toString())
+      .doc(id.toString())
       .set(
         {
           id: id,
@@ -184,8 +184,8 @@ export class AuthService extends Store<AuthInterface> {
         .collection(`users/${uid}/configurations`)
         .valueChanges()
         .pipe(
-          map(configurations => {
-            this.updateUserConfigurations(configurations as Configuration[])
+          map((configurations: Configuration[]) => {
+            this.updateUserConfigurations(configurations)
           })
         )
     )

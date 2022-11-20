@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
 import { BehaviorSubject } from 'rxjs'
-import { EditingMap } from 'src/app/shared/const/EditingMap'
 import { EditedEnum } from 'src/app/shared/enums/EditedEnum'
 import { Configuration } from 'src/app/shared/models/Configuration'
 
@@ -14,7 +13,6 @@ export class ConfigurationSidebarComponent implements OnInit {
   @Input() configuration: Configuration
   @Input() editing: EditedEnum
   editedEnum = EditedEnum
-  editingMap = EditingMap
   redirectText: string
   route$ = new BehaviorSubject<string>('')
 

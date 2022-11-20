@@ -46,7 +46,7 @@ export class RegisterComponent {
 
   isPasswordVisible = true
   isPasswordRepeatVisible = true
-  errorMessage$: Observable<string | null>
+  errorMessage$: Observable<string>
   rememberMe = true
 
   ngOnInit () {

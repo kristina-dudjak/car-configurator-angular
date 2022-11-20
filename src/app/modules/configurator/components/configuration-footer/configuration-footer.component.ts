@@ -12,7 +12,7 @@ import { User } from 'src/app/shared/models/User'
 })
 export class ConfigurationFooterComponent implements OnInit {
   @Input() configuration: Configuration
-  user$: Observable<User | null>
+  user$: Observable<User>
 
   constructor (private authService: AuthService, private router: Router) {}
 
