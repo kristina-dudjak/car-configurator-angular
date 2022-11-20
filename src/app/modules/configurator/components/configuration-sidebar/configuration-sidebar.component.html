@@ -1,0 +1,43 @@
+<div class="sidebar" *ngIf="(route$ | async) && (route$ | async) as route">
+  <div class="sidebar__items">
+    <app-sidebar-item
+      *ngIf="route==='exterior'"
+      [configuration]="configuration"
+      [editing]="editedEnum.colors"
+    ></app-sidebar-item>
+    <app-sidebar-item
+      *ngIf="route==='exterior'"
+      [configuration]="configuration"
+      [editing]="editedEnum.wheels"
+    ></app-sidebar-item>
+    <app-sidebar-item
+      *ngIf="route==='interior'"
+      [configuration]="configuration"
+      [editing]="editedEnum.interiors"
+    ></app-sidebar-item>
+  </div>
+  <div class="sidebar__final">
+    <div class="sidebar__final__price">
+      <div class="sidebar__final__price__total">
+        <p class="sidebar__final__price__total__text mat-body-2">
+          TOTAL
+        </p>
+        <mat-icon
+          class="sidebar__final__price__total__icon"
+          svgIcon="info"
+        ></mat-icon>
+      </div>
+      <h3 class="sidebar__final__price__value">
+        {{configuration | finalConfigurationPrice | currency}}
+      </h3>
+    </div>
+    <button
+      class="sidebar__final__button lighter-button-text"
+      mat-button
+      [routerLink]="['..', redirectText]"
+    >
+      {{redirectText | titlecase}}
+      <mat-icon class="sidebar__final__button__icon" svgIcon="next"></mat-icon>
+    </button>
+  </div>
+</div>

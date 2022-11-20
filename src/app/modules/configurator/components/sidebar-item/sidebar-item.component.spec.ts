@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { InteriorPickerComponent } from './interior-picker.component';
+import { SidebarItemComponent } from './sidebar-item.component';
 
-describe('InteriorPickerComponent', () => {
-  let component: InteriorPickerComponent;
-  let fixture: ComponentFixture<InteriorPickerComponent>;
+describe('SidebarItemComponent', () => {
+  let component: SidebarItemComponent;
+  let fixture: ComponentFixture<SidebarItemComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ InteriorPickerComponent ]
+      declarations: [ SidebarItemComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(InteriorPickerComponent);
+    fixture = TestBed.createComponent(SidebarItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

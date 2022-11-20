@@ -1,39 +1,44 @@
 @use '@angular/material' as mat;
 @import '../../../../../scss/colors.scss';
 
-.picker {
+.sidebar {
   display: flex;
   width: 100%;
   flex-direction: column;
   justify-content: space-between;
 
-  &__main {
-    &__title {
+  &__items {
+    &__item {
       display: flex;
-      margin: 24px 40px;
       align-items: center;
-      justify-content: space-between;
+      margin: 40px;
+      cursor: pointer;
+      gap: 20px;
 
-      &__exit {
-        cursor: pointer;
+      &__image {
+        display: flex;
+        align-items: flex-end;
+        &__img {
+          width: 60px;
+          border-radius: 60px;
+        }
+
+        &__icon {
+          margin: 0 0 0 -20%;
+          color: mat.get-color-from-palette($success, normal);
+        }
       }
 
       &__text {
-        margin: 0;
-      }
-    }
+        &__name {
+          margin-bottom: 4px;
+          white-space: nowrap;
+        }
 
-    &__list {
-      margin: 0;
-      padding: 0;
-      &__item {
-        display: flex;
-        margin: 40px;
-        cursor: pointer;
-        gap: 20px;
-
-        &__element {
-          flex: 1 0 0;
+        &__description {
+          color: mat.get-color-from-palette($ux-colors, A500);
+          letter-spacing: 2px;
+          white-space: nowrap;
         }
       }
     }
@@ -66,6 +71,7 @@
 
       &__value {
         margin: 0px;
+        white-space: nowrap;
       }
     }
 
@@ -74,7 +80,7 @@
       background-color: mat.get-color-from-palette($primary, 500);
       justify-content: center;
       align-items: center;
-      padding: 22px;
+      padding: 12px;
 
       &__icon {
         color: mat.get-color-from-palette($ux-colors, A100);

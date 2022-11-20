@@ -7,11 +7,12 @@
     [configuration]="configuration"
   ></app-nav-bar>
   <app-car-slider class="exterior__slider"></app-car-slider>
-  <app-exterior-sidebar
+  <app-configuration-sidebar
     class="exterior__sidebar"
     [configuration]="configuration"
     *ngIf="(editing$ | async) === editedEnum.none"
-  ></app-exterior-sidebar>
+    [editing]="editedEnum.none"
+  ></app-configuration-sidebar>
   <app-element-picker
     class="exterior__sidebar"
     *ngIf="(editing$ | async) !== editedEnum.none && (editing$ | async) as editing"
