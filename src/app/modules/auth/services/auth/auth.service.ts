@@ -8,12 +8,12 @@ import { Store } from 'src/app/shared/classes/store.class'
 import { Configuration } from 'src/app/shared/models/Configuration'
 import { User } from 'src/app/shared/models/User'
 interface AuthInterface {
-  user: User
+  user?: User
   errorMessage: string
 }
 
 const initialState: AuthInterface = {
-  user: null,
+  user: undefined,
   errorMessage: undefined
 }
 
@@ -35,15 +35,20 @@ export class AuthService extends Store<AuthInterface> {
   errorMessage$ = this.select(({ errorMessage }) => errorMessage)
 
   updateUserState (user: firebase.User) {
-    if (!user) return
-    this.setState({
-      user: {
-        id: user.uid,
-        email: user.email,
-        configurations: []
-      }
-    })
-    this.getConfigurations(user.uid)
+    if (!user)
+      this.setState({
+        user: undefined
+      })
+    else {
+      this.setState({
+        user: {
+          id: user.uid,
+          email: user.email,
+          configurations: []
+        }
+      })
+      this.getConfigurations(user.uid)
+    }
   }
 
   updateErrorMessageState (errorMessage: string) {
@@ -124,7 +129,7 @@ export class AuthService extends Store<AuthInterface> {
     return this.firebaseAuth
       .signOut()
       .then(() => {
-        this.updateUserState(null)
+        this.updateUserState(undefined)
         this.router.navigateByUrl('login')
       })
       .catch(error => {

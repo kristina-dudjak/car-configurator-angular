@@ -12,6 +12,7 @@ import { MatMenuModule } from '@angular/material/menu'
 import { MatIconModule } from '@angular/material/icon'
 import { MatButtonModule } from '@angular/material/button'
 import { PagenotfoundComponent } from './views/pagenotfound/pagenotfound.component'
+import { HeaderComponent } from './shared/components/header/header.component'
 import { AngularFireStorageModule } from '@angular/fire/compat/storage'
 import { AngularFireFunctionsModule } from '@angular/fire/compat/functions'
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore'
@@ -21,7 +22,7 @@ import localeFrExtra from '@angular/common/locales/extra/fr'
 
 registerLocaleData(localeFr, 'fr', localeFrExtra)
 @NgModule({
-  declarations: [AppComponent, PagenotfoundComponent],
+  declarations: [AppComponent, PagenotfoundComponent, HeaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
