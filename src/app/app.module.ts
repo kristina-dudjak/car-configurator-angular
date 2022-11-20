@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core'
+import { NgModule, LOCALE_ID, DEFAULT_CURRENCY_CODE } from '@angular/core'
 import { AngularFireModule } from '@angular/fire/compat'
 import { AngularFireAuthModule } from '@angular/fire/compat/auth'
 import { BrowserModule } from '@angular/platform-browser'
@@ -15,7 +15,11 @@ import { PagenotfoundComponent } from './views/pagenotfound/pagenotfound.compone
 import { AngularFireStorageModule } from '@angular/fire/compat/storage'
 import { AngularFireFunctionsModule } from '@angular/fire/compat/functions'
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore'
+import { registerLocaleData } from '@angular/common'
+import localeFr from '@angular/common/locales/fr'
+import localeFrExtra from '@angular/common/locales/extra/fr'
 
+registerLocaleData(localeFr, 'fr', localeFrExtra)
 @NgModule({
   declarations: [AppComponent, PagenotfoundComponent],
   imports: [
@@ -31,7 +35,14 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore'
     MatIconModule,
     MatButtonModule
   ],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+    { provide: LOCALE_ID, useValue: 'fr' },
+    {
+      provide: DEFAULT_CURRENCY_CODE,
+      useValue: 'EUR'
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
