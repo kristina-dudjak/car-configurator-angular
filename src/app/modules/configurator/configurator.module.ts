@@ -29,6 +29,8 @@ import { SavedConfigurationsComponent } from './components/saved-configurations/
 import { SavedConfigurationComponent } from './components/saved-configuration/saved-configuration.component'
 import { ConfigurationSidebarComponent } from './components/configuration-sidebar/configuration-sidebar.component'
 import { SidebarItemComponent } from './components/sidebar-item/sidebar-item.component'
+import { IsElementCheckedPipe } from './pipes/is-element-checked.pipe'
+import { GetRedirectRoutePipe } from './pipes/get-redirect-route.pipe'
 
 @NgModule({
   declarations: [
@@ -53,7 +55,9 @@ import { SidebarItemComponent } from './components/sidebar-item/sidebar-item.com
     SavedConfigurationsComponent,
     SavedConfigurationComponent,
     ConfigurationSidebarComponent,
-    SidebarItemComponent
+    SidebarItemComponent,
+    IsElementCheckedPipe,
+    GetRedirectRoutePipe
   ],
   imports: [
     CommonModule,

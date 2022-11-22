@@ -18,8 +18,4 @@ export class ElementItemComponent {
   changeElement (value: CarElement) {
     this.changeElementEvent.emit(value)
   }
-
-  isChecked (): boolean {
-    return this.configuration[this.editingProperty].id === this.element.id
-  }
 }

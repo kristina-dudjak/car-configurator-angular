@@ -4,13 +4,16 @@
     <mat-icon
       class="element__image__icon"
       svgIcon="checkmark"
-      *ngIf="isChecked()"
+      *ngIf="configuration | isElementChecked: editingProperty:element"
     ></mat-icon>
   </div>
   <div class="element__text">
-    <p class="element__text__name">{{element.name}}</p>
-    <p class="element__text__price mat-body-2" *ngIf="isChecked()">
-      {{element.price | currency}}
+    <p class="element__text__name">{{ element.name }}</p>
+    <p
+      class="element__text__price mat-body-2"
+      *ngIf="configuration | isElementChecked: editingProperty:element"
+    >
+      {{ element.price | currency }}
     </p>
   </div>
 </div>

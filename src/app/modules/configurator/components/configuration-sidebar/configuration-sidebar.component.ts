@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
-import { BehaviorSubject } from 'rxjs'
 import { EditedEnum } from 'src/app/shared/enums/EditedEnum'
 import { Configuration } from 'src/app/shared/models/Configuration'
 
@@ -10,18 +9,14 @@ import { Configuration } from 'src/app/shared/models/Configuration'
   styleUrls: ['./configuration-sidebar.component.scss']
 })
 export class ConfigurationSidebarComponent implements OnInit {
+  constructor (private activatedRoute: ActivatedRoute) {}
+
   @Input() configuration: Configuration
   @Input() editing: EditedEnum
   editedEnum = EditedEnum
-  redirectText: string
-  route$ = new BehaviorSubject<string>('')
-
-  constructor (private activatedRoute: ActivatedRoute) {}
+  route: string
 
   ngOnInit (): void {
-    this.route$.next(this.activatedRoute.snapshot.routeConfig.path)
-    if (this.route$.value === 'exterior') {
-      this.redirectText = 'interior'
-    } else this.redirectText = 'summary'
+    this.route = this.activatedRoute.snapshot.routeConfig.path
   }
 }
