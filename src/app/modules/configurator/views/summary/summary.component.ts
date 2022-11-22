@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
-import { map, Observable } from 'rxjs'
-import { Configuration } from 'src/app/shared/models/Configuration'
+import { map } from 'rxjs'
 import { StoreService } from 'src/app/shared/services/store/store.service'
 
 @Component({
@@ -10,19 +9,17 @@ import { StoreService } from 'src/app/shared/services/store/store.service'
   styleUrls: ['./summary.component.scss']
 })
 export class SummaryComponent implements OnInit {
-  configuration$: Observable<Configuration>
-  name: string
-
   constructor (private store: StoreService, private route: ActivatedRoute) {}
+  configuration$ = this.store.configuration$.pipe(
+    map(configuration => {
+      if (!configuration || configuration.carName !== this.name)
+        this.store.initialConfigurationLoad(this.name)
+      return configuration
+    })
+  )
+  name: string
 
   ngOnInit (): void {
     this.name = this.route.parent.snapshot.params['name']
-    this.configuration$ = this.store.configuration$.pipe(
-      map(configuration => {
-        if (!configuration || configuration.carName !== this.name)
-          this.store.initialConfigurationLoad(this.name)
-        return configuration
-      })
-    )
   }
 }

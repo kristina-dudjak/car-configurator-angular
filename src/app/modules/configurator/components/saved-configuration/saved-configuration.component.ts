@@ -13,16 +13,15 @@ import { StoreService } from 'src/app/shared/services/store/store.service'
   styleUrls: ['./saved-configuration.component.scss']
 })
 export class SavedConfigurationComponent implements OnInit {
-  @Input() configuration: Configuration
-  @Input() user: User
-  configurationImg$: Observable<string>
-
   constructor (
     private storage: AngularFireStorage,
     private authService: AuthService,
     private store: StoreService,
     private router: Router
   ) {}
+  @Input() configuration: Configuration
+  @Input() user: User
+  configurationImg$: Observable<string>
 
   ngOnInit (): void {
     this.configurationImg$ = this.storage

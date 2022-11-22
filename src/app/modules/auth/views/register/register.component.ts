@@ -4,7 +4,6 @@ import { AuthService } from '../../services/auth/auth.service'
 import { FormBuilder } from '@angular/forms'
 import { ValidationService } from '../../services/validation/validation.service'
 import { PasswordRegex } from 'src/app/shared/const/PasswordRegex'
-import { Observable } from 'rxjs'
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -46,12 +45,8 @@ export class RegisterComponent {
 
   isPasswordVisible = true
   isPasswordRepeatVisible = true
-  errorMessage$: Observable<string>
+  errorMessage$ = this.authService.errorMessage$
   rememberMe = true
-
-  ngOnInit () {
-    this.errorMessage$ = this.authService.errorMessage$
-  }
 
   onRegister () {
     if (!this.registerForm.valid) {

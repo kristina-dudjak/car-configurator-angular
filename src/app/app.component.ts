@@ -1,25 +1,19 @@
-import { Component, OnInit } from '@angular/core'
-import { Observable } from 'rxjs'
+import { Component } from '@angular/core'
 import { AuthService } from './modules/auth/services/auth/auth.service'
 import { IconsService } from './shared/services/icons/icons.service'
-import { User } from './shared/models/User'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   constructor (
     private readonly authService: AuthService,
     private readonly iconsService: IconsService
   ) {
     this.iconsService.addIcons()
   }
-  user$: Observable<User>
-
-  ngOnInit () {
-    this.user$ = this.authService.user$
-  }
+  user$ = this.authService.user$
 
   signOut () {
     this.authService.signOut()

@@ -9,11 +9,10 @@ import { StoreService } from 'src/app/shared/services/store/store.service'
   styleUrls: ['./sidebar-item.component.scss']
 })
 export class SidebarItemComponent {
+  constructor (private store: StoreService) {}
   @Input() configuration: Configuration
   @Input() editing: EditedEnum
   editingMap = EditingMap
-
-  constructor (private store: StoreService) {}
 
   updateEditingEnum (editing: EditedEnum) {
     this.store.updateEditingEnumState(editing)

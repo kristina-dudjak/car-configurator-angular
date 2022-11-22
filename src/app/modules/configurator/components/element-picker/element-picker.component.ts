@@ -4,7 +4,6 @@ import {
   Input,
   OnInit
 } from '@angular/core'
-import { Observable } from 'rxjs'
 import { EditingMap } from 'src/app/shared/const/EditingMap'
 import { EditedEnum } from 'src/app/shared/enums/EditedEnum'
 import { CarElement } from 'src/app/shared/models/CarElement'
@@ -18,17 +17,15 @@ import { StoreService } from 'src/app/shared/services/store/store.service'
   styleUrls: ['./element-picker.component.scss']
 })
 export class ElementPickerComponent implements OnInit {
+  constructor (private store: StoreService) {}
   @Input() configuration: Configuration
   @Input() editing: EditedEnum
   editedEnum = EditedEnum
   editingMap = EditingMap
-  elements$: Observable<CarElement[]>
-
-  constructor (private store: StoreService) {}
+  elements$ = this.store.carElements$
 
   ngOnInit (): void {
     this.store.initialCarElements(this.configuration.carName, this.editing)
-    this.elements$ = this.store.carElements$
   }
 
   changeElement (element: CarElement) {

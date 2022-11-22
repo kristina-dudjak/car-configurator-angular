@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component } from '@angular/core'
 import { AngularFireStorage } from '@angular/fire/compat/storage'
 import {
   BehaviorSubject,
@@ -16,15 +16,14 @@ import { StoreService } from 'src/app/shared/services/store/store.service'
   templateUrl: './interior-slider.component.html',
   styleUrls: ['./interior-slider.component.scss']
 })
-export class InteriorSliderComponent implements OnInit {
-  configuration$: Observable<Configuration | undefined>
-  currentNumber$ = new BehaviorSubject<number>(1)
-  interiorImage$: Observable<string>
-
+export class InteriorSliderComponent {
   constructor (
     private storage: AngularFireStorage,
     private store: StoreService
   ) {}
+  configuration$ = this.store.configuration$
+  currentNumber$ = new BehaviorSubject<number>(1)
+  interiorImage$: Observable<string>
 
   currentNumberChanged$ = this.currentNumber$.pipe(
     debounceTime(500),
@@ -33,10 +32,6 @@ export class InteriorSliderComponent implements OnInit {
       this.configuration$.pipe(tap(conf => this.setInteriorImage$(conf, page)))
     )
   )
-
-  ngOnInit () {
-    this.configuration$ = this.store.configuration$
-  }
 
   decrement () {
     if (this.currentNumber$.getValue() > 1)

@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core'
-import { Observable } from 'rxjs'
-import { Car } from 'src/app/shared/models/Car'
+import { Component } from '@angular/core'
 import { StoreService } from 'src/app/shared/services/store/store.service'
 
 @Component({
@@ -8,11 +6,7 @@ import { StoreService } from 'src/app/shared/services/store/store.service'
   templateUrl: './car-list.component.html',
   styleUrls: ['./car-list.component.scss']
 })
-export class CarListComponent implements OnInit {
-  cars$: Observable<Car[]>
+export class CarListComponent {
   constructor (private store: StoreService) {}
-
-  ngOnInit () {
-    this.cars$ = this.store.cars$
-  }
+  cars$ = this.store.cars$
 }

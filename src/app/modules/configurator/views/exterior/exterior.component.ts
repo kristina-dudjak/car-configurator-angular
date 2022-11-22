@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
-import { map, Observable } from 'rxjs'
+import { map } from 'rxjs'
 import { EditedEnum } from 'src/app/shared/enums/EditedEnum'
-import { Configuration } from 'src/app/shared/models/Configuration'
 import { StoreService } from 'src/app/shared/services/store/store.service'
 
 @Component({
@@ -11,22 +10,19 @@ import { StoreService } from 'src/app/shared/services/store/store.service'
   styleUrls: ['./exterior.component.scss']
 })
 export class ExteriorComponent implements OnInit {
-  configuration$: Observable<Configuration>
-  editing$: Observable<EditedEnum>
+  constructor (private store: StoreService, private route: ActivatedRoute) {}
+  configuration$ = this.store.configuration$.pipe(
+    map(configuration => {
+      if (!configuration || configuration.carName !== this.name)
+        this.store.initialConfigurationLoad(this.name)
+      return configuration
+    })
+  )
+  editing$ = this.store.editingEnum$
   editedEnum = EditedEnum
   name: string
 
-  constructor (private store: StoreService, private route: ActivatedRoute) {}
-
   ngOnInit (): void {
     this.name = this.route.parent.snapshot.params['name']
-    this.configuration$ = this.store.configuration$.pipe(
-      map(configuration => {
-        if (!configuration || configuration.carName !== this.name)
-          this.store.initialConfigurationLoad(this.name)
-        return configuration
-      })
-    )
-    this.editing$ = this.store.editingEnum$
   }
 }

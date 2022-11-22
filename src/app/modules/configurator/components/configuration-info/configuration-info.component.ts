@@ -9,9 +9,8 @@ import { Configuration } from 'src/app/shared/models/Configuration'
   styleUrls: ['./configuration-info.component.scss']
 })
 export class ConfigurationInfoComponent {
-  @Input() configuration: Configuration
-
   constructor (private router: Router) {}
+  @Input() configuration: Configuration
 
   isSummaryPage () {
     return this.router.url.includes('summary')

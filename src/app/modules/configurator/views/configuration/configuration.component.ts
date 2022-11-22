@@ -1,14 +1,15 @@
-import { Component } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
 @Component({
   selector: 'app-configuration',
   templateUrl: './configuration.component.html',
   styleUrls: ['./configuration.component.scss']
 })
-export class ConfigurationComponent {
+export class ConfigurationComponent implements OnInit {
+  constructor (private route: ActivatedRoute) {}
   name: string
 
-  constructor (private route: ActivatedRoute) {
+  ngOnInit () {
     this.name = this.route.snapshot.paramMap.get('name')
   }
 }
