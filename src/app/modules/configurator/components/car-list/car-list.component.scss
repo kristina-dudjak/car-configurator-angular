@@ -1,0 +1,39 @@
+@use '@angular/material' as mat;
+@import '../../../../../scss/colors.scss';
+
+.cars {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 12px;
+  padding-top: 80px;
+
+  &__text {
+    grid-column: 2 / 6;
+    @media screen and (max-width: 768px) {
+      grid-column: 2 / 12;
+    }
+
+    &__description {
+      color: mat.get-color-from-palette($ux-colors, A500);
+    }
+  }
+
+  &__list {
+    grid-column: 2 / 13;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    list-style-type: none;
+    display: flex;
+    margin-bottom: 136px;
+    padding: 0;
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+    }
+
+    &__item {
+      min-width: 44%;
+      background-color: mat.get-color-from-palette($ux-colors, A100);
+      margin: 12px 32px 12px 0;
+    }
+  }
+}

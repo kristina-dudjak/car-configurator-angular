@@ -1,0 +1,35 @@
+@use '@angular/material' as mat;
+@import '../../../../../scss/colors.scss';
+
+.exterior {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 1fr 12fr;
+  height: calc(100vh - 80px);
+  column-gap: 12px;
+
+  &__nav {
+    grid-column: 1 / 13;
+    background-color: mat.get-color-from-palette($ux-colors, A100);
+    border-bottom: 1px solid mat.get-color-from-palette($ux-colors, A300);
+  }
+
+  &__slider {
+    grid-column: 1 / 10;
+    align-self: center;
+    @media screen and (max-width: 912px) {
+      grid-column: 1 / 13;
+      margin: 40px 0;
+    }
+  }
+
+  &__sidebar {
+    grid-column: 10 / 13;
+    background-color: mat.get-color-from-palette($ux-colors, A100);
+    border-left: 1px solid mat.get-color-from-palette($ux-colors, A300);
+    display: flex;
+    @media screen and (max-width: 912px) {
+      grid-column: 1 / 13;
+    }
+  }
+}

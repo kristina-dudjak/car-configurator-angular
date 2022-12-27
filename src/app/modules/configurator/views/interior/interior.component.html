@@ -1,0 +1,22 @@
+<div
+  class="interior"
+  *ngIf="(configuration$ | async) && (configuration$ | async) as configuration"
+>
+  <app-nav-bar
+    class="interior__nav"
+    [configuration]="configuration"
+  ></app-nav-bar>
+  <app-interior-slider class="interior__slider"></app-interior-slider>
+  <app-configuration-sidebar
+    class="interior__sidebar"
+    [configuration]="configuration"
+    *ngIf="(editing$ | async) === editedEnum.none"
+    [editing]="editedEnum.none"
+  ></app-configuration-sidebar>
+  <app-element-picker
+    class="interior__sidebar"
+    *ngIf="(editing$ | async) !== editedEnum.none && (editing$ | async) as editing"
+    [configuration]="configuration"
+    [editing]="editing"
+  ></app-element-picker>
+</div>

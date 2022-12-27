@@ -1,0 +1,89 @@
+@use '@angular/material' as mat;
+@import '../../../../../scss/colors.scss';
+
+.picker {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__main {
+    &__title {
+      display: flex;
+      margin: 24px 40px;
+      align-items: center;
+      justify-content: space-between;
+
+      &__exit {
+        cursor: pointer;
+      }
+
+      &__text {
+        margin: 0;
+      }
+    }
+
+    &__list {
+      margin: 0;
+      padding: 0;
+      &__item {
+        display: flex;
+        margin: 40px;
+        cursor: pointer;
+        gap: 20px;
+
+        &__element {
+          flex: 1 0 0;
+        }
+      }
+    }
+  }
+
+  &__final {
+    display: flex;
+    flex-direction: column;
+
+    &__price {
+      display: flex;
+      align-self: stretch;
+      justify-content: space-between;
+      margin: 24px 12px;
+
+      &__total {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+
+        &__text {
+          color: mat.get-color-from-palette($ux-colors, A400);
+          margin: 0px;
+          letter-spacing: 2px;
+        }
+
+        &__icon {
+          color: mat.get-color-from-palette($primary, 200);
+        }
+      }
+
+      &__value {
+        margin: 0px;
+        white-space: nowrap;
+        @media screen and (max-width: 1024px) {
+          font-size: 20px;
+        }
+      }
+    }
+
+    &__button {
+      display: flex;
+      background-color: mat.get-color-from-palette($primary, 500);
+      justify-content: center;
+      align-items: center;
+      padding: 22px;
+
+      &__icon {
+        color: mat.get-color-from-palette($ux-colors, A100);
+      }
+    }
+  }
+}

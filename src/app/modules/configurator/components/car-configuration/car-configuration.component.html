@@ -1,0 +1,40 @@
+<div
+  class="configuration"
+  *ngIf="(configuration$ | async) && (configuration$ | async) as configuration"
+>
+  <div class="configuration__nav">
+    <div class="configuration__nav__content">
+      <mat-icon
+        class="configuration__nav__content__back"
+        svgIcon="back"
+        routerLink=".."
+      ></mat-icon>
+      <div class="configuration__nav__content__text">
+        <p class="configuration__nav__content__text__year text-bold">
+          {{configuration.year}}
+        </p>
+        <p class="configuration__nav__content__text__name text-bold">
+          {{configuration.carName}}
+        </p>
+      </div>
+    </div>
+    <div
+      class="configuration__nav__links"
+      *ngIf="(user$ | async) && (user$ | async) as user"
+    >
+      <a class="configuration__nav__links__edit" routerLink="exterior"
+        >Edit configuration</a
+      >
+      <a
+        class="configuration__nav__links__delete"
+        (click)="deleteConfiguration(configuration, user)"
+        >Delete</a
+      >
+    </div>
+  </div>
+  <app-car-slider class="configuration__slider"></app-car-slider>
+  <app-configuration-info
+    class="configuration__info"
+    [configuration]="configuration"
+  ></app-configuration-info>
+</div>

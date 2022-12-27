@@ -1,0 +1,17 @@
+<div class="item" (click)="updateEditingEnum(editing)">
+  <div class="item__image">
+    <img
+      class="item__image__img"
+      [src]="configuration[editingMap.get(editing).name].thumbnail"
+    />
+    <mat-icon class="item__image__icon" svgIcon="checkmark"></mat-icon>
+  </div>
+  <div class="item__text">
+    <p class="item__text__name">
+      {{configuration[editingMap.get(editing).name].name}}
+    </p>
+    <p class="item__text__description mat-caption">
+      {{editingMap.get(editing).description | uppercase}}
+    </p>
+  </div>
+</div>

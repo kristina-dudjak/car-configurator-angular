@@ -1,0 +1,46 @@
+<div class="nav">
+  <div class="nav__content">
+    <mat-icon
+      class="nav__content__back"
+      svgIcon="back"
+      routerLink=".."
+    ></mat-icon>
+    <div class="nav__content__text">
+      <p class="nav__content__text__year text-bold">
+        {{configuration.year}}
+      </p>
+      <p class="nav__content__text__name text-bold">
+        {{configuration.carName | uppercase}}
+      </p>
+    </div>
+  </div>
+  <div class="nav__links">
+    <div class="nav__links__item">
+      <p class="nav__links__item__number">01</p>
+      <a
+        class="nav__links__item__link"
+        routerLinkActive="active-link"
+        routerLink="../exterior"
+        >Exterior</a
+      >
+    </div>
+    <div class="nav__links__item">
+      <p class="nav__links__item__number">02</p>
+      <a
+        class="nav__links__item__link"
+        routerLinkActive="active-link"
+        routerLink="../interior"
+        >Interior</a
+      >
+    </div>
+    <div class="nav__links__item">
+      <p class="nav__links__item__number">03</p>
+      <a
+        class="nav__links__item__link"
+        routerLinkActive="active-link"
+        routerLink="../summary"
+        >Summary</a
+      >
+    </div>
+  </div>
+</div>

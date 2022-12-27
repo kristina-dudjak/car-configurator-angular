@@ -1,0 +1,60 @@
+<mat-card class="configuration">
+  <div class="configuration__main">
+    <img
+      class="configuration__main__img"
+      mat-card-image
+      [src]="configurationImg$ | async"
+    />
+    <mat-divider
+      class="configuration__main__divider divider"
+      vertical
+    ></mat-divider>
+    <div class="configuration__main__content">
+      <mat-card-title-group class="configuration__main__content__group">
+        <mat-card-subtitle
+          class="configuration__main__content__group__subtitle mat-caption"
+          >{{configuration.year}}</mat-card-subtitle
+        >
+        <mat-card-title
+          class="configuration__main__content__group__name car-name"
+          >{{configuration.carName | uppercase}}</mat-card-title
+        >
+        <mat-card-subtitle
+          class="configuration__main__content__group__subtitle mat-caption"
+          >{{configuration.color.name | uppercase}}</mat-card-subtitle
+        >
+      </mat-card-title-group>
+      <p class="configuration__main__content__date text-sml">
+        Created {{configuration.creationDate.toDate() | date: 'MMM d yyyy'}}
+      </p>
+    </div>
+  </div>
+  <div class="configuration__menu">
+    <button
+      class="configuration__menu__button"
+      mat-icon-button
+      [matMenuTriggerFor]="menu"
+    >
+      <mat-icon
+        class="configuration__menu__button__icon"
+        svgIcon="three-dots"
+      ></mat-icon>
+    </button>
+    <mat-menu class="configuration__menu__items no-padding" #menu="matMenu">
+      <button
+        class="configuration__menu__items__item"
+        mat-menu-item
+        (click)="editConfiguration()"
+      >
+        <span class="configuration__menu__items__item__edit">Edit</span>
+      </button>
+      <button
+        class="configuration__menu__items__item"
+        mat-menu-item
+        (click)="deleteConfiguration()"
+      >
+        <span class="configuration__menu__items__item__delete">Delete</span>
+      </button>
+    </mat-menu>
+  </div>
+</mat-card>

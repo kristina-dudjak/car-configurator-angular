@@ -1,0 +1,83 @@
+@use '@angular/material' as mat;
+@import '../../../../../scss/colors.scss';
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  align-items: center;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    margin-left: 44px;
+    gap: 12px;
+    @media screen and (max-width: 768px) {
+      margin-left: 12px;
+    }
+
+    &__back {
+      cursor: pointer;
+    }
+
+    &__text {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      @media screen and (max-width: 768px) {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      &__year {
+        color: mat.get-color-from-palette($ux-colors, A400);
+        margin: 0;
+        @media screen and (max-width: 768px) {
+          font-size: 20px;
+        }
+      }
+
+      &__name {
+        margin: 0;
+        @media screen and (max-width: 768px) {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+      align-items: flex-start;
+      margin: 0;
+    }
+
+    &__item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 24px 20px;
+      cursor: pointer;
+      @media screen and (max-width: 768px) {
+        padding: 12px;
+      }
+
+      &__number {
+        color: mat.get-color-from-palette($ux-colors, A400);
+        margin: 0;
+      }
+
+      &__link {
+        text-decoration: none;
+        color: mat.get-color-from-palette($ux-colors, A700);
+      }
+    }
+  }
+}
+
+.active-link {
+  font-weight: 700;
+}

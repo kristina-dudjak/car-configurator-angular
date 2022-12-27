@@ -1,0 +1,13 @@
+@use '@angular/material' as mat;
+@import '../colors.scss';
+
+.button-text > .mat-button-wrapper {
+  color: mat.get-color-from-palette($ux-colors, A200);
+  @extend .text-button-default;
+  font-weight: 700;
+}
+
+.lighter-button-text > .mat-button-wrapper {
+  color: mat.get-color-from-palette($ux-colors, A100);
+  font-weight: 700;
+}

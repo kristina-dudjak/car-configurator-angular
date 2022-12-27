@@ -29,7 +29,7 @@
     }
 
     &__checkbox {
-      margin-bottom: 8px;
+      margin-bottom: 12px;
       align-self: center;
     }
 
@@ -46,6 +46,7 @@
       margin-top: 20px;
       width: 100%;
       align-self: center;
+      cursor: pointer;
       padding: 4px 16px;
       border: 2px solid mat.get-color-from-palette($ux-colors, A200);
       border-radius: 12px;
@@ -55,6 +56,7 @@
 
   &__redirect {
     grid-column: 5 / 9;
-    margin-top: 40px;
+    margin: 40px 0;
+    text-align: center;
   }
 }

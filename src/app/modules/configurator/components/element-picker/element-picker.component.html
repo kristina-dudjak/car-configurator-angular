@@ -1,0 +1,51 @@
+<div
+  class="picker"
+  *ngIf="(elements$ | async) && (elements$ | async) as elements"
+>
+  <div class="picker__main">
+    <div class="picker__main__title">
+      <h3 class="picker__main__title__text">
+        {{editingMap.get(editing).description}}
+      </h3>
+      <mat-icon
+        class="picker__main__title__exit"
+        svgIcon="exit"
+        (click)="backToSidebar()"
+      ></mat-icon>
+    </div>
+    <ul class="picker__main__list">
+      <li class="picker__main__list__item" *ngFor="let element of elements">
+        <app-element-item
+          class="picker__main__list__item__element"
+          [element]="element"
+          [configuration]="configuration"
+          [editingProperty]="editingMap.get(editing).name"
+          (changeElementEvent)="changeElement($event)"
+        ></app-element-item>
+      </li>
+    </ul>
+  </div>
+  <div class="picker__final">
+    <div class="picker__final__price">
+      <div class="picker__final__price__total">
+        <p class="picker__final__price__total__text mat-body-2">
+          TOTAL
+        </p>
+        <mat-icon
+          class="picker__final__price__total__icon"
+          svgIcon="info"
+        ></mat-icon>
+      </div>
+      <h3 class="picker__final__price__value">
+        {{configuration | finalConfigurationPrice | currency}}
+      </h3>
+    </div>
+    <button
+      class="picker__final__button lighter-button-text"
+      mat-button
+      (click)="backToSidebar()"
+    >
+      Done
+    </button>
+  </div>
+</div>

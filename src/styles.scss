@@ -1,8 +1,16 @@
+@use '@angular/material' as mat;
 @import './scss/theme.scss';
+@import './scss/am-components/mat-button.overrides.scss';
+@import './scss/am-components/mat-checkbox.overrides.scss';
+@import './scss/am-components/mat-form.overrides.scss';
+@import './scss/am-components/mat-menu.overrides.scss';
+@import './scss/am-components/mat-divider.overrides.scss';
+@import './scss/colors.scss';
 
 html,
 body {
   height: 100%;
+  background-color: mat.get-color-from-palette($ux-colors, A200);
 }
 body {
   margin: 0;

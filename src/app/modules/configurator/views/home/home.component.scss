@@ -1,0 +1,45 @@
+@use '@angular/material' as mat;
+@import '../../../../../scss/colors.scss';
+
+.home {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  align-items: start;
+  height: 100%;
+  column-gap: 12px;
+  padding-top: 80px;
+
+  &__shared {
+    grid-column: 2 / 12;
+    display: flex;
+    justify-content: space-between;
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &__subtitle {
+      text-align: center;
+    }
+
+    &__button {
+      background-color: mat.get-color-from-palette($primary, 500);
+      @media screen and (max-width: 768px) {
+        margin: 20px;
+      }
+    }
+  }
+
+  &__empty {
+    grid-column: 4 / 10;
+    display: flex;
+    flex-direction: column;
+    @media screen and (max-width: 768px) {
+      grid-column: 2 / 12;
+    }
+  }
+
+  &__saved {
+    grid-column: 2 / 12;
+  }
+}

@@ -1,0 +1,95 @@
+@use '@angular/material' as mat;
+@import '../../../../../scss/colors.scss';
+
+.configuration {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 12px;
+
+  &__nav {
+    grid-column: 1 / 13;
+    background-color: mat.get-color-from-palette($ux-colors, A100);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__content {
+      display: flex;
+      align-items: center;
+      margin-left: 44px;
+      gap: 12px;
+      @media screen and (max-width: 768px) {
+        margin-left: 12px;
+      }
+
+      &__back {
+        cursor: pointer;
+      }
+
+      &__text {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        @media screen and (max-width: 768px) {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        &__year {
+          color: mat.get-color-from-palette($ux-colors, A400);
+          margin: 0;
+          @media screen and (max-width: 768px) {
+            font-size: 20px;
+          }
+        }
+
+        &__name {
+          margin: 0;
+          @media screen and (max-width: 768px) {
+            font-size: 20px;
+          }
+        }
+      }
+    }
+
+    &__links {
+      display: flex;
+      align-items: center;
+      @media screen and (max-width: 768px) {
+        flex-direction: column;
+        align-items: flex-end;
+      }
+
+      &__edit {
+        padding: 28px 20px 28px 40px;
+        color: mat.get-color-from-palette($primary, 500);
+        cursor: pointer;
+        text-decoration: none;
+        @media screen and (max-width: 768px) {
+          padding: 12px;
+          text-align: end;
+        }
+      }
+
+      &__delete {
+        padding: 28px 40px 28px 20px;
+        cursor: pointer;
+        color: mat.get-color-from-palette($error, normal);
+        @media screen and (max-width: 768px) {
+          padding: 12px;
+        }
+      }
+    }
+  }
+
+  &__slider {
+    grid-column: 2 / 12;
+    margin: 40px 0 92px 0;
+    @media screen and (max-width: 768px) {
+      grid-column: 1 / 13;
+    }
+  }
+
+  &__info {
+    grid-column: 2 / 12;
+  }
+}

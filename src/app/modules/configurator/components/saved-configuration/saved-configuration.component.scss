@@ -1,0 +1,74 @@
+@use '@angular/material' as mat;
+@import '../../../../../scss/colors.scss';
+
+.configuration {
+  background-color: mat.get-color-from-palette($ux-colors, A100);
+  display: flex;
+  justify-content: space-between;
+
+  &__main {
+    display: flex;
+    &__img {
+      width: 50%;
+      margin: 0;
+      @media screen and (max-width: 768px) {
+        width: 100%;
+        padding: 16px 0;
+      }
+    }
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+    }
+
+    &__divider {
+      color: mat.get-color-from-palette($ux-colors, A300);
+      margin-right: 28px;
+      @media screen and (max-width: 768px) {
+        display: none;
+      }
+    }
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      &__group {
+        &__subtitle {
+          color: mat.get-color-from-palette($ux-colors, A500);
+          letter-spacing: 2px;
+          margin-bottom: 8px;
+        }
+
+        &__name {
+          color: mat.get-color-from-palette($primary, 500);
+          font-size: 36px;
+        }
+      }
+
+      &__date {
+        margin: 0;
+        color: mat.get-color-from-palette($ux-colors, A400);
+      }
+    }
+  }
+
+  &__menu {
+    &__button {
+      &__icon {
+        color: mat.get-color-from-palette($primary, 200);
+        cursor: pointer;
+      }
+    }
+    &__items {
+      &__item {
+        background-color: mat.get-color-from-palette($ux-colors, A100);
+        &__edit {
+          color: mat.get-color-from-palette($primary, 400);
+        }
+        &__delete {
+          color: mat.get-color-from-palette($error, normal);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+@use '@angular/material' as mat;
+@import '../../../../../scss/colors.scss';
+
+.slider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+
+  &__img {
+    width: 100%;
+    margin: 0 12px;
+  }
+
+  &__spinner {
+    stroke: mat.get-color-from-palette($primary, 200);
+  }
+
+  &__views {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+
+    &__currentNumber {
+      color: mat.get-color-from-palette($ux-colors, A700);
+      margin: 0;
+    }
+
+    &__slash {
+      margin: 0;
+      color: mat.get-color-from-palette($ux-colors, A300);
+    }
+
+    &__lastNumber {
+      margin: 0;
+      color: mat.get-color-from-palette($ux-colors, A300);
+    }
+  }
+}

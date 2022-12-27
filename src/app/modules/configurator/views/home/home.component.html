@@ -1,1 +1,21 @@
-<p>home works!</p>
+<div class="home" *ngIf="(user$ | async) && (user$ | async) as user">
+  <div class="home__shared">
+    <h3 class="home__shared__subtitle">View saved configurations</h3>
+    <button
+      mat-raised-button
+      class="home__shared__button button-text"
+      routerLink="cars"
+    >
+      Configure a car
+    </button>
+  </div>
+  <app-empty-home
+    class="home__empty"
+    *ngIf="!user.configurations || user.configurations.length === 0"
+  ></app-empty-home>
+  <app-saved-configurations
+    class="home__saved"
+    *ngIf="user.configurations && user.configurations.length !== 0"
+    [user]="user"
+  ></app-saved-configurations>
+</div>

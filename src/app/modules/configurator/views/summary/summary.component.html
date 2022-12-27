@@ -1,0 +1,24 @@
+<div
+  class="summary"
+  *ngIf="(configuration$ | async) && (configuration$ | async) as configuration"
+>
+  <app-nav-bar
+    class="summary__nav"
+    [configuration]="configuration"
+  ></app-nav-bar>
+  <div class="summary__text">
+    <p class="summary__text__headline final">Almost done!</p>
+    <h4 class="summary__text__description">
+      Review your configuration and save your car.
+    </h4>
+  </div>
+  <app-car-slider class="summary__slider"></app-car-slider>
+  <app-configuration-info
+    class="summary__info"
+    [configuration]="configuration"
+  ></app-configuration-info>
+  <app-configuration-footer
+    class="summary__footer"
+    [configuration]="configuration"
+  ></app-configuration-footer>
+</div>

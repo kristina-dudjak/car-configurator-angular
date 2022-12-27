@@ -1,0 +1,27 @@
+<div class="footer">
+  <div class="footer__configuration">
+    <p class="footer__configuration__year text-bold">{{configuration.year}}</p>
+    <p class="footer__configuration__name text-bold">
+      {{configuration.carName | uppercase}}
+    </p>
+  </div>
+  <div class="footer__final">
+    <div class="footer__final__text">
+      <p class="footer__final__text__total mat-body-2">
+        TOTAL
+      </p>
+      <mat-icon class="footer__final__text__info" svgIcon="info"></mat-icon>
+    </div>
+    <h3 class="footer__final__price">
+      {{configuration | finalConfigurationPrice | currency}}
+    </h3>
+    <button
+      class="footer__final__button lighter-button-text"
+      mat-button
+      *ngIf="(user$ | async) && (user$ | async) as user"
+      (click)="saveConfiguration(user)"
+    >
+      Save your configuration
+    </button>
+  </div>
+</div>

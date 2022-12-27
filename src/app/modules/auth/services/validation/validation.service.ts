@@ -18,14 +18,11 @@ export class ValidationService {
   static passwordMatchValidator (controlName: string): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       const form = control.get(controlName)
-      if (
-        controlName === 'repeatPassword' &&
-        control.get('repeatPassword')?.value !== control.get('password')?.value
-      ) {
-        form?.setErrors({ [controlName]: true })
-        return { [controlName]: ValidationMessages['mismatch'] }
+      if (form.value === control.get('password').value) {
+        return null
       }
-      return null
+      form?.setErrors({ [controlName]: true })
+      return { [controlName]: ValidationMessages['mismatch'] }
     }
   }
 }

@@ -1,26 +1,80 @@
 import { Injectable } from '@angular/core'
 import { AngularFireAuth } from '@angular/fire/compat/auth'
+import { AngularFirestore } from '@angular/fire/compat/firestore'
 import { Router } from '@angular/router'
 import firebase from 'firebase/compat/app'
-import { BehaviorSubject } from 'rxjs'
+import { firstValueFrom, map } from 'rxjs'
+import { Store } from 'src/app/shared/classes/store.class'
+import { Configuration } from 'src/app/shared/models/Configuration'
+import { User } from 'src/app/shared/models/User'
+interface AuthInterface {
+  user?: User
+  errorMessage: string
+}
+
+const initialState: AuthInterface = {
+  user: undefined,
+  errorMessage: undefined
+}
+
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
-  private user$ = new BehaviorSubject<firebase.User | null>(null)
-  private errorMessage$ = new BehaviorSubject<string | null>(null)
-  constructor (private firebaseAuth: AngularFireAuth, private router: Router) {
+export class AuthService extends Store<AuthInterface> {
+  constructor (
+    private firebaseAuth: AngularFireAuth,
+    private router: Router,
+    private db: AngularFirestore
+  ) {
+    super(initialState)
     this.firebaseAuth.onAuthStateChanged(user => {
-      this.user$.next(user)
+      this.updateUserState(user)
+    })
+  }
+  user$ = this.select(({ user }) => user)
+  errorMessage$ = this.select(({ errorMessage }) => errorMessage)
+
+  updateUserState (user: firebase.User) {
+    if (!user)
+      this.setState({
+        user: undefined
+      })
+    else {
+      this.setState({
+        user: {
+          id: user.uid,
+          email: user.email,
+          configurations: []
+        }
+      })
+      this.getConfigurations(user.uid)
+    }
+  }
+
+  updateErrorMessageState (errorMessage: string) {
+    this.setState({ errorMessage })
+  }
+
+  updateUserConfigurations (configs: Configuration[]) {
+    const { configurations, ...rest } = this.state.user
+    this.setState({
+      user: {
+        configurations: configs,
+        ...rest
+      }
     })
   }
 
-  get user () {
-    return this.user$.asObservable()
-  }
-
-  get errorMessage () {
-    return this.errorMessage$.asObservable()
+  removeConfigurationFromUserConfigurations (configuration: Configuration) {
+    const { configurations, ...rest } = this.state.user
+    this.setState({
+      user: {
+        configurations: configurations.filter(
+          config => config !== configuration
+        ),
+        ...rest
+      }
+    })
   }
 
   googleSignIn (rememberMe: boolean) {
@@ -30,11 +84,11 @@ export class AuthService {
         this.firebaseAuth
           .signInWithPopup(new firebase.auth.GoogleAuthProvider())
           .then(result => {
-            this.user$.next(result.user)
+            this.updateUserState(result.user)
             this.router.navigateByUrl('configurator')
           })
           .catch(error => {
-            this.errorMessage$.next(error.message)
+            this.updateErrorMessageState(error.message)
           })
       })
   }
@@ -46,11 +100,11 @@ export class AuthService {
         this.firebaseAuth
           .signInWithEmailAndPassword(email, password)
           .then(result => {
-            this.user$.next(result.user)
+            this.updateUserState(result.user)
             this.router.navigateByUrl('configurator')
           })
           .catch(error => {
-            this.errorMessage$.next(error.message)
+            this.updateErrorMessageState(error.message)
           })
       })
   }
@@ -62,11 +116,11 @@ export class AuthService {
         this.firebaseAuth
           .createUserWithEmailAndPassword(email, password)
           .then(result => {
-            this.user$.next(result.user)
+            this.updateUserState(result.user)
             this.router.navigateByUrl('configurator')
           })
           .catch(error => {
-            this.errorMessage$.next(error.message)
+            this.updateErrorMessageState(error.message)
           })
       })
   }
@@ -75,17 +129,65 @@ export class AuthService {
     return this.firebaseAuth
       .signOut()
       .then(() => {
-        this.user$.next(null)
+        this.updateUserState(undefined)
         this.router.navigateByUrl('login')
       })
       .catch(error => {
-        this.errorMessage$.next(error.message)
+        this.updateErrorMessageState(error.message)
       })
   }
 
   sendPasswordResetEmail (email: string) {
     return this.firebaseAuth.sendPasswordResetEmail(email).catch(error => {
-      this.errorMessage$.next(error.message)
+      this.updateErrorMessageState(error.message)
     })
+  }
+
+  saveUserConfiguration (configuration: Configuration, user: User) {
+    const {
+      id,
+      carName,
+      year,
+      price,
+      color,
+      interior,
+      wheel,
+      creationDate
+    } = configuration
+    this.db
+      .collection(`users/${user.id}/configurations`)
+      .doc(id.toString())
+      .set(
+        {
+          id: id,
+          carName: carName,
+          year: year,
+          price: price,
+          color: color,
+          interior: interior,
+          wheel: wheel,
+          creationDate: creationDate
+        },
+        { merge: true }
+      )
+      .then(() => this.getConfigurations(user.id))
+  }
+
+  deleteUserConfiguration (configuration: Configuration, user: User) {
+    this.db.doc(`users/${user.id}/configurations/${configuration.id}`).delete()
+    this.removeConfigurationFromUserConfigurations(configuration)
+  }
+
+  getConfigurations (uid: string) {
+    firstValueFrom(
+      this.db
+        .collection(`users/${uid}/configurations`)
+        .valueChanges()
+        .pipe(
+          map((configurations: Configuration[]) => {
+            this.updateUserConfigurations(configurations)
+          })
+        )
+    )
   }
 }

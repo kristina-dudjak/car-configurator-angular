@@ -1,0 +1,41 @@
+<div class="sidebar">
+  <div class="sidebar__items" [ngSwitch]="route">
+    <app-sidebar-item
+      *ngSwitchCase="'exterior'"
+      [configuration]="configuration"
+      [editing]="editedEnum.colors"
+    ></app-sidebar-item>
+    <app-sidebar-item
+      *ngSwitchCase="'exterior'"
+      [configuration]="configuration"
+      [editing]="editedEnum.wheels"
+    ></app-sidebar-item>
+    <app-sidebar-item
+      *ngSwitchCase="'interior'"
+      [configuration]="configuration"
+      [editing]="editedEnum.interiors"
+    ></app-sidebar-item>
+  </div>
+  <div class="sidebar__final">
+    <div class="sidebar__final__price">
+      <div class="sidebar__final__price__total">
+        <p class="sidebar__final__price__total__text mat-body-2">TOTAL</p>
+        <mat-icon
+          class="sidebar__final__price__total__icon"
+          svgIcon="info"
+        ></mat-icon>
+      </div>
+      <h3 class="sidebar__final__price__value">
+        {{ configuration | finalConfigurationPrice | currency }}
+      </h3>
+    </div>
+    <button
+      class="sidebar__final__button lighter-button-text"
+      mat-button
+      [routerLink]="['..', route | getRedirectRoute]"
+    >
+      {{ route | getRedirectRoute | titlecase }}
+      <mat-icon class="sidebar__final__button__icon" svgIcon="next"></mat-icon>
+    </button>
+  </div>
+</div>
